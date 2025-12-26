@@ -1,0 +1,161 @@
+{
+  "bpmn:Definitions": {
+    "id": "Definitions-0001",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "xmlns:bpmn": "http://www.omg.org/spec/BPMN/20100524/MODEL",
+    "xmlns:bpmndi": "http://www.omg.org/spec/BPMN/20100524/DI",
+    "xmlns:dc": "http://www.omg.org/spec/DD/20100524/DC",
+    "xmlns:di": "http://www.omg.org/spec/DD/20100524/DI",
+    "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "xsi:schemaLocation": "http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd",
+    "bpmn:Process": {
+      "id": "Process-0001",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "bpmn:startEvent": {
+            "id": "StartEvent-0001",
+            "name": "Order Received"
+          }
+        },
+        {
+          "bpmn:receiveTask": {
+            "id": "ReceiveTask-0001",
+            "name": "Receive Payment"
+          }
+        },
+        {
+          "bpmn:boundaryEvent": {
+            "id": "BoundaryEvent-0001",
+            "name": "30 minutes",
+            "attachedToRef": "ReceiveTask-0001",
+            "cancelActivity": true,
+            "eventDefinitions": [
+              {
+                "bpmn:timerEventDefinition": {
+                  "timeDuration": "PT30M"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "bpmn:boundaryEvent": {
+            "id": "BoundaryEvent-0002",
+            "name": "Error",
+            "attachedToRef": "ReceiveTask-0001",
+            "cancelActivity": true,
+            "eventDefinitions": [
+              {
+                "bpmn:errorEventDefinition": {
+                  "errorRef": "Error-0001"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "bpmn:userTask": {
+            "id": "UserTask-0001",
+            "name": "Review Order"
+          }
+        },
+        {
+          "bpmn:serviceTask": {
+            "id": "ServiceTask-0001",
+            "name": "Check Inventory"
+          }
+        },
+        {
+          "bpmn:exclusiveGateway": {
+            "id": "ExclusiveGateway-0001",
+            "name": "Inventory Check",
+            "default": "SequenceFlow-0005"
+          }
+        },
+        {
+          "bpmn:scriptTask": {
+            "id": "ScriptTask-0001",
+            "name": "Calculate Total Price: including tax and discounts"
+          }
+        },
+        {
+          "bpmn:sendTask": {
+            "id": "SendTask-0001",
+            "name": "Send Confirmation Email"
+          }
+        },
+        {
+          "bpmn:endEvent": {
+            "id": "EndEvent-0001",
+            "name": "Order Processed"
+          }
+        },
+        {
+          "bpmn:sequenceFlow": {
+            "id": "SequenceFlow-0001",
+            "sourceRef": "StartEvent-0001",
+            "targetRef": "ReceiveTask-0001"
+          }
+        },
+        {
+          "bpmn:sequenceFlow": {
+            "id": "SequenceFlow-0002",
+            "sourceRef": "ReceiveTask-0001",
+            "targetRef": "UserTask-0001"
+          }
+        },
+        {
+          "bpmn:sequenceFlow": {
+            "id": "SequenceFlow-0003",
+            "sourceRef": "UserTask-0001",
+            "targetRef": "ServiceTask-0001"
+          }
+        },
+        {
+          "bpmn:sequenceFlow": {
+            "id": "SequenceFlow-0004",
+            "sourceRef": "ServiceTask-0001",
+            "targetRef": "ExclusiveGateway-0001"
+          }
+        },
+        {
+          "bpmn:sequenceFlow": {
+            "id": "SequenceFlow-0005",
+            "sourceRef": "ExclusiveGateway-0001",
+            "targetRef": "ScriptTask-0001",
+            "conditionExpression": {
+              "resource": "http://www.omg.org/spec/BPMN/20100524/MODEL",
+              "expression": "Inventory available"
+            }
+          }
+        },
+        {
+          "bpmn:sequenceFlow": {
+            "id": "SequenceFlow-0006",
+            "sourceRef": "ScriptTask-0001",
+            "targetRef": "SendTask-0001"
+          }
+        },
+        {
+          "bpmn:sequenceFlow": {
+            "id": "SequenceFlow-0007",
+            "sourceRef": "SendTask-0001",
+            "targetRef": "EndEvent-0001"
+          }
+        },
+        {
+          "bpmn:sequenceFlow": {
+            "id": "SequenceFlow-0008",
+            "sourceRef": "ExclusiveGateway-0001",
+            "targetRef": "ScriptTask-0001",
+            "conditionExpression": {
+              "resource": "http://www.omg.org/spec/BPMN/20100524/MODEL",
+              "expression": "Inventory not available"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

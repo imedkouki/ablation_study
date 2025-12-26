@@ -1,0 +1,485 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "CentralVenousCatheterInsertionDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Generator",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "CentralVenousCatheterInsertionProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent_001",
+          "name": "Procedure Started"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_001",
+          "name": "Initial Preparation Split",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_001",
+          "name": "Prepare Implements"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_002",
+          "name": "Wash Hands"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_003",
+          "name": "Put on Sterile Clothes"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_002",
+          "name": "Initial Preparation Join",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_004",
+          "name": "Clean Puncture Area"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_005",
+          "name": "Drape Puncture Zone"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_006",
+          "name": "Configure Ultrasound"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_007",
+          "name": "Put Gel in Probe"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_008",
+          "name": "Cover Probe"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_009",
+          "name": "Put Sterile Gel"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_010",
+          "name": "Position Probe"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_011",
+          "name": "Position Patient"
+        },
+        {
+          "$type": "bpmn:InclusiveGateway",
+          "id": "Gateway_003",
+          "name": "Vein Identification Method",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_012",
+          "name": "Anatomic Identification"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_013",
+          "name": "Doppler Identification"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_014",
+          "name": "Compression Identification"
+        },
+        {
+          "$type": "bpmn:InclusiveGateway",
+          "id": "Gateway_004",
+          "name": "Vein Identification Complete",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_015",
+          "name": "Anesthetize Patient"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_016",
+          "name": "Puncture Vein",
+          "isLoop": true
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_017",
+          "name": "Check Blood Return"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_005",
+          "name": "Blood Return Correct?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_018",
+          "name": "Drop Probe"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_019",
+          "name": "Remove Syringe"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_020",
+          "name": "Install Guidewire"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_021",
+          "name": "Remove Trocar"
+        },
+        {
+          "$type": "bpmn:InclusiveGateway",
+          "id": "Gateway_006",
+          "name": "Wire Check Method",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_022",
+          "name": "Check Wire in Long Axis"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_023",
+          "name": "Check Wire in Short Axis"
+        },
+        {
+          "$type": "bpmn:InclusiveGateway",
+          "id": "Gateway_007",
+          "name": "Wire Check Complete",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_008",
+          "name": "Wire in Good Position?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_024",
+          "name": "Widen Pathway"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_025",
+          "name": "Advance Catheter"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_026",
+          "name": "Remove Guidewire"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_027",
+          "name": "Verify Flow and Reflow"
+        },
+        {
+          "$type": "bpmn:ManualTask",
+          "id": "ManualTask_028",
+          "name": "Check Catheter Position"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_001",
+          "name": "Procedure Complete"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_001",
+          "sourceRef": "StartEvent_001",
+          "targetRef": "Gateway_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_002",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ManualTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_003",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ManualTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_004",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ManualTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_005",
+          "sourceRef": "ManualTask_001",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_006",
+          "sourceRef": "ManualTask_002",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_007",
+          "sourceRef": "ManualTask_003",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_008",
+          "sourceRef": "Gateway_002",
+          "targetRef": "ManualTask_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_009",
+          "sourceRef": "ManualTask_004",
+          "targetRef": "ManualTask_005"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_010",
+          "sourceRef": "ManualTask_005",
+          "targetRef": "ManualTask_006"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_011",
+          "sourceRef": "ManualTask_006",
+          "targetRef": "ManualTask_007"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_012",
+          "sourceRef": "ManualTask_007",
+          "targetRef": "ManualTask_008"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_013",
+          "sourceRef": "ManualTask_008",
+          "targetRef": "ManualTask_009"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_014",
+          "sourceRef": "ManualTask_009",
+          "targetRef": "ManualTask_010"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_015",
+          "sourceRef": "ManualTask_010",
+          "targetRef": "ManualTask_011"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_016",
+          "sourceRef": "ManualTask_011",
+          "targetRef": "Gateway_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_017",
+          "sourceRef": "Gateway_003",
+          "targetRef": "ManualTask_012"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_018",
+          "sourceRef": "Gateway_003",
+          "targetRef": "ManualTask_013"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_019",
+          "sourceRef": "Gateway_003",
+          "targetRef": "ManualTask_014"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_020",
+          "sourceRef": "ManualTask_012",
+          "targetRef": "Gateway_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_021",
+          "sourceRef": "ManualTask_013",
+          "targetRef": "Gateway_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_022",
+          "sourceRef": "ManualTask_014",
+          "targetRef": "Gateway_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_023",
+          "sourceRef": "Gateway_004",
+          "targetRef": "ManualTask_015"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_024",
+          "sourceRef": "ManualTask_015",
+          "targetRef": "ManualTask_016"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_025",
+          "sourceRef": "ManualTask_016",
+          "targetRef": "ManualTask_017"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_026",
+          "sourceRef": "ManualTask_017",
+          "targetRef": "Gateway_005"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_027",
+          "name": "incorrect",
+          "sourceRef": "Gateway_005",
+          "targetRef": "ManualTask_016"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_028",
+          "name": "correct",
+          "sourceRef": "Gateway_005",
+          "targetRef": "ManualTask_018",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_029",
+          "sourceRef": "ManualTask_018",
+          "targetRef": "ManualTask_019"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_030",
+          "sourceRef": "ManualTask_019",
+          "targetRef": "ManualTask_020"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_031",
+          "sourceRef": "ManualTask_020",
+          "targetRef": "ManualTask_021"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_032",
+          "sourceRef": "ManualTask_021",
+          "targetRef": "Gateway_006"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_033",
+          "sourceRef": "Gateway_006",
+          "targetRef": "ManualTask_022"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_034",
+          "sourceRef": "Gateway_006",
+          "targetRef": "ManualTask_023"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_035",
+          "sourceRef": "ManualTask_022",
+          "targetRef": "Gateway_007"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_036",
+          "sourceRef": "ManualTask_023",
+          "targetRef": "Gateway_007"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_037",
+          "sourceRef": "Gateway_007",
+          "targetRef": "Gateway_008"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_038",
+          "name": "bad position",
+          "sourceRef": "Gateway_008",
+          "targetRef": "ManualTask_016"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_039",
+          "name": "good position",
+          "sourceRef": "Gateway_008",
+          "targetRef": "ManualTask_024",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_040",
+          "sourceRef": "ManualTask_024",
+          "targetRef": "ManualTask_025"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_041",
+          "sourceRef": "ManualTask_025",
+          "targetRef": "ManualTask_026"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_042",
+          "sourceRef": "ManualTask_026",
+          "targetRef": "ManualTask_027"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_043",
+          "sourceRef": "ManualTask_027",
+          "targetRef": "ManualTask_028"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_044",
+          "sourceRef": "ManualTask_028",
+          "targetRef": "EndEvent_001"
+        }
+      ]
+    }
+  ]
+}

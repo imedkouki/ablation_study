@@ -1,0 +1,253 @@
+{
+  "definitions": {
+    "id": "Definitions-0001",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "exporter": "BPMN Modeler",
+    "exporterVersion": "1.0",
+    "name": "Austria Relocation Process",
+    "rootElements": [
+      {
+        "id": "Process-0001",
+        "isExecutable": true,
+        "flowElements": [
+          {
+            "id": "StartEvent-0001",
+            "name": "Initiate Austria relocation process",
+            "incoming": [],
+            "outgoing": "SequenceFlow-0001"
+          },
+          {
+            "id": "UserTask-0001",
+            "name": "Gather required documents",
+            "incoming": "SequenceFlow-0001",
+            "outgoing": "SequenceFlow-0002"
+          },
+          {
+            "id": "ExclusiveGateway-0001",
+            "name": "Documentation Check",
+            "incoming": "SequenceFlow-0002",
+            "outgoing": [
+              "SequenceFlow-0003",
+              "SequenceFlow-0004"
+            ]
+          },
+          {
+            "id": "ServiceTask-0001",
+            "name": "Submit visa application",
+            "incoming": "SequenceFlow-0003",
+            "outgoing": "SequenceFlow-0005"
+          },
+          {
+            "id": "TimerBoundaryEvent-0001",
+            "name": "30 days",
+            "attachedToRef": "ServiceTask-0001",
+            "outgoing": "SequenceFlow-0006"
+          },
+          {
+            "id": "ExclusiveGateway-0002",
+            "name": "Visa Decision",
+            "incoming": [
+              "SequenceFlow-0005",
+              "SequenceFlow-0006"
+            ],
+            "outgoing": [
+              "SequenceFlow-0007",
+              "SequenceFlow-0008"
+            ]
+          },
+          {
+            "id": "UserTask-0002",
+            "name": "Negotiate accommodation",
+            "incoming": "SequenceFlow-0007",
+            "outgoing": "SequenceFlow-0009"
+          },
+          {
+            "id": "UserTask-0003",
+            "name": "Open bank account",
+            "incoming": "SequenceFlow-0009",
+            "outgoing": "SequenceFlow-0010"
+          },
+          {
+            "id": "EndEvent-0001",
+            "name": "Relocation completed",
+            "incoming": "SequenceFlow-0010"
+          },
+          {
+            "id": "UserTask-0004",
+            "name": "Reapply or appeal visa decision",
+            "incoming": "SequenceFlow-0008",
+            "outgoing": "SequenceFlow-0011"
+          },
+          {
+            "id": "UserTask-0005",
+            "name": "Request missing documents",
+            "incoming": "SequenceFlow-0004",
+            "outgoing": "SequenceFlow-0012"
+          }
+        ],
+        "laneSets": []
+      }
+    ],
+    "diagrams": [
+      {
+        "id": "BPMNDiagram-0001",
+        "name": "Austria Relocation Process",
+        "plane": {
+          "id": "BPMNPlane-0001",
+          "bpmnElement": "Process-0001",
+          "flowElements": [
+            {
+              "id": "StartEvent_1",
+              "bpmnElement": "StartEvent-0001",
+              "outgoing": "SequenceFlow_1"
+            },
+            {
+              "id": "UserTask_1",
+              "bpmnElement": "UserTask-0001",
+              "incoming": "SequenceFlow_1",
+              "outgoing": "SequenceFlow_2"
+            },
+            {
+              "id": "ExclusiveGateway_1",
+              "bpmnElement": "ExclusiveGateway-0001",
+              "incoming": "SequenceFlow_2",
+              "outgoing": [
+                "SequenceFlow_3",
+                "SequenceFlow_4"
+              ]
+            },
+            {
+              "id": "ServiceTask_1",
+              "bpmnElement": "ServiceTask-0001",
+              "incoming": "SequenceFlow_3",
+              "outgoing": "SequenceFlow_5"
+            },
+            {
+              "id": "TimerBoundaryEvent_1",
+              "bpmnElement": "TimerBoundaryEvent-0001",
+              "attachedToRef": "ServiceTask_1",
+              "outgoing": "SequenceFlow_6"
+            },
+            {
+              "id": "ExclusiveGateway_2",
+              "bpmnElement": "ExclusiveGateway-0002",
+              "incoming": [
+                "SequenceFlow_5",
+                "SequenceFlow_6"
+              ],
+              "outgoing": [
+                "SequenceFlow_7",
+                "SequenceFlow_8"
+              ]
+            },
+            {
+              "id": "UserTask_2",
+              "bpmnElement": "UserTask-0002",
+              "incoming": "SequenceFlow_7",
+              "outgoing": "SequenceFlow_9"
+            },
+            {
+              "id": "UserTask_3",
+              "bpmnElement": "UserTask-0003",
+              "incoming": "SequenceFlow_9",
+              "outgoing": "SequenceFlow_10"
+            },
+            {
+              "id": "EndEvent_1",
+              "bpmnElement": "EndEvent-0001",
+              "incoming": "SequenceFlow_10"
+            },
+            {
+              "id": "UserTask_4",
+              "bpmnElement": "UserTask-0004",
+              "incoming": "SequenceFlow_8",
+              "outgoing": "SequenceFlow_11"
+            },
+            {
+              "id": "UserTask_5",
+              "bpmnElement": "UserTask-0005",
+              "incoming": "SequenceFlow_4",
+              "outgoing": "SequenceFlow_12"
+            }
+          ],
+          "sequenceFlows": [
+            {
+              "id": "SequenceFlow_1",
+              "bpmnElement": "SequenceFlow-0001",
+              "sourceRef": "StartEvent_1",
+              "targetRef": "UserTask_1"
+            },
+            {
+              "id": "SequenceFlow_2",
+              "bpmnElement": "SequenceFlow-0002",
+              "sourceRef": "UserTask_1",
+              "targetRef": "ExclusiveGateway_1"
+            },
+            {
+              "id": "SequenceFlow_3",
+              "bpmnElement": "SequenceFlow-0003",
+              "sourceRef": "ExclusiveGateway_1",
+              "targetRef": "ServiceTask_1",
+              "conditionExpression": "${documentation complete}"
+            },
+            {
+              "id": "SequenceFlow_4",
+              "bpmnElement": "SequenceFlow-0004",
+              "sourceRef": "ExclusiveGateway_1",
+              "targetRef": "UserTask_5"
+            },
+            {
+              "id": "SequenceFlow_5",
+              "bpmnElement": "SequenceFlow-0005",
+              "sourceRef": "ServiceTask_1",
+              "targetRef": "ExclusiveGateway_2"
+            },
+            {
+              "id": "SequenceFlow_6",
+              "bpmnElement": "SequenceFlow-0006",
+              "sourceRef": "TimerBoundaryEvent_1",
+              "targetRef": "ExclusiveGateway_2"
+            },
+            {
+              "id": "SequenceFlow_7",
+              "bpmnElement": "SequenceFlow-0007",
+              "sourceRef": "ExclusiveGateway_2",
+              "targetRef": "UserTask_2",
+              "conditionExpression": "${visa approved}"
+            },
+            {
+              "id": "SequenceFlow_8",
+              "bpmnElement": "SequenceFlow-0008",
+              "sourceRef": "ExclusiveGateway_2",
+              "targetRef": "UserTask_4"
+            },
+            {
+              "id": "SequenceFlow_9",
+              "bpmnElement": "SequenceFlow-0009",
+              "sourceRef": "UserTask_2",
+              "targetRef": "UserTask_3"
+            },
+            {
+              "id": "SequenceFlow_10",
+              "bpmnElement": "SequenceFlow-0010",
+              "sourceRef": "UserTask_3",
+              "targetRef": "EndEvent_1"
+            },
+            {
+              "id": "SequenceFlow_11",
+              "bpmnElement": "SequenceFlow-0011",
+              "sourceRef": "UserTask_4",
+              "targetRef": "ServiceTask_1"
+            },
+            {
+              "id": "SequenceFlow_12",
+              "bpmnElement": "SequenceFlow-0012",
+              "sourceRef": "UserTask_5",
+              "targetRef": "UserTask_1"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

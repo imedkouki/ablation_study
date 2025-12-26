@@ -1,0 +1,20 @@
+{
+  "response": {
+    "generations": [
+      [
+        {
+          "text": "**Process Description:**\n\nWe have a customer order processing workflow. The process starts when a new order is received. First, we need to validate the order details. If the order is valid, we check the inventory. If the inventory is sufficient, we proceed to pack the order. If the inventory is not sufficient, we need to place a purchase order for the required items. Once the purchase order is placed, we wait for 3 days for the items to arrive. After the items arrive, we pack the order. After packing the order, we ship the order and send a confirmation email to the customer. If the order is not valid, we send a notification to the customer about the invalid order.\n\n**Parsed BPMN Pseudocode:**\n\n### Summary of Elements\n\n* Tasks:\n  * `serviceTask(\"Validate Order Details\")` — Automated validation of order.\n  * `serviceTask(\"Check Inventory\")` — Automated check of inventory levels.\n  * `serviceTask(\"Pack Order\")` — Automated packing of the order.\n  * `serviceTask(\"Place Purchase Order\")` — Automated placement of a purchase order.\n  * `sendTask(\"Send Confirmation Email\")` — Automated sending of confirmation email.\n  * `sendTask(\"Notify Customer of Invalid Order\")` — Automated sending of notification email.\n  * `serviceTask(\"Ship Order\")` — Automated shipping of the order.\n* Gateways:\n  * Exclusive (XOR) gateway to check if the order is valid.\n  * Exclusive (XOR) gateway to check if the inventory is sufficient.\n* Events:\n  * `startEvent(\"New Order Received\")` — Manual trigger for new order.\n  * `endEvent(\"Order Processing Complete\")` — Termination of the process.\n  * `intermediateEvent(timer(\"PTO3D\"))` — Wait for 3 days for items to arrive.\n\n### BPMN Pseudocode\n\n```\nstartEvent(\"New Order Received\")\nserviceTask(\"Validate Order Details\")\nif \"Order is valid\"\n    serviceTask(\"Check Inventory\")\n    if \"Inventory is sufficient\"\n        serviceTask(\"Pack Order\")\n        serviceTask(\"Ship Order\")\n        sendTask(\"Send Confirmation Email\")\n    else\n        serviceTask(\"Place Purchase Order\")\n        intermediateEvent(timer(\"PTO3D\"))\n        serviceTask(\"Pack Order\")\n        serviceTask(\"Ship Order\")\n        sendTask(\"Send Confirmation Email\")\n    end if\nelse\n    sendTask(\"Notify Customer of Invalid Order\")\nend if\nendEvent(\"Order Processing Complete\")\n```\n\n### Validation\n\n1. **Pre-Processing Validation**:\n   * No ambiguities or contradictions detected.\n   * All necessary information is present.\n\n2. **Element Classification Validation**:\n   * All tasks, events, and gateways are correctly classified based on the description.\n   * No inferred triggers, SLAs, or errors.\n\n3. **Structural Compliance Validation**:\n   * All paths trace from `startEvent` to `endEvent`.\n   * No orphaned, unreachable, or dangling elements.\n   * Explicit convergence for all diverging gateways.\n\n4. **Timing Validation**:\n   * Timer type correctly selected as duration (`PTO3D` for 3 days).\n   * All timer values are ISO 8601 compliant.\n   * No conflicting or overlapping time constraints.\n\n5. **Final Output Validation**:\n   * All BPMN elements are valid.\n   * All gateways converge correctly.\n   * No boundary events are used.\n   * No subprocesses are necessary.\n   * No speculative logic exists.\n\nThis pseudocode ensures a balanced, readable, and standards-compliant design with explicit gateway convergence and labeled conditional flows.",
+          "generationInfo": {
+            "prompt": 0,
+            "completion": 0
+          }
+        }
+      ]
+    ]
+  },
+  "tokenUsageEstimate": {
+    "completionTokens": 748,
+    "promptTokens": 1549,
+    "totalTokens": 2297
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "response": {
+    "generations": [
+      [
+        {
+          "text": "Here's the BPMN 2.0 JSON model for the provided pseudocode:\n\n```json\n{\n  \"bpmn:Definitions\": {\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"exporter\": \"BPMN Modeler\",\n    \"exporterVersion\": \"1.0\",\n    \"rootElements\": [\n      {\n        \"bpmn:Process\": {\n          \"id\": \"Process-0001\",\n          \"isExecutable\": true,\n          \"flowElements\": [\n            {\n              \"bpmn:StartEvent\": {\n                \"id\": \"StartEvent-0001\",\n                \"name\": \"INQ transmits transaction data request\"\n              }\n            },\n            {\n              \"bpmn:ServiceTask\": {\n                \"id\": \"ServiceTask-0001\",\n                \"name\": \"Check transaction data request\"\n              }\n            },\n            {\n              \"bpmn:ExclusiveGateway\": {\n                \"id\": \"ExclusiveGateway-0001\",\n                \"name\": \"Request valid?\"\n              }\n            },\n            {\n              \"bpmn:ServiceTask\": {\n                \"id\": \"ServiceTask-0002\",\n                \"name\": \"Transmit data\"\n              }\n            },\n            {\n              \"bpmn:EndEvent\": {\n                \"id\": \"EndEvent-0001\",\n                \"name\": \"Process completed\"\n              }\n            },\n            {\n              \"bpmn:ServiceTask\": {\n                \"id\": \"ServiceTask-0003\",\n                \"name\": \"Reject request\"\n              }\n            },\n            {\n              \"bpmn:SequenceFlow\": {\n                \"id\": \"SequenceFlow-0001\",\n                \"sourceRef\": \"StartEvent-0001\",\n                \"targetRef\": \"ServiceTask-0001\"\n              }\n            },\n            {\n              \"bpmn:SequenceFlow\": {\n                \"id\": \"SequenceFlow-0002\",\n                \"sourceRef\": \"ServiceTask-0001\",\n                \"targetRef\": \"ExclusiveGateway-0001\"\n              }\n            },\n            {\n              \"bpmn:SequenceFlow\": {\n                \"id\": \"SequenceFlow-0003\",\n                \"sourceRef\": \"ExclusiveGateway-0001\",\n                \"targetRef\": \"ServiceTask-0002\",\n                \"conditionExpression\": \"$requestValid = true\"\n              }\n            },\n            {\n              \"bpmn:SequenceFlow\": {\n                \"id\": \"SequenceFlow-0004\",\n                \"sourceRef\": \"ServiceTask-0002\",\n                \"targetRef\": \"EndEvent-0001\"\n              }\n            },\n            {\n              \"bpmn:SequenceFlow\": {\n                \"id\": \"SequenceFlow-0005\",\n                \"sourceRef\": \"ExclusiveGateway-0001\",\n                \"targetRef\": \"ServiceTask-0003\",\n                \"conditionExpression\": \"$requestValid = false\"\n              }\n            },\n            {\n              \"bpmn:SequenceFlow\": {\n                \"id\": \"SequenceFlow-0006\",\n                \"sourceRef\": \"ServiceTask-0003\",\n                \"targetRef\": \"EndEvent-0001\"\n              }\n            }\n          ]\n        }\n      }\n    ]\n  }\n}\n```\n\nThis JSON model:\n1. Strictly follows BPMN 2.0 specification\n2. Contains exactly one process with one start event and one end event\n3. Uses proper sequence flows with conditions for the exclusive gateway\n4. Maintains all ID naming conventions\n5. Has no dangling elements or unbalanced gateways\n6. Includes all required metadata\n7. Follows the exact structure from the provided pseudocode",
+          "generationInfo": {
+            "prompt": 0,
+            "completion": 0
+          }
+        }
+      ]
+    ]
+  },
+  "tokenUsageEstimate": {
+    "completionTokens": 745,
+    "promptTokens": 1627,
+    "totalTokens": 2372
+  }
+}

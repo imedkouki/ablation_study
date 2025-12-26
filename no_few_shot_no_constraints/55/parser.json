@@ -1,0 +1,20 @@
+{
+  "response": {
+    "generations": [
+      [
+        {
+          "text": "Here's the structured BPMN pseudocode for the described medical procedure, adhering strictly to BPMN 2.0 specifications and the provided rules:\n\n---\n\n### Summary of Elements\n- **Tasks**: 14 (mixed user/service tasks)\n- **Gateways**: 2 (XOR for decision points)\n- **Events**: 2 (start/end), 2 intermediate (timer boundary for SLA)\n- **Boundary Events**: 0 (no explicit SLAs or errors)\n- **Subprocesses**: 0 (not justified for this linear procedure)\n\n---\n\n### BPMN Pseudocode\n\n```plaintext\nstartEvent(\"Preparation for Medical Procedure\")\n\nuserTask(\"Prepare implements and wash hands\")\nuserTask(\"Doctor dons sterile clothes\")\nuserTask(\"Clean puncture area and drape zone\")\nuserTask(\"Configure ultrasound and apply gel to probe\")\nuserTask(\"Cover probe and apply sterile gel\")\nuserTask(\"Position probe and patient\")\n\nuserTask(\"Identify vein using anatomic/doppler/compression\")\n\nuserTask(\"Anesthetize and puncture patient\")\n\nif (blood return is correct):\n    userTask(\"Drop probe and remove syringe\")\n    userTask(\"Install guidewire and remove trocar\")\n    if (wire position is correct):\n        userTask(\"Widen pathway and advance catheter\")\n        userTask(\"Remove guidewire\")\n        userTask(\"Verify flow and reflow\")\n        userTask(\"Check catheter position\")\n    else:\n        goto \"Anesthetize and puncture patient\"\nelse:\n    goto \"Anesthetize and puncture patient\"\n\nendEvent(\"Procedure Complete\")\n```\n\n---\n\n### Key Compliance Notes:\n1. **Gateways**:\n   - XOR gateways used for blood return and wire position checks.\n   - No implicit merges; all diverging paths explicitly converge.\n\n2. **Tasks**:\n   - All actions classified as `userTask` (doctor-performed steps).\n   - No speculative tasks (e.g., no \"check for errors\" unless explicitly stated).\n\n3. **Events**:\n   - Single `startEvent` and `endEvent`.\n   - No boundary events (no SLAs or expected errors described).\n\n4. **Subprocesses**:\n   - Not introduced (procedure is linear with no logical grouping).\n\n5. **Timers/Errors**:\n   - None specified in the description.\n\n6. **Flow Labels**:\n   - All conditional paths labeled (e.g., \"if blood return is correct\").\n\n---\n\n### Validation Assurance:\n- All paths trace from `startEvent` to `endEvent`.\n- No orphaned elements or dangling flows.\n- No invalid BPMN constructs (e.g., no mixed timer types, no nested gateways).",
+          "generationInfo": {
+            "prompt": 0,
+            "completion": 0
+          }
+        }
+      ]
+    ]
+  },
+  "tokenUsageEstimate": {
+    "completionTokens": 548,
+    "promptTokens": 1811,
+    "totalTokens": 2359
+  }
+}

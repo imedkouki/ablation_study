@@ -1,0 +1,283 @@
+{
+  "definitions": {
+    "id": "Definitions-0001",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "exporter": "BPMN Modeler",
+    "exporterVersion": "1.0",
+    "process": {
+      "id": "Process-0001",
+      "isExecutable": false,
+      "flowElements": [
+        {
+          "id": "StartEvent-0001",
+          "name": "Create Farming Bot",
+          "incoming": [],
+          "outgoing": ["SequenceFlow-0001"]
+        },
+        {
+          "id": "UserTask-0001",
+          "name": "Select Resources",
+          "incoming": ["SequenceFlow-0001"],
+          "outgoing": ["SequenceFlow-0002"]
+        },
+        {
+          "id": "ServiceTask-0001",
+          "name": "Validate Dependencies",
+          "incoming": ["SequenceFlow-0002"],
+          "outgoing": ["SequenceFlow-0003", "SequenceFlow-0004"]
+        },
+        {
+          "id": "ExclusiveGateway-0001",
+          "name": "Dependency Check",
+          "incoming": ["SequenceFlow-0003"],
+          "outgoing": ["SequenceFlow-0005", "SequenceFlow-0006"]
+        },
+        {
+          "id": "ScriptTask-0001",
+          "name": "Calculate Farming Plan: Based on priorities and dependencies",
+          "incoming": ["SequenceFlow-0005"],
+          "outgoing": ["SequenceFlow-0007"]
+        },
+        {
+          "id": "SubProcess-0001",
+          "name": "Farming Execution",
+          "incoming": ["SequenceFlow-0007"],
+          "outgoing": ["SequenceFlow-0010"],
+          "flowElements": [
+            {
+              "id": "StartEvent-0002",
+              "name": "Farming Start",
+              "incoming": [],
+              "outgoing": ["SequenceFlow-0008"]
+            },
+            {
+              "id": "ServiceTask-0002",
+              "name": "Start Farming",
+              "incoming": ["SequenceFlow-0008"],
+              "outgoing": ["SequenceFlow-0009"]
+            },
+            {
+              "id": "ParallelGateway-0001",
+              "name": "Farming Split",
+              "incoming": ["SequenceFlow-0009"],
+              "outgoing": ["SequenceFlow-0011", "SequenceFlow-0012"]
+            },
+            {
+              "id": "ServiceTask-0003",
+              "name": "Collect Resource 1",
+              "incoming": ["SequenceFlow-0011"],
+              "outgoing": ["SequenceFlow-0013"]
+            },
+            {
+              "id": "ServiceTask-0004",
+              "name": "Collect Resource 2",
+              "incoming": ["SequenceFlow-0012"],
+              "outgoing": ["SequenceFlow-0014"]
+            },
+            {
+              "id": "ParallelGateway-0002",
+              "name": "Farming Join",
+              "incoming": ["SequenceFlow-0013", "SequenceFlow-0014"],
+              "outgoing": ["SequenceFlow-0015"]
+            },
+            {
+              "id": "EndEvent-0002",
+              "name": "Farming Segment Complete",
+              "incoming": ["SequenceFlow-0015"],
+              "outgoing": []
+            },
+            {
+              "id": "BoundaryEvent-0001",
+              "name": "Natural Disaster",
+              "attachedToRef": "ServiceTask-0002",
+              "incoming": [],
+              "outgoing": ["SequenceFlow-0016"]
+            },
+            {
+              "id": "ServiceTask-0005",
+              "name": "Handle Natural Disaster",
+              "incoming": ["SequenceFlow-0016"],
+              "outgoing": ["SequenceFlow-0017"]
+            },
+            {
+              "id": "BoundaryEvent-0002",
+              "name": "Dependency Issue",
+              "attachedToRef": "ServiceTask-0002",
+              "incoming": [],
+              "outgoing": ["SequenceFlow-0018"]
+            },
+            {
+              "id": "ServiceTask-0006",
+              "name": "Resolve Dependency Issue",
+              "incoming": ["SequenceFlow-0018"],
+              "outgoing": ["SequenceFlow-0019"]
+            }
+          ]
+        },
+        {
+          "id": "ServiceTask-0007",
+          "name": "Notify Milestones",
+          "incoming": ["SequenceFlow-0010"],
+          "outgoing": ["SequenceFlow-0020"]
+        },
+        {
+          "id": "UserTask-0002",
+          "name": "Update Resource List",
+          "incoming": ["SequenceFlow-0020"],
+          "outgoing": ["SequenceFlow-0021"]
+        },
+        {
+          "id": "ExclusiveGateway-0002",
+          "name": "Resource Check",
+          "incoming": ["SequenceFlow-0021"],
+          "outgoing": ["SequenceFlow-0022", "SequenceFlow-0023"]
+        },
+        {
+          "id": "EndEvent-0001",
+          "name": "Farming Complete",
+          "incoming": ["SequenceFlow-0022"],
+          "outgoing": []
+        },
+        {
+          "id": "ServiceTask-0008",
+          "name": "Show Dependency Errors",
+          "incoming": ["SequenceFlow-0006"],
+          "outgoing": ["SequenceFlow-0024"]
+        },
+        {
+          "id": "EndEvent-0003",
+          "name": "Farming Aborted",
+          "incoming": ["SequenceFlow-0024"],
+          "outgoing": []
+        }
+      ],
+      "sequenceFlows": [
+        {
+          "id": "SequenceFlow-0001",
+          "sourceRef": "StartEvent-0001",
+          "targetRef": "UserTask-0001"
+        },
+        {
+          "id": "SequenceFlow-0002",
+          "sourceRef": "UserTask-0001",
+          "targetRef": "ServiceTask-0001"
+        },
+        {
+          "id": "SequenceFlow-0003",
+          "sourceRef": "ServiceTask-0001",
+          "targetRef": "ExclusiveGateway-0001",
+          "conditionExpression": "${dependencies valid}"
+        },
+        {
+          "id": "SequenceFlow-0004",
+          "sourceRef": "ServiceTask-0001",
+          "targetRef": "ServiceTask-0008"
+        },
+        {
+          "id": "SequenceFlow-0005",
+          "sourceRef": "ExclusiveGateway-0001",
+          "targetRef": "ScriptTask-0001",
+          "conditionExpression": "${dependencies valid}"
+        },
+        {
+          "id": "SequenceFlow-0006",
+          "sourceRef": "ExclusiveGateway-0001",
+          "targetRef": "ServiceTask-0008",
+          "conditionExpression": "${not(dependencies valid)}"
+        },
+        {
+          "id": "SequenceFlow-0007",
+          "sourceRef": "ScriptTask-0001",
+          "targetRef": "SubProcess-0001"
+        },
+        {
+          "id": "SequenceFlow-0008",
+          "sourceRef": "StartEvent-0002",
+          "targetRef": "ServiceTask-0002"
+        },
+        {
+          "id": "SequenceFlow-0009",
+          "sourceRef": "ServiceTask-0002",
+          "targetRef": "ParallelGateway-0001"
+        },
+        {
+          "id": "SequenceFlow-0010",
+          "sourceRef": "SubProcess-0001",
+          "targetRef": "ServiceTask-0007"
+        },
+        {
+          "id": "SequenceFlow-0011",
+          "sourceRef": "ParallelGateway-0001",
+          "targetRef": "ServiceTask-0003"
+        },
+        {
+          "id": "SequenceFlow-0012",
+          "sourceRef": "ParallelGateway-0001",
+          "targetRef": "ServiceTask-0004"
+        },
+        {
+          "id": "SequenceFlow-0013",
+          "sourceRef": "ServiceTask-0003",
+          "targetRef": "ParallelGateway-0002"
+        },
+        {
+          "id": "SequenceFlow-0014",
+          "sourceRef": "ServiceTask-0004",
+          "targetRef": "ParallelGateway-0002"
+        },
+        {
+          "id": "SequenceFlow-0015",
+          "sourceRef": "ParallelGateway-0002",
+          "targetRef": "EndEvent-0002"
+        },
+        {
+          "id": "SequenceFlow-0016",
+          "sourceRef": "BoundaryEvent-0001",
+          "targetRef": "ServiceTask-0005"
+        },
+        {
+          "id": "SequenceFlow-0017",
+          "sourceRef": "ServiceTask-0005",
+          "targetRef": "EndEvent-0002"
+        },
+        {
+          "id": "SequenceFlow-0018",
+          "sourceRef": "BoundaryEvent-0002",
+          "targetRef": "ServiceTask-0006"
+        },
+        {
+          "id": "SequenceFlow-0019",
+          "sourceRef": "ServiceTask-0006",
+          "targetRef": "EndEvent-0002"
+        },
+        {
+          "id": "SequenceFlow-0020",
+          "sourceRef": "ServiceTask-0007",
+          "targetRef": "UserTask-0002"
+        },
+        {
+          "id": "SequenceFlow-0021",
+          "sourceRef": "UserTask-0002",
+          "targetRef": "ExclusiveGateway-0002"
+        },
+        {
+          "id": "SequenceFlow-0022",
+          "sourceRef": "ExclusiveGateway-0002",
+          "targetRef": "EndEvent-0001",
+          "conditionExpression": "${all resources collected}"
+        },
+        {
+          "id": "SequenceFlow-0023",
+          "sourceRef": "ExclusiveGateway-0002",
+          "targetRef": "SubProcess-0001",
+          "conditionExpression": "${not(all resources collected)}"
+        },
+        {
+          "id": "SequenceFlow-0024",
+          "sourceRef": "ServiceTask-0008",
+          "targetRef": "EndEvent-0003"
+        }
+      ]
+    }
+  }
+}

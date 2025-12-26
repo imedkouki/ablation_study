@@ -1,0 +1,76 @@
+{
+  "definitions": {
+    "id": "Definitions-0001",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "exporter": "BPMN Modeler",
+    "exporterVersion": "1.0",
+    "process": {
+      "id": "Process-0001",
+      "isExecutable": false,
+      "flowElements": [
+        {
+          "id": "StartEvent-0001",
+          "name": "Inspection Start",
+          "outgoing": "SequenceFlow-0001"
+        },
+        {
+          "id": "UserTask-0001",
+          "name": "Enter machine type",
+          "incoming": "SequenceFlow-0001",
+          "outgoing": "SequenceFlow-0002"
+        },
+        {
+          "id": "UserTask-0002",
+          "name": "Enter serial number",
+          "incoming": "SequenceFlow-0002",
+          "outgoing": "SequenceFlow-0003"
+        },
+        {
+          "id": "ServiceTask-0001",
+          "name": "Collect machine data",
+          "incoming": "SequenceFlow-0003",
+          "outgoing": "SequenceFlow-0004"
+        },
+        {
+          "id": "UserTask-0003",
+          "name": "Answer inspection questions",
+          "incoming": "SequenceFlow-0004",
+          "outgoing": "SequenceFlow-0005"
+        },
+        {
+          "id": "ScriptTask-0001",
+          "name": "Evaluate results: Check if additional questions needed",
+          "incoming": "SequenceFlow-0005",
+          "outgoing": "SequenceFlow-0006"
+        },
+        {
+          "id": "ExclusiveGateway-0001",
+          "name": "Decision Point",
+          "incoming": "SequenceFlow-0006",
+          "outgoing": [
+            "SequenceFlow-0007",
+            "SequenceFlow-0008"
+          ],
+          "default": "SequenceFlow-0008"
+        },
+        {
+          "id": "UserTask-0004",
+          "name": "Answer additional questions",
+          "incoming": "SequenceFlow-0007",
+          "outgoing": "SequenceFlow-0009"
+        },
+        {
+          "id": "EndEvent-0001",
+          "name": "Additional Checks Required",
+          "incoming": "SequenceFlow-0009"
+        },
+        {
+          "id": "EndEvent-0002",
+          "name": "Inspection Complete",
+          "incoming": "SequenceFlow-0008"
+        }
+      ],
+      "laneSets": []
+    }
+  }
+}

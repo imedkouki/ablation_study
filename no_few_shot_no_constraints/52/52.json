@@ -1,0 +1,140 @@
+{
+  "definitions": {
+    "id": "Definitions-0001",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "exporter": "BPMN Modeler",
+    "exporterVersion": "1.0",
+    "process": {
+      "id": "Process_0001",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "id": "StartEvent_0001",
+          "name": "Dismissal Process Start",
+          "incoming": [],
+          "outgoing": ["SequenceFlow_0001"],
+          "$type": "bpmn:StartEvent"
+        },
+        {
+          "id": "SendTask_0001",
+          "name": "Dismissal sent to MPOO",
+          "incoming": ["SequenceFlow_0001"],
+          "outgoing": ["SequenceFlow_0002"],
+          "$type": "bpmn:SendTask"
+        },
+        {
+          "id": "UserTask_0001",
+          "name": "Review dismissal",
+          "incoming": ["SequenceFlow_0002"],
+          "outgoing": ["SequenceFlow_0003"],
+          "$type": "bpmn:UserTask"
+        },
+        {
+          "id": "ExclusiveGateway_0001",
+          "name": "Decision",
+          "incoming": ["SequenceFlow_0003"],
+          "outgoing": ["SequenceFlow_0004", "SequenceFlow_0005"],
+          "default": "SequenceFlow_0005",
+          "$type": "bpmn:ExclusiveGateway"
+        },
+        {
+          "id": "ServiceTask_0001",
+          "name": "Record opposition",
+          "incoming": ["SequenceFlow_0004"],
+          "outgoing": ["SequenceFlow_0006"],
+          "$type": "bpmn:ServiceTask"
+        },
+        {
+          "id": "EndEvent_0001",
+          "name": "Dismissal Opposed",
+          "incoming": ["SequenceFlow_0006"],
+          "outgoing": [],
+          "$type": "bpmn:EndEvent"
+        },
+        {
+          "id": "ServiceTask_0002",
+          "name": "Confirm dismissal",
+          "incoming": ["SequenceFlow_0005"],
+          "outgoing": ["SequenceFlow_0007"],
+          "$type": "bpmn:ServiceTask"
+        },
+        {
+          "id": "EndEvent_0002",
+          "name": "Dismissal Confirmed",
+          "incoming": ["SequenceFlow_0007"],
+          "outgoing": [],
+          "$type": "bpmn:EndEvent"
+        },
+        {
+          "id": "SequenceFlow_0001",
+          "sourceRef": "StartEvent_0001",
+          "targetRef": "SendTask_0001",
+          "$type": "bpmn:SequenceFlow"
+        },
+        {
+          "id": "SequenceFlow_0002",
+          "sourceRef": "SendTask_0001",
+          "targetRef": "UserTask_0001",
+          "$type": "bpmn:SequenceFlow"
+        },
+        {
+          "id": "SequenceFlow_0003",
+          "sourceRef": "UserTask_0001",
+          "targetRef": "ExclusiveGateway_0001",
+          "$type": "bpmn:SequenceFlow"
+        },
+        {
+          "id": "SequenceFlow_0004",
+          "sourceRef": "ExclusiveGateway_0001",
+          "targetRef": "ServiceTask_0001",
+          "conditionExpression": "${opposition == true}",
+          "$type": "bpmn:SequenceFlow"
+        },
+        {
+          "id": "SequenceFlow_0005",
+          "sourceRef": "ExclusiveGateway_0001",
+          "targetRef": "ServiceTask_0002",
+          "conditionExpression": "${opposition == false}",
+          "$type": "bpmn:SequenceFlow"
+        },
+        {
+          "id": "SequenceFlow_0006",
+          "sourceRef": "ServiceTask_0001",
+          "targetRef": "EndEvent_0001",
+          "$type": "bpmn:SequenceFlow"
+        },
+        {
+          "id": "SequenceFlow_0007",
+          "sourceRef": "ServiceTask_0002",
+          "targetRef": "EndEvent_0002",
+          "$type": "bpmn:SequenceFlow"
+        }
+      ]
+    },
+    "rootElements": [
+      {
+        "id": "Process_0001",
+        "isExecutable": true,
+        "flowElements": [
+          "StartEvent_0001",
+          "SendTask_0001",
+          "UserTask_0001",
+          "ExclusiveGateway_0001",
+          "ServiceTask_0001",
+          "EndEvent_0001",
+          "ServiceTask_0002",
+          "EndEvent_0002",
+          "SequenceFlow_0001",
+          "SequenceFlow_0002",
+          "SequenceFlow_0003",
+          "SequenceFlow_0004",
+          "SequenceFlow_0005",
+          "SequenceFlow_0006",
+          "SequenceFlow_0007"
+        ],
+        "$type": "bpmn:Process"
+      }
+    ],
+    "$type": "bpmn:Definitions"
+  }
+}

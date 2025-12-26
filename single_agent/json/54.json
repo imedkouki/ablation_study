@@ -1,0 +1,102 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "TransactionDataRequestDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Generator",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "TransactionDataRequestProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent_001",
+          "name": "Transaction Data Request Initiated"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask_001",
+          "name": "INQ Transmits Request to IP"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_001",
+          "name": "IP Checks Request"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_001",
+          "name": "Request Valid?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask_002",
+          "name": "IP Transmits Data to INQ"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask_003",
+          "name": "IP Sends Rejection to INQ"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_001",
+          "name": "Data Transmitted"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_002",
+          "name": "Request Rejected"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_001",
+          "sourceRef": "StartEvent_001",
+          "targetRef": "SendTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_002",
+          "sourceRef": "SendTask_001",
+          "targetRef": "ServiceTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_003",
+          "sourceRef": "ServiceTask_001",
+          "targetRef": "Gateway_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_004",
+          "name": "valid",
+          "sourceRef": "Gateway_001",
+          "targetRef": "SendTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_005",
+          "name": "invalid",
+          "sourceRef": "Gateway_001",
+          "targetRef": "SendTask_003",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_006",
+          "sourceRef": "SendTask_002",
+          "targetRef": "EndEvent_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_007",
+          "sourceRef": "SendTask_003",
+          "targetRef": "EndEvent_002"
+        }
+      ]
+    }
+  ]
+}

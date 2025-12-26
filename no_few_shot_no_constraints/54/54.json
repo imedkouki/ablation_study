@@ -1,0 +1,98 @@
+{
+  "bpmn:Definitions": {
+    "id": "Definitions-0001",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "exporter": "BPMN Modeler",
+    "exporterVersion": "1.0",
+    "rootElements": [
+      {
+        "bpmn:Process": {
+          "id": "Process-0001",
+          "isExecutable": true,
+          "flowElements": [
+            {
+              "bpmn:StartEvent": {
+                "id": "StartEvent-0001",
+                "name": "INQ transmits transaction data request"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0001",
+                "name": "Check transaction data request"
+              }
+            },
+            {
+              "bpmn:ExclusiveGateway": {
+                "id": "ExclusiveGateway-0001",
+                "name": "Request valid?"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0002",
+                "name": "Transmit data"
+              }
+            },
+            {
+              "bpmn:EndEvent": {
+                "id": "EndEvent-0001",
+                "name": "Process completed"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0003",
+                "name": "Reject request"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0001",
+                "sourceRef": "StartEvent-0001",
+                "targetRef": "ServiceTask-0001"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0002",
+                "sourceRef": "ServiceTask-0001",
+                "targetRef": "ExclusiveGateway-0001"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0003",
+                "sourceRef": "ExclusiveGateway-0001",
+                "targetRef": "ServiceTask-0002",
+                "conditionExpression": "$requestValid = true"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0004",
+                "sourceRef": "ServiceTask-0002",
+                "targetRef": "EndEvent-0001"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0005",
+                "sourceRef": "ExclusiveGateway-0001",
+                "targetRef": "ServiceTask-0003",
+                "conditionExpression": "$requestValid = false"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0006",
+                "sourceRef": "ServiceTask-0003",
+                "targetRef": "EndEvent-0001"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,536 @@
+{
+  "definitions": {
+    "$schema": "http://www.omg.org/spec/BPMN/20100524/MODEL-SCHEMA",
+    "id": "Definitions-0001",
+    "type": "bpmn:Definitions",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "exporter": "bpmn-js (https://demo.bpmn.io)",
+    "exporterVersion": "10.0.0",
+    "rootElements": [
+      {
+        "id": "Process-0001",
+        "type": "bpmn:Process",
+        "isExecutable": true,
+        "flowElements": [
+          {
+            "id": "StartEvent-0001",
+            "type": "bpmn:StartEvent",
+            "name": "Start Loan Application Process",
+            "outgoing": ["Flow-0001"]
+          },
+          {
+            "id": "UserTask-0001",
+            "type": "bpmn:UserTask",
+            "name": "Approve Loan",
+            "incoming": ["Flow-0001"],
+            "outgoing": ["Flow-0002"]
+          },
+          {
+            "id": "ExclusiveGateway-0001",
+            "type": "bpmn:ExclusiveGateway",
+            "name": "",
+            "gatewayDirection": "Diverging",
+            "incoming": ["Flow-0002"],
+            "outgoing": ["Flow-0003", "Flow-0004"],
+            "default": "Flow-0004"
+          },
+          {
+            "id": "ServiceTask-0001",
+            "type": "bpmn:ServiceTask",
+            "name": "Send Approval Notification",
+            "incoming": ["Flow-0003"],
+            "outgoing": ["Flow-0005"]
+          },
+          {
+            "id": "ScriptTask-0001",
+            "type": "bpmn:ScriptTask",
+            "name": "Calculate Interest",
+            "incoming": ["Flow-0005"],
+            "outgoing": ["Flow-0006"]
+          },
+          {
+            "id": "SendTask-0001",
+            "type": "bpmn:SendTask",
+            "name": "Send Interest Details",
+            "incoming": ["Flow-0006"],
+            "outgoing": ["Flow-0007"]
+          },
+          {
+            "id": "SubProcess-0001",
+            "type": "bpmn:SubProcess",
+            "name": "Handle Additional Documents",
+            "triggeredByEvent": false,
+            "incoming": ["Flow-0007"],
+            "outgoing": ["Flow-0008"],
+            "flowElements": [
+              {
+                "id": "StartEvent-0002",
+                "type": "bpmn:StartEvent",
+                "name": "Start Additional Documents Handling",
+                "outgoing": ["Flow-0009"]
+              },
+              {
+                "id": "ReceiveTask-0001",
+                "type": "bpmn:ReceiveTask",
+                "name": "Receive Additional Documents",
+                "incoming": ["Flow-0009"],
+                "outgoing": ["Flow-0010"]
+              },
+              {
+                "id": "BusinessRuleTask-0001",
+                "type": "bpmn:BusinessRuleTask",
+                "name": "Validate Documents",
+                "incoming": ["Flow-0010"],
+                "outgoing": ["Flow-0011"]
+              },
+              {
+                "id": "IntermediateCatchEvent-0001",
+                "type": "bpmn:IntermediateCatchEvent",
+                "name": "",
+                "eventDefinitions": [
+                  {
+                    "id": "TimerEventDefinition-0001",
+                    "type": "bpmn:TimerEventDefinition",
+                    "timeDuration": "P1D"
+                  }
+                ],
+                "attachedToRef": "ReceiveTask-0001",
+                "outgoing": ["Flow-0012"]
+              },
+              {
+                "id": "EndEvent-0002",
+                "type": "bpmn:EndEvent",
+                "name": "End Additional Documents Handling",
+                "incoming": ["Flow-0011", "Flow-0012"]
+              },
+              {
+                "id": "Flow-0009",
+                "type": "bpmn:SequenceFlow",
+                "sourceRef": "StartEvent-0002",
+                "targetRef": "ReceiveTask-0001"
+              },
+              {
+                "id": "Flow-0010",
+                "type": "bpmn:SequenceFlow",
+                "sourceRef": "ReceiveTask-0001",
+                "targetRef": "BusinessRuleTask-0001"
+              },
+              {
+                "id": "Flow-0011",
+                "type": "bpmn:SequenceFlow",
+                "sourceRef": "BusinessRuleTask-0001",
+                "targetRef": "EndEvent-0002"
+              },
+              {
+                "id": "Flow-0012",
+                "type": "bpmn:SequenceFlow",
+                "sourceRef": "IntermediateCatchEvent-0001",
+                "targetRef": "EndEvent-0002"
+              }
+            ]
+          },
+          {
+            "id": "EndEvent-0001",
+            "type": "bpmn:EndEvent",
+            "name": "End Loan Application Process",
+            "incoming": ["Flow-0004", "Flow-0008"]
+          },
+          {
+            "id": "Flow-0001",
+            "type": "bpmn:SequenceFlow",
+            "sourceRef": "StartEvent-0001",
+            "targetRef": "UserTask-0001"
+          },
+          {
+            "id": "Flow-0002",
+            "type": "bpmn:SequenceFlow",
+            "sourceRef": "UserTask-0001",
+            "targetRef": "ExclusiveGateway-0001"
+          },
+          {
+            "id": "Flow-0003",
+            "type": "bpmn:SequenceFlow",
+            "sourceRef": "ExclusiveGateway-0001",
+            "targetRef": "ServiceTask-0001",
+            "conditionExpression": {
+              "$type": "bpmn:FormalExpression",
+              "body": "Loan Approved"
+            }
+          },
+          {
+            "id": "Flow-0004",
+            "type": "bpmn:SequenceFlow",
+            "sourceRef": "ExclusiveGateway-0001",
+            "targetRef": "EndEvent-0001",
+            "conditionExpression": {
+              "$type": "bpmn:FormalExpression",
+              "body": "Loan Not Approved"
+            }
+          },
+          {
+            "id": "Flow-0005",
+            "type": "bpmn:SequenceFlow",
+            "sourceRef": "ServiceTask-0001",
+            "targetRef": "ScriptTask-0001"
+          },
+          {
+            "id": "Flow-0006",
+            "type": "bpmn:SequenceFlow",
+            "sourceRef": "ScriptTask-0001",
+            "targetRef": "SendTask-0001"
+          },
+          {
+            "id": "Flow-0007",
+            "type": "bpmn:SequenceFlow",
+            "sourceRef": "SendTask-0001",
+            "targetRef": "SubProcess-0001"
+          },
+          {
+            "id": "Flow-0008",
+            "type": "bpmn:SequenceFlow",
+            "sourceRef": "SubProcess-0001",
+            "targetRef": "EndEvent-0001"
+          }
+        ]
+      }
+    ],
+    "bpmndi:BPMNDiagram": {
+      "id": "BPMNDiagram-0001",
+      "type": "bpmndi:BPMNDiagram",
+      "resolution": 96.0,
+      "BPMNPlane": {
+        "id": "BPMNPlane-0001",
+        "type": "bpmndi:BPMNPlane",
+        "bpmnElement": "Process-0001",
+        "BPMNShape": [
+          {
+            "id": "StartEvent-0001_di",
+            "type": "bpmndi:BPMNShape",
+            "bpmnElement": "StartEvent-0001",
+            "bounds": {
+              "x": 100,
+              "y": 100,
+              "width": 36,
+              "height": 36
+            }
+          },
+          {
+            "id": "UserTask-0001_di",
+            "type": "bpmndi:BPMNShape",
+            "bpmnElement": "UserTask-0001",
+            "bounds": {
+              "x": 200,
+              "y": 80,
+              "width": 100,
+              "height": 80
+            }
+          },
+          {
+            "id": "ExclusiveGateway-0001_di",
+            "type": "bpmndi:BPMNShape",
+            "bpmnElement": "ExclusiveGateway-0001",
+            "bounds": {
+              "x": 350,
+              "y": 95,
+              "width": 50,
+              "height": 50
+            }
+          },
+          {
+            "id": "ServiceTask-0001_di",
+            "type": "bpmndi:BPMNShape",
+            "bpmnElement": "ServiceTask-0001",
+            "bounds": {
+              "x": 450,
+              "y": 50,
+              "width": 100,
+              "height": 80
+            }
+          },
+          {
+            "id": "ScriptTask-0001_di",
+            "type": "bpmndi:BPMNShape",
+            "bpmnElement": "ScriptTask-0001",
+            "bounds": {
+              "x": 600,
+              "y": 50,
+              "width": 100,
+              "height": 80
+            }
+          },
+          {
+            "id": "SendTask-0001_di",
+            "type": "bpmndi:BPMNShape",
+            "bpmnElement": "SendTask-0001",
+            "bounds": {
+              "x": 750,
+              "y": 50,
+              "width": 100,
+              "height": 80
+            }
+          },
+          {
+            "id": "SubProcess-0001_di",
+            "type": "bpmndi:BPMNShape",
+            "bpmnElement": "SubProcess-0001",
+            "bounds": {
+              "x": 900,
+              "y": 30,
+              "width": 300,
+              "height": 150
+            },
+            "isExpanded": true
+          },
+          {
+            "id": "EndEvent-0001_di",
+            "type": "bpmndi:BPMNShape",
+            "bpmnElement": "EndEvent-0001",
+            "bounds": {
+              "x": 1250,
+              "y": 100,
+              "width": 36,
+              "height": 36
+            }
+          },
+          {
+            "id": "StartEvent-0002_di",
+            "type": "bpmndi:BPMNShape",
+            "bpmnElement": "StartEvent-0002",
+            "bounds": {
+              "x": 950,
+              "y": 80,
+              "width": 36,
+              "height": 36
+            }
+          },
+          {
+            "id": "ReceiveTask-0001_di",
+            "type": "bpmndi:BPMNShape",
+            "bpmnElement": "ReceiveTask-0001",
+            "bounds": {
+              "x": 1050,
+              "y": 60,
+              "width": 100,
+              "height": 80
+            }
+          },
+          {
+            "id": "BusinessRuleTask-0001_di",
+            "type": "bpmndi:BPMNShape",
+            "bpmnElement": "BusinessRuleTask-0001",
+            "bounds": {
+              "x": 1200,
+              "y": 60,
+              "width": 100,
+              "height": 80
+            }
+          },
+          {
+            "id": "IntermediateCatchEvent-0001_di",
+            "type": "bpmndi:BPMNShape",
+            "bpmnElement": "IntermediateCatchEvent-0001",
+            "bounds": {
+              "x": 1100,
+              "y": 140,
+              "width": 36,
+              "height": 36
+            }
+          },
+          {
+            "id": "EndEvent-0002_di",
+            "type": "bpmndi:BPMNShape",
+            "bpmnElement": "EndEvent-0002",
+            "bounds": {
+              "x": 1350,
+              "y": 80,
+              "width": 36,
+              "height": 36
+            }
+          }
+        ],
+        "BPMNEdge": [
+          {
+            "id": "Flow-0001_di",
+            "type": "bpmndi:BPMNEdge",
+            "bpmnElement": "Flow-0001",
+            "waypoint": [
+              {
+                "x": 136,
+                "y": 118
+              },
+              {
+                "x": 200,
+                "y": 118
+              }
+            ]
+          },
+          {
+            "id": "Flow-0002_di",
+            "type": "bpmndi:BPMNEdge",
+            "bpmnElement": "Flow-0002",
+            "waypoint": [
+              {
+                "x": 300,
+                "y": 118
+              },
+              {
+                "x": 350,
+                "y": 118
+              }
+            ]
+          },
+          {
+            "id": "Flow-0003_di",
+            "type": "bpmndi:BPMNEdge",
+            "bpmnElement": "Flow-0003",
+            "waypoint": [
+              {
+                "x": 400,
+                "y": 118
+              },
+              {
+                "x": 450,
+                "y": 90
+              }
+            ]
+          },
+          {
+            "id": "Flow-0004_di",
+            "type": "bpmndi:BPMNEdge",
+            "bpmnElement": "Flow-0004",
+            "waypoint": [
+              {
+                "x": 400,
+                "y": 118
+              },
+              {
+                "x": 1250,
+                "y": 118
+              }
+            ]
+          },
+          {
+            "id": "Flow-0005_di",
+            "type": "bpmndi:BPMNEdge",
+            "bpmnElement": "Flow-0005",
+            "waypoint": [
+              {
+                "x": 550,
+                "y": 90
+              },
+              {
+                "x": 600,
+                "y": 90
+              }
+            ]
+          },
+          {
+            "id": "Flow-0006_di",
+            "type": "bpmndi:BPMNEdge",
+            "bpmnElement": "Flow-0006",
+            "waypoint": [
+              {
+                "x": 700,
+                "y": 90
+              },
+              {
+                "x": 750,
+                "y": 90
+              }
+            ]
+          },
+          {
+            "id": "Flow-0007_di",
+            "type": "bpmndi:BPMNEdge",
+            "bpmnElement": "Flow-0007",
+            "waypoint": [
+              {
+                "x": 850,
+                "y": 90
+              },
+              {
+                "x": 900,
+                "y": 90
+              }
+            ]
+          },
+          {
+            "id": "Flow-0008_di",
+            "type": "bpmndi:BPMNEdge",
+            "bpmnElement": "Flow-0008",
+            "waypoint": [
+              {
+                "x": 1200,
+                "y": 90
+              },
+              {
+                "x": 1250,
+                "y": 118
+              }
+            ]
+          },
+          {
+            "id": "Flow-0009_di",
+            "type": "bpmndi:BPMNEdge",
+            "bpmnElement": "Flow-0009",
+            "waypoint": [
+              {
+                "x": 986,
+                "y": 98
+              },
+              {
+                "x": 1050,
+                "y": 100
+              }
+            ]
+          },
+          {
+            "id": "Flow-0010_di",
+            "type": "bpmndi:BPMNEdge",
+            "bpmnElement": "Flow-0010",
+            "waypoint": [
+              {
+                "x": 1150,
+                "y": 100
+              },
+              {
+                "x": 1200,
+                "y": 100
+              }
+            ]
+          },
+          {
+            "id": "Flow-0011_di",
+            "type": "bpmndi:BPMNEdge",
+            "bpmnElement": "Flow-0011",
+            "waypoint": [
+              {
+                "x": 1300,
+                "y": 100
+              },
+              {
+                "x": 1350,
+                "y": 98
+              }
+            ]
+          },
+          {
+            "id": "Flow-0012_di",
+            "type": "bpmndi:BPMNEdge",
+            "bpmnElement": "Flow-0012",
+            "waypoint": [
+              {
+                "x": 1136,
+                "y": 158
+              },
+              {
+                "x": 1350,
+                "y": 98
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

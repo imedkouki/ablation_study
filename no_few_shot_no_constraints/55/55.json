@@ -1,0 +1,221 @@
+{
+  "definitions": {
+    "id": "Definitions-0001",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "exporter": "BPMN Modeler",
+    "exporterVersion": "1.0",
+    "process": {
+      "id": "Process-0001",
+      "isExecutable": false,
+      "flowElements": [
+        {
+          "id": "StartEvent-0001",
+          "name": "Preparation for Medical Procedure",
+          "incoming": [],
+          "outgoing": ["SequenceFlow-0001"]
+        },
+        {
+          "id": "UserTask-0001",
+          "name": "Prepare implements and wash hands",
+          "incoming": ["SequenceFlow-0001"],
+          "outgoing": ["SequenceFlow-0002"]
+        },
+        {
+          "id": "UserTask-0002",
+          "name": "Doctor dons sterile clothes",
+          "incoming": ["SequenceFlow-0002"],
+          "outgoing": ["SequenceFlow-0003"]
+        },
+        {
+          "id": "UserTask-0003",
+          "name": "Clean puncture area and drape zone",
+          "incoming": ["SequenceFlow-0003"],
+          "outgoing": ["SequenceFlow-0004"]
+        },
+        {
+          "id": "UserTask-0004",
+          "name": "Configure ultrasound and apply gel to probe",
+          "incoming": ["SequenceFlow-0004"],
+          "outgoing": ["SequenceFlow-0005"]
+        },
+        {
+          "id": "UserTask-0005",
+          "name": "Cover probe and apply sterile gel",
+          "incoming": ["SequenceFlow-0005"],
+          "outgoing": ["SequenceFlow-0006"]
+        },
+        {
+          "id": "UserTask-0006",
+          "name": "Position probe and patient",
+          "incoming": ["SequenceFlow-0006"],
+          "outgoing": ["SequenceFlow-0007"]
+        },
+        {
+          "id": "UserTask-0007",
+          "name": "Identify vein using anatomic/doppler/compression",
+          "incoming": ["SequenceFlow-0007"],
+          "outgoing": ["SequenceFlow-0008"]
+        },
+        {
+          "id": "UserTask-0008",
+          "name": "Anesthetize and puncture patient",
+          "incoming": ["SequenceFlow-0008"],
+          "outgoing": ["SequenceFlow-0009"]
+        },
+        {
+          "id": "ExclusiveGateway-0001",
+          "name": "Blood return check",
+          "incoming": ["SequenceFlow-0009"],
+          "outgoing": ["SequenceFlow-0010", "SequenceFlow-0011"]
+        },
+        {
+          "id": "UserTask-0009",
+          "name": "Drop probe and remove syringe",
+          "incoming": ["SequenceFlow-0010"],
+          "outgoing": ["SequenceFlow-0012"]
+        },
+        {
+          "id": "UserTask-0010",
+          "name": "Install guidewire and remove trocar",
+          "incoming": ["SequenceFlow-0012"],
+          "outgoing": ["SequenceFlow-0013"]
+        },
+        {
+          "id": "ExclusiveGateway-0002",
+          "name": "Wire position check",
+          "incoming": ["SequenceFlow-0013"],
+          "outgoing": ["SequenceFlow-0014", "SequenceFlow-0015"]
+        },
+        {
+          "id": "UserTask-0011",
+          "name": "Widen pathway and advance catheter",
+          "incoming": ["SequenceFlow-0014"],
+          "outgoing": ["SequenceFlow-0016"]
+        },
+        {
+          "id": "UserTask-0012",
+          "name": "Remove guidewire",
+          "incoming": ["SequenceFlow-0016"],
+          "outgoing": ["SequenceFlow-0017"]
+        },
+        {
+          "id": "UserTask-0013",
+          "name": "Verify flow and reflow",
+          "incoming": ["SequenceFlow-0017"],
+          "outgoing": ["SequenceFlow-0018"]
+        },
+        {
+          "id": "UserTask-0014",
+          "name": "Check catheter position",
+          "incoming": ["SequenceFlow-0018"],
+          "outgoing": ["SequenceFlow-0019"]
+        },
+        {
+          "id": "EndEvent-0001",
+          "name": "Procedure Complete",
+          "incoming": ["SequenceFlow-0019"],
+          "outgoing": []
+        },
+        {
+          "id": "SequenceFlow-0001",
+          "sourceRef": "StartEvent-0001",
+          "targetRef": "UserTask-0001"
+        },
+        {
+          "id": "SequenceFlow-0002",
+          "sourceRef": "UserTask-0001",
+          "targetRef": "UserTask-0002"
+        },
+        {
+          "id": "SequenceFlow-0003",
+          "sourceRef": "UserTask-0002",
+          "targetRef": "UserTask-0003"
+        },
+        {
+          "id": "SequenceFlow-0004",
+          "sourceRef": "UserTask-0003",
+          "targetRef": "UserTask-0004"
+        },
+        {
+          "id": "SequenceFlow-0005",
+          "sourceRef": "UserTask-0004",
+          "targetRef": "UserTask-0005"
+        },
+        {
+          "id": "SequenceFlow-0006",
+          "sourceRef": "UserTask-0005",
+          "targetRef": "UserTask-0006"
+        },
+        {
+          "id": "SequenceFlow-0007",
+          "sourceRef": "UserTask-0006",
+          "targetRef": "UserTask-0007"
+        },
+        {
+          "id": "SequenceFlow-0008",
+          "sourceRef": "UserTask-0007",
+          "targetRef": "UserTask-0008"
+        },
+        {
+          "id": "SequenceFlow-0009",
+          "sourceRef": "UserTask-0008",
+          "targetRef": "ExclusiveGateway-0001"
+        },
+        {
+          "id": "SequenceFlow-0010",
+          "sourceRef": "ExclusiveGateway-0001",
+          "targetRef": "UserTask-0009",
+          "conditionExpression": "blood return is correct"
+        },
+        {
+          "id": "SequenceFlow-0011",
+          "sourceRef": "ExclusiveGateway-0001",
+          "targetRef": "UserTask-0008",
+          "conditionExpression": "blood return is not correct"
+        },
+        {
+          "id": "SequenceFlow-0012",
+          "sourceRef": "UserTask-0009",
+          "targetRef": "UserTask-0010"
+        },
+        {
+          "id": "SequenceFlow-0013",
+          "sourceRef": "UserTask-0010",
+          "targetRef": "ExclusiveGateway-0002"
+        },
+        {
+          "id": "SequenceFlow-0014",
+          "sourceRef": "ExclusiveGateway-0002",
+          "targetRef": "UserTask-0011",
+          "conditionExpression": "wire position is correct"
+        },
+        {
+          "id": "SequenceFlow-0015",
+          "sourceRef": "ExclusiveGateway-0002",
+          "targetRef": "UserTask-0008",
+          "conditionExpression": "wire position is not correct"
+        },
+        {
+          "id": "SequenceFlow-0016",
+          "sourceRef": "UserTask-0011",
+          "targetRef": "UserTask-0012"
+        },
+        {
+          "id": "SequenceFlow-0017",
+          "sourceRef": "UserTask-0012",
+          "targetRef": "UserTask-0013"
+        },
+        {
+          "id": "SequenceFlow-0018",
+          "sourceRef": "UserTask-0013",
+          "targetRef": "UserTask-0014"
+        },
+        {
+          "id": "SequenceFlow-0019",
+          "sourceRef": "UserTask-0014",
+          "targetRef": "EndEvent-0001"
+        }
+      ]
+    }
+  }
+}

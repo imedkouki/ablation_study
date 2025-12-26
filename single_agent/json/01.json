@@ -1,0 +1,150 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "SalesProcessDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Generator",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "SalesProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent_001",
+          "name": "Customer Inquiry Received"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_001",
+          "name": "Collect Customer Information and Address Concerns"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_001",
+          "name": "Customer Interested?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_002",
+          "name": "Guide Product/Service Selection"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_001",
+          "name": "Generate and Provide Quote"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_003",
+          "name": "Obtain Customer Approval"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_002",
+          "name": "Quote Approved?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_002",
+          "name": "Record Order in System"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask_001",
+          "name": "Send Order Confirmation"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_001",
+          "name": "Order Successfully Placed"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_002",
+          "name": "Customer Not Interested"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_003",
+          "name": "Quote Not Approved"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_001",
+          "sourceRef": "StartEvent_001",
+          "targetRef": "UserTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_002",
+          "sourceRef": "UserTask_001",
+          "targetRef": "Gateway_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_003",
+          "name": "interested",
+          "sourceRef": "Gateway_001",
+          "targetRef": "UserTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_004",
+          "name": "not interested",
+          "sourceRef": "Gateway_001",
+          "targetRef": "EndEvent_002",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_005",
+          "sourceRef": "UserTask_002",
+          "targetRef": "ServiceTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_006",
+          "sourceRef": "ServiceTask_001",
+          "targetRef": "UserTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_007",
+          "sourceRef": "UserTask_003",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_008",
+          "name": "approved",
+          "sourceRef": "Gateway_002",
+          "targetRef": "ServiceTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_009",
+          "name": "not approved",
+          "sourceRef": "Gateway_002",
+          "targetRef": "EndEvent_003",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_010",
+          "sourceRef": "ServiceTask_002",
+          "targetRef": "SendTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_011",
+          "sourceRef": "SendTask_001",
+          "targetRef": "EndEvent_001"
+        }
+      ]
+    }
+  ]
+}

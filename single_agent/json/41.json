@@ -1,0 +1,142 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "MachineInspectionDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Generator",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "MachineInspectionProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent_001",
+          "name": "Inspection Started"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_001",
+          "name": "Enter Machine Type"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_002",
+          "name": "Enter Serial Number"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_003",
+          "name": "Answer Inspection Questions"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_001",
+          "name": "Collect Machine Data (Button Press)"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_004",
+          "name": "Review Collected Values"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_001",
+          "name": "Additional Questions Needed?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_005",
+          "name": "Answer Additional Questions"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_002",
+          "name": "Merge Paths",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_002",
+          "name": "Generate Inspection Report"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_001",
+          "name": "Inspection Complete"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_001",
+          "sourceRef": "StartEvent_001",
+          "targetRef": "UserTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_002",
+          "sourceRef": "UserTask_001",
+          "targetRef": "UserTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_003",
+          "sourceRef": "UserTask_002",
+          "targetRef": "UserTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_004",
+          "sourceRef": "UserTask_003",
+          "targetRef": "ServiceTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_005",
+          "sourceRef": "ServiceTask_001",
+          "targetRef": "UserTask_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_006",
+          "sourceRef": "UserTask_004",
+          "targetRef": "Gateway_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_007",
+          "name": "yes",
+          "sourceRef": "Gateway_001",
+          "targetRef": "UserTask_005"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_008",
+          "name": "no",
+          "sourceRef": "Gateway_001",
+          "targetRef": "Gateway_002",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_009",
+          "sourceRef": "UserTask_005",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_010",
+          "sourceRef": "Gateway_002",
+          "targetRef": "ServiceTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_011",
+          "sourceRef": "ServiceTask_002",
+          "targetRef": "EndEvent_001"
+        }
+      ]
+    }
+  ]
+}

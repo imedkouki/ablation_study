@@ -1,0 +1,213 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "ComplianceAuditDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Generator",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "ComplianceAuditProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent_001",
+          "name": "Audit Scheduled"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_001",
+          "name": "Split Preparation Tasks",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_001",
+          "name": "Prepare Documentation"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_002",
+          "name": "Gather Evidence"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_003",
+          "name": "Conduct Self-Assessment"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_002",
+          "name": "Join Preparation Tasks",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_004",
+          "name": "External Audit Review"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_003",
+          "name": "Gaps Identified?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_005",
+          "name": "Implement Corrections"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_006",
+          "name": "Final Audit"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_004",
+          "name": "Criteria Met?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_001",
+          "name": "Issue Certification"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask_001",
+          "name": "Send Official Documents"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_001",
+          "name": "Certification Awarded"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_007",
+          "name": "Address Failures"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_002",
+          "name": "Process Terminated"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_001",
+          "sourceRef": "StartEvent_001",
+          "targetRef": "Gateway_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_002",
+          "sourceRef": "Gateway_001",
+          "targetRef": "UserTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_003",
+          "sourceRef": "Gateway_001",
+          "targetRef": "UserTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_004",
+          "sourceRef": "Gateway_001",
+          "targetRef": "UserTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_005",
+          "sourceRef": "UserTask_001",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_006",
+          "sourceRef": "UserTask_002",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_007",
+          "sourceRef": "UserTask_003",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_008",
+          "sourceRef": "Gateway_002",
+          "targetRef": "UserTask_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_009",
+          "sourceRef": "UserTask_004",
+          "targetRef": "Gateway_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_010",
+          "name": "gaps found",
+          "sourceRef": "Gateway_003",
+          "targetRef": "UserTask_005"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_011",
+          "name": "no gaps",
+          "sourceRef": "Gateway_003",
+          "targetRef": "UserTask_006",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_012",
+          "sourceRef": "UserTask_005",
+          "targetRef": "UserTask_006"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_013",
+          "sourceRef": "UserTask_006",
+          "targetRef": "Gateway_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_014",
+          "name": "criteria met",
+          "sourceRef": "Gateway_004",
+          "targetRef": "ServiceTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_015",
+          "name": "criteria not met",
+          "sourceRef": "Gateway_004",
+          "targetRef": "UserTask_007"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_016",
+          "sourceRef": "ServiceTask_001",
+          "targetRef": "SendTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_017",
+          "sourceRef": "SendTask_001",
+          "targetRef": "EndEvent_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_018",
+          "sourceRef": "UserTask_007",
+          "targetRef": "EndEvent_002"
+        }
+      ]
+    }
+  ]
+}

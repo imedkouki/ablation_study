@@ -1,0 +1,98 @@
+{
+  "definitions": {
+    "id": "Definitions-0001",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "exporter": "BPMN Modeler",
+    "exporterVersion": "1.0",
+    "process": {
+      "id": "Process-0001",
+      "isExecutable": false,
+      "flowElements": [
+        {
+          "id": "StartEvent-0001",
+          "name": "Process Start",
+          "incoming": [],
+          "outgoing": ["SequenceFlow-0001"]
+        },
+        {
+          "id": "SendTask-0001",
+          "name": "Dismissal: MSPN sends dismissal to MSPO",
+          "incoming": ["SequenceFlow-0001"],
+          "outgoing": ["SequenceFlow-0002"]
+        },
+        {
+          "id": "UserTask-0001",
+          "name": "Review: MSPO reviews dismissal",
+          "incoming": ["SequenceFlow-0002"],
+          "outgoing": ["SequenceFlow-0003"]
+        },
+        {
+          "id": "BusinessRuleTask-0001",
+          "name": "Decision: MSPO evaluates dismissal",
+          "incoming": ["SequenceFlow-0003"],
+          "outgoing": ["SequenceFlow-0004", "SequenceFlow-0005"]
+        },
+        {
+          "id": "ExclusiveGateway-0001",
+          "incoming": ["SequenceFlow-0004"],
+          "outgoing": ["SequenceFlow-0006"],
+          "default": "SequenceFlow-0006"
+        },
+        {
+          "id": "ExclusiveGateway-0002",
+          "incoming": ["SequenceFlow-0005"],
+          "outgoing": ["SequenceFlow-0007"],
+          "default": "SequenceFlow-0007"
+        },
+        {
+          "id": "EndEvent-0001",
+          "name": "Dismissal Rejected",
+          "incoming": ["SequenceFlow-0006"]
+        },
+        {
+          "id": "EndEvent-0002",
+          "name": "Dismissal Confirmed",
+          "incoming": ["SequenceFlow-0007"]
+        }
+      ],
+      "sequenceFlows": [
+        {
+          "id": "SequenceFlow-0001",
+          "sourceRef": "StartEvent-0001",
+          "targetRef": "SendTask-0001"
+        },
+        {
+          "id": "SequenceFlow-0002",
+          "sourceRef": "SendTask-0001",
+          "targetRef": "UserTask-0001"
+        },
+        {
+          "id": "SequenceFlow-0003",
+          "sourceRef": "UserTask-0001",
+          "targetRef": "BusinessRuleTask-0001"
+        },
+        {
+          "id": "SequenceFlow-0004",
+          "sourceRef": "BusinessRuleTask-0001",
+          "targetRef": "ExclusiveGateway-0001",
+          "conditionExpression": "${MSPO rejects dismissal}"
+        },
+        {
+          "id": "SequenceFlow-0005",
+          "sourceRef": "BusinessRuleTask-0001",
+          "targetRef": "ExclusiveGateway-0002"
+        },
+        {
+          "id": "SequenceFlow-0006",
+          "sourceRef": "ExclusiveGateway-0001",
+          "targetRef": "EndEvent-0001"
+        },
+        {
+          "id": "SequenceFlow-0007",
+          "sourceRef": "ExclusiveGateway-0002",
+          "targetRef": "EndEvent-0002"
+        }
+      ]
+    }
+  }
+}

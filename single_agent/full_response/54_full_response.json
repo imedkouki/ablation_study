@@ -1,0 +1,19 @@
+{
+  "response": {
+    "generations": [
+      [
+        {
+          "text": "```json\n{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"TransactionDataRequestDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"TransactionDataRequestProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Transaction Data Request Initiated\"\n        },\n        {\n          \"$type\": \"bpmn:SendTask\",\n          \"id\": \"SendTask_001\",\n          \"name\": \"INQ Transmits Request to IP\"\n        },\n        {\n          \"$type\": \"bpmn:ServiceTask\",\n          \"id\": \"ServiceTask_001\",\n          \"name\": \"IP Checks Request\"\n        },\n        {\n          \"$type\": \"bpmn:ExclusiveGateway\",\n          \"id\": \"Gateway_001\",\n          \"name\": \"Request Valid?\",\n          \"gatewayDirection\": \"Diverging\"\n        },\n        {\n          \"$type\": \"bpmn:SendTask\",\n          \"id\": \"SendTask_002\",\n          \"name\": \"IP Transmits Data to INQ\"\n        },\n        {\n          \"$type\": \"bpmn:SendTask\",\n          \"id\": \"SendTask_003\",\n          \"name\": \"IP Sends Rejection to INQ\"\n        },\n        {\n          \"$type\": \"bpmn:EndEvent\",\n          \"id\": \"EndEvent_001\",\n          \"name\": \"Data Transmitted\"\n        },\n        {\n          \"$type\": \"bpmn:EndEvent\",\n          \"id\": \"EndEvent_002\",\n          \"name\": \"Request Rejected\"\n        },\n        {\n          \"$type\": \"bpmn:SequenceFlow\",\n          \"id\": \"Flow_001\",\n          \"sourceRef\": \"StartEvent_001\",\n          \"targetRef\": \"SendTask_001\"\n        },\n        {\n          \"$type\": \"bpmn:SequenceFlow\",\n          \"id\": \"Flow_002\",\n          \"sourceRef\": \"SendTask_001\",\n          \"targetRef\": \"ServiceTask_001\"\n        },\n        {\n          \"$type\": \"bpmn:SequenceFlow\",\n          \"id\": \"Flow_003\",\n          \"sourceRef\": \"ServiceTask_001\",\n          \"targetRef\": \"Gateway_001\"\n        },\n        {\n          \"$type\": \"bpmn:SequenceFlow\",\n          \"id\": \"Flow_004\",\n          \"name\": \"valid\",\n          \"sourceRef\": \"Gateway_001\",\n          \"targetRef\": \"SendTask_002\"\n        },\n        {\n          \"$type\": \"bpmn:SequenceFlow\",\n          \"id\": \"Flow_005\",\n          \"name\": \"invalid\",\n          \"sourceRef\": \"Gateway_001\",\n          \"targetRef\": \"SendTask_003\",\n          \"isDefault\": true\n        },\n        {\n          \"$type\": \"bpmn:SequenceFlow\",\n          \"id\": \"Flow_006\",\n          \"sourceRef\": \"SendTask_002\",\n          \"targetRef\": \"EndEvent_001\"\n        },\n        {\n          \"$type\": \"bpmn:SequenceFlow\",\n          \"id\": \"Flow_007\",\n          \"sourceRef\": \"SendTask_003\",\n          \"targetRef\": \"EndEvent_002\"\n        }\n      ]\n    }\n  ]\n}\n```",
+          "generationInfo": {
+            "finishReason": "stop"
+          }
+        }
+      ]
+    ]
+  },
+  "tokenUsage": {
+    "completionTokens": 827,
+    "promptTokens": 3675,
+    "totalTokens": 4502
+  }
+}

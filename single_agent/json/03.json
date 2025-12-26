@@ -1,0 +1,183 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "InventoryReplenishmentDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Generator",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "InventoryReplenishmentProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent_001",
+          "name": "Inventory Monitoring Started"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_001",
+          "name": "Monitor Inventory Levels"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_001",
+          "name": "Stock Below Threshold?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_001",
+          "name": "Manual Stock Check"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_002",
+          "name": "Generate Automated Alert"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_002",
+          "name": "Merge Alert Paths",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_002",
+          "name": "Procurement Team Places Order",
+          "documentation": "Consider cost, delivery time, and supplier reliability"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_003",
+          "name": "Update Inventory System with Expected Delivery"
+        },
+        {
+          "$type": "bpmn:ReceiveTask",
+          "id": "ReceiveTask_001",
+          "name": "Receive Stock Delivery"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_003",
+          "name": "Inspect Stock Quality"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_004",
+          "name": "Record Stock in System"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_005",
+          "name": "Place Stock on Shelves/Storage"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_006",
+          "name": "Update Inventory Levels"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_001",
+          "name": "Restock Process Complete"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_001",
+          "sourceRef": "StartEvent_001",
+          "targetRef": "ServiceTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_002",
+          "sourceRef": "ServiceTask_001",
+          "targetRef": "Gateway_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_003",
+          "name": "below threshold",
+          "sourceRef": "Gateway_001",
+          "targetRef": "UserTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_004",
+          "name": "below threshold (auto)",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ServiceTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_005",
+          "name": "above threshold",
+          "sourceRef": "Gateway_001",
+          "targetRef": "StartEvent_001",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_006",
+          "sourceRef": "UserTask_001",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_007",
+          "sourceRef": "ServiceTask_002",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_008",
+          "sourceRef": "Gateway_002",
+          "targetRef": "UserTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_009",
+          "sourceRef": "UserTask_002",
+          "targetRef": "ServiceTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_010",
+          "sourceRef": "ServiceTask_003",
+          "targetRef": "ReceiveTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_011",
+          "sourceRef": "ReceiveTask_001",
+          "targetRef": "UserTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_012",
+          "sourceRef": "UserTask_003",
+          "targetRef": "ServiceTask_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_013",
+          "sourceRef": "ServiceTask_004",
+          "targetRef": "ServiceTask_005"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_014",
+          "sourceRef": "ServiceTask_005",
+          "targetRef": "ServiceTask_006"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_015",
+          "sourceRef": "ServiceTask_006",
+          "targetRef": "EndEvent_001"
+        }
+      ]
+    }
+  ]
+}

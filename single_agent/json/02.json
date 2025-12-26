@@ -1,0 +1,220 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "HiringProcessDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Generator",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "HiringProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent_001",
+          "name": "Hiring Need Identified"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_001",
+          "name": "Create Job Description"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_001",
+          "name": "Post Job on Boards"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_002",
+          "name": "Collect and Screen Resumes"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_003",
+          "name": "Conduct Phone Interviews"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_001",
+          "name": "Candidate Selected for Next Round?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_004",
+          "name": "Schedule In-Person Interview"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_005",
+          "name": "Schedule Virtual Interview"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_002",
+          "name": "Interview Type Decision",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_006",
+          "name": "Conduct In-Person/Virtual Interviews"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_007",
+          "name": "Select Final Candidate"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_008",
+          "name": "Extend Job Offer"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_009",
+          "name": "Salary Negotiations"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_010",
+          "name": "Complete Onboarding Paperwork"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_011",
+          "name": "Conduct Orientation"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_012",
+          "name": "Provide Training"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_001",
+          "name": "New Hire Fully Integrated"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_002",
+          "name": "No Suitable Candidates"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_001",
+          "sourceRef": "StartEvent_001",
+          "targetRef": "UserTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_002",
+          "sourceRef": "UserTask_001",
+          "targetRef": "ServiceTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_003",
+          "sourceRef": "ServiceTask_001",
+          "targetRef": "UserTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_004",
+          "sourceRef": "UserTask_002",
+          "targetRef": "UserTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_005",
+          "sourceRef": "UserTask_003",
+          "targetRef": "Gateway_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_006",
+          "name": "selected",
+          "sourceRef": "Gateway_001",
+          "targetRef": "UserTask_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_007",
+          "name": "virtual",
+          "sourceRef": "Gateway_001",
+          "targetRef": "UserTask_005"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_008",
+          "name": "not selected",
+          "sourceRef": "Gateway_001",
+          "targetRef": "EndEvent_002",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_009",
+          "sourceRef": "UserTask_004",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_010",
+          "sourceRef": "UserTask_005",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_011",
+          "sourceRef": "Gateway_002",
+          "targetRef": "UserTask_006"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_012",
+          "sourceRef": "UserTask_006",
+          "targetRef": "UserTask_007"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_013",
+          "sourceRef": "UserTask_007",
+          "targetRef": "UserTask_008"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_014",
+          "sourceRef": "UserTask_008",
+          "targetRef": "UserTask_009"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_015",
+          "sourceRef": "UserTask_009",
+          "targetRef": "UserTask_010"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_016",
+          "sourceRef": "UserTask_010",
+          "targetRef": "UserTask_011"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_017",
+          "sourceRef": "UserTask_011",
+          "targetRef": "UserTask_012"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_018",
+          "sourceRef": "UserTask_012",
+          "targetRef": "EndEvent_001"
+        }
+      ]
+    }
+  ]
+}

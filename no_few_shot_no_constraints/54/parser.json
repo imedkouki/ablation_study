@@ -1,0 +1,20 @@
+{
+  "response": {
+    "generations": [
+      [
+        {
+          "text": "Here's the BPMN pseudocode for the described process, with strict compliance to BPMN 2.0 specifications and the provided guidelines:\n\n### Summary of Elements\n1. **Tasks**:\n   - `serviceTask(\"Check transaction data request\")` - Automated validation of the INQ's request\n   - `serviceTask(\"Transmit data\")` - System action to send requested data\n   - `serviceTask(\"Reject request\")` - System action to deny the request\n\n2. **Gateways**:\n   - `exclusiveGateway(\"Request valid?\")` - Determines if the request should be approved or rejected\n\n3. **Events**:\n   - `startEvent(\"INQ transmits transaction data request\")` - Process trigger\n   - `endEvent(\"Process completed\")` - Single termination point\n\n4. **Boundary Events**: None (no explicit SLAs or expected errors mentioned)\n\n5. **Subprocesses**: None (process is simple and doesn't meet subprocess criteria)\n\n### BPMN Pseudocode\n```\nstartEvent(\"INQ transmits transaction data request\")\nserviceTask(\"Check transaction data request\")\nexclusiveGateway(\"Request valid?\"):\n    if \"Request is valid\":\n        serviceTask(\"Transmit data\")\n        endEvent(\"Process completed\")\n    else:\n        serviceTask(\"Reject request\")\n        endEvent(\"Process completed\")\n```\n\n### Validation Notes\n1. **Compliance**:\n   - Single start event and all paths terminate at endEvent\n   - Explicit gateway convergence (XOR)\n   - No boundary events (no SLA or error conditions specified)\n   - No subprocess needed (only 3 tasks, not enough for logical grouping)\n\n2. **Semantic Correctness**:\n   - Clear sequence of actions matching the description\n   - All conditional flows labeled\n   - No implicit merges or dangling elements\n\n3. **Improvement Opportunities**:\n   - If \"Transmit data\" and \"Reject request\" were used in multiple processes, they could be moved to a subprocess\n   - If there were specific timing requirements, appropriate timer events could be added\n\nThe pseudocode strictly follows the Pseudocode-to-JSON Mapping and meets all BPMN specification compliance rules.",
+          "generationInfo": {
+            "prompt": 0,
+            "completion": 0
+          }
+        }
+      ]
+    ]
+  },
+  "tokenUsageEstimate": {
+    "completionTokens": 445,
+    "promptTokens": 1598,
+    "totalTokens": 2043
+  }
+}

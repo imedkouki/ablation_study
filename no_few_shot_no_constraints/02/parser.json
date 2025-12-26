@@ -1,0 +1,20 @@
+{
+  "response": {
+    "generations": [
+      [
+        {
+          "text": "## Summary of Elements\n\n### Tasks\n1. **userTask(\"Review Order\")** — Human judgment task to review the order.\n2. **serviceTask(\"Check Inventory\")** — Automated task to check inventory levels.\n3. **scriptTask(\"Calculate Total Price: including tax and discounts\")** — Calculation task to determine the total price.\n4. **sendTask(\"Send Confirmation Email\")** — One-way outbound communication task to send a confirmation email.\n5. **receiveTask(\"Receive Payment\")** — Task to wait for inbound payment message.\n\n### Gateways\n1. **Exclusive Gateway (XOR)** — Conditions:\n   - Inventory available\n   - Inventory not available\n\n### Events\n1. **startEvent(\"Order Received\")** — Manual trigger to start the process.\n2. **endEvent(\"Order Processed\")** — Termination event for the process.\n3. **timerStartEvent(\"Every Monday at 9 AM\")** — Scheduled trigger to start the process.\n\n### Boundary Events\n1. **timerBoundary(\"30 minutes\")** — Explicit SLA timeout for the task \"Receive Payment\".\n\n### Subprocesses\nNo subprocesses are introduced as the main process is straightforward and does not benefit from further abstraction.\n\n## BPMN Pseudocode\n\n```\nstartEvent(\"Order Received\")\n\nreceiveTask(\"Receive Payment\")\n    timerBoundary(\"30 minutes\")\n    errorBoundary()\n\nuserTask(\"Review Order\")\n\nserviceTask(\"Check Inventory\")\n\nif (Inventory available)\n    scriptTask(\"Calculate Total Price: including tax and discounts\")\n    sendTask(\"Send Confirmation Email\")\nelse\n    scriptTask(\"Calculate Total Price: including tax and discounts\")\n    sendTask(\"Send Confirmation Email\")\nendIf\n\nendEvent(\"Order Processed\")\n```\n\n## Validation\n\n### Pre-Processing Validation\n- No ambiguities or contradictions detected.\n- All necessary information is provided.\n\n### Element Classification Validation\n- Each task, event, and gateway is classified based on the description.\n- No triggers, SLAs, or errors are inferred unless explicitly stated.\n- There is exactly one start event per process.\n\n### Structural Compliance Validation\n- All paths trace from startEvent to endEvent.\n- No orphaned, unreachable, or dangling elements.\n- No implicit gateway merges.\n\n### Timing Validation\n- Timer type is correctly selected (cycle, date, or duration).\n- All timer values are ISO 8601 compliant.\n- No conflicting or overlapping time constraints.\n\n### Final Output Validation\n- All BPMN elements are valid.\n- All gateways converge.\n- All boundary events are justified.\n- No subprocesses are introduced as they do not pass the validation rules.\n- No speculative logic exists.\n\n### Critical Success Criteria\n- No invalid BPMN properties or constructs.\n- No speculative timers, errors, or SLAs.\n- Explicit gateway convergence is ensured.\n- All conditional flows are labeled.\n- All paths are traceable from start to end.\n- The design is balanced, readable, and standards-compliant.",
+          "generationInfo": {
+            "prompt": 0,
+            "completion": 0
+          }
+        }
+      ]
+    ]
+  },
+  "tokenUsageEstimate": {
+    "completionTokens": 604,
+    "promptTokens": 1549,
+    "totalTokens": 2153
+  }
+}

@@ -1,0 +1,634 @@
+{
+  "bpmn:Definitions": {
+    "xmlns:bpmn": "http://www.omg.org/spec/BPMN/20100524/MODEL",
+    "xmlns:bpmndi": "http://www.omg.org/spec/BPMN/20100524/DI",
+    "xmlns:dc": "http://www.omg.org/spec/DD/20100524/DC",
+    "xmlns:di": "http://www.omg.org/spec/DD/20100524/DI",
+    "id": "Definitions-0001",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "exporter": "bpmn-js (https://demo.bpmn.io)",
+    "exporterVersion": "10.0.0",
+    "rootElements": [
+      {
+        "bpmn:Process": {
+          "id": "Process-0001",
+          "isExecutable": true,
+          "flowElements": [
+            {
+              "bpmn:StartEvent": {
+                "id": "StartEvent-0001",
+                "name": "Application Received"
+              }
+            },
+            {
+              "bpmn:UserTask": {
+                "id": "UserTask-0001",
+                "name": "Review Application"
+              }
+            },
+            {
+              "bpmn:ExclusiveGateway": {
+                "id": "ExclusiveGateway-0001",
+                "name": "Approval Decision",
+                "default": "SequenceFlow-0005"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0001",
+                "sourceRef": "StartEvent-0001",
+                "targetRef": "UserTask-0001"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0002",
+                "sourceRef": "UserTask-0001",
+                "targetRef": "ExclusiveGateway-0001"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0001",
+                "name": "Check Credit Score"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0003",
+                "sourceRef": "ExclusiveGateway-0001",
+                "targetRef": "ServiceTask-0001",
+                "conditionExpression": {
+                  "bpmn:FormalExpression": {
+                    "body": "Approved"
+                  }
+                }
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0005",
+                "sourceRef": "ExclusiveGateway-0001",
+                "targetRef": "ServiceTask-0003"
+              }
+            },
+            {
+              "bpmn:ExclusiveGateway": {
+                "id": "ExclusiveGateway-0002",
+                "name": "Credit Score Decision",
+                "default": "SequenceFlow-0007"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0004",
+                "sourceRef": "ServiceTask-0001",
+                "targetRef": "ExclusiveGateway-0002"
+              }
+            },
+            {
+              "bpmn:ScriptTask": {
+                "id": "ScriptTask-0001",
+                "name": "Calculate Loan Amount"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0006",
+                "sourceRef": "ExclusiveGateway-0002",
+                "targetRef": "ScriptTask-0001",
+                "conditionExpression": {
+                  "bpmn:FormalExpression": {
+                    "body": "Credit Score is Sufficient"
+                  }
+                }
+              }
+            },
+            {
+              "bpmn:SendTask": {
+                "id": "SendTask-0001",
+                "name": "Send Approval Email"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0008",
+                "sourceRef": "ScriptTask-0001",
+                "targetRef": "SendTask-0001"
+              }
+            },
+            {
+              "bpmn:ReceiveTask": {
+                "id": "ReceiveTask-0001",
+                "name": "Receive Signed Documents"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0009",
+                "sourceRef": "SendTask-0001",
+                "targetRef": "ReceiveTask-0001"
+              }
+            },
+            {
+              "bpmn:BoundaryEvent": {
+                "id": "BoundaryEvent-0001",
+                "name": "Timer Boundary Event",
+                "attachedToRef": "ReceiveTask-0001",
+                "cancelActivity": true,
+                "eventDefinitions": [
+                  {
+                    "bpmn:TimerEventDefinition": {
+                      "timeDuration": "P3D"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "bpmn:BusinessRuleTask": {
+                "id": "BusinessRuleTask-0001",
+                "name": "Apply Interest Rate"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0010",
+                "sourceRef": "ReceiveTask-0001",
+                "targetRef": "BusinessRuleTask-0001"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0011",
+                "sourceRef": "BoundaryEvent-0001",
+                "targetRef": "BusinessRuleTask-0001"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0002",
+                "name": "Notify Applicant of Rejection"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0007",
+                "sourceRef": "ExclusiveGateway-0002",
+                "targetRef": "ServiceTask-0002"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0003",
+                "name": "Notify Applicant of Rejection"
+              }
+            },
+            {
+              "bpmn:EndEvent": {
+                "id": "EndEvent-0001",
+                "name": "Process Completed"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0012",
+                "sourceRef": "BusinessRuleTask-0001",
+                "targetRef": "EndEvent-0001"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0013",
+                "sourceRef": "ServiceTask-0002",
+                "targetRef": "EndEvent-0001"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0014",
+                "sourceRef": "ServiceTask-0003",
+                "targetRef": "EndEvent-0001"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "bpmndi:BPMNDiagram": {
+      "id": "BPMNDiagram-0001",
+      "BPMNPlane": {
+        "id": "BPMNPlane-0001",
+        "bpmnElement": "Process-0001",
+        "di:DiagramElement": [
+          {
+            "bpmndi:BPMNShape": {
+              "id": "StartEvent-0001_di",
+              "bpmnElement": "StartEvent-0001",
+              "bounds": {
+                "dc:Bounds": {
+                  "x": 100,
+                  "y": 100,
+                  "width": 36,
+                  "height": 36
+                }
+              }
+            }
+          },
+          {
+            "bpmndi:BPMNShape": {
+              "id": "UserTask-0001_di",
+              "bpmnElement": "UserTask-0001",
+              "bounds": {
+                "dc:Bounds": {
+                  "x": 200,
+                  "y": 80,
+                  "width": 100,
+                  "height": 80
+                }
+              }
+            }
+          },
+          {
+            "bpmndi:BPMNShape": {
+              "id": "ExclusiveGateway-0001_di",
+              "bpmnElement": "ExclusiveGateway-0001",
+              "bounds": {
+                "dc:Bounds": {
+                  "x": 350,
+                  "y": 100,
+                  "width": 50,
+                  "height": 50
+                }
+              }
+            }
+          },
+          {
+            "bpmndi:BPMNShape": {
+              "id": "ServiceTask-0001_di",
+              "bpmnElement": "ServiceTask-0001",
+              "bounds": {
+                "dc:Bounds": {
+                  "x": 450,
+                  "y": 50,
+                  "width": 100,
+                  "height": 80
+                }
+              }
+            }
+          },
+          {
+            "bpmndi:BPMNShape": {
+              "id": "ExclusiveGateway-0002_di",
+              "bpmnElement": "ExclusiveGateway-0002",
+              "bounds": {
+                "dc:Bounds": {
+                  "x": 600,
+                  "y": 100,
+                  "width": 50,
+                  "height": 50
+                }
+              }
+            }
+          },
+          {
+            "bpmndi:BPMNShape": {
+              "id": "ScriptTask-0001_di",
+              "bpmnElement": "ScriptTask-0001",
+              "bounds": {
+                "dc:Bounds": {
+                  "x": 700,
+                  "y": 50,
+                  "width": 100,
+                  "height": 80
+                }
+              }
+            }
+          },
+          {
+            "bpmndi:BPMNShape": {
+              "id": "SendTask-0001_di",
+              "bpmnElement": "SendTask-0001",
+              "bounds": {
+                "dc:Bounds": {
+                  "x": 850,
+                  "y": 50,
+                  "width": 100,
+                  "height": 80
+                }
+              }
+            }
+          },
+          {
+            "bpmndi:BPMNShape": {
+              "id": "ReceiveTask-0001_di",
+              "bpmnElement": "ReceiveTask-0001",
+              "bounds": {
+                "dc:Bounds": {
+                  "x": 1000,
+                  "y": 50,
+                  "width": 100,
+                  "height": 80
+                }
+              }
+            }
+          },
+          {
+            "bpmndi:BPMNShape": {
+              "id": "BoundaryEvent-0001_di",
+              "bpmnElement": "BoundaryEvent-0001",
+              "bounds": {
+                "dc:Bounds": {
+                  "x": 1080,
+                  "y": 130,
+                  "width": 36,
+                  "height": 36
+                }
+              }
+            }
+          },
+          {
+            "bpmndi:BPMNShape": {
+              "id": "BusinessRuleTask-0001_di",
+              "bpmnElement": "BusinessRuleTask-0001",
+              "bounds": {
+                "dc:Bounds": {
+                  "x": 1150,
+                  "y": 50,
+                  "width": 100,
+                  "height": 80
+                }
+              }
+            }
+          },
+          {
+            "bpmndi:BPMNShape": {
+              "id": "ServiceTask-0002_di",
+              "bpmnElement": "ServiceTask-0002",
+              "bounds": {
+                "dc:Bounds": {
+                  "x": 600,
+                  "y": 200,
+                  "width": 100,
+                  "height": 80
+                }
+              }
+            }
+          },
+          {
+            "bpmndi:BPMNShape": {
+              "id": "ServiceTask-0003_di",
+              "bpmnElement": "ServiceTask-0003",
+              "bounds": {
+                "dc:Bounds": {
+                  "x": 450,
+                  "y": 200,
+                  "width": 100,
+                  "height": 80
+                }
+              }
+            }
+          },
+          {
+            "bpmndi:BPMNShape": {
+              "id": "EndEvent-0001_di",
+              "bpmnElement": "EndEvent-0001",
+              "bounds": {
+                "dc:Bounds": {
+                  "x": 1300,
+                  "y": 100,
+                  "width": 36,
+                  "height": 36
+                }
+              }
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0001_di",
+              "bpmnElement": "SequenceFlow-0001",
+              "di:waypoint": [
+                {
+                  "x": 136,
+                  "y": 118
+                },
+                {
+                  "x": 200,
+                  "y": 118
+                }
+              ]
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0002_di",
+              "bpmnElement": "SequenceFlow-0002",
+              "di:waypoint": [
+                {
+                  "x": 300,
+                  "y": 118
+                },
+                {
+                  "x": 350,
+                  "y": 125
+                }
+              ]
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0003_di",
+              "bpmnElement": "SequenceFlow-0003",
+              "di:waypoint": [
+                {
+                  "x": 375,
+                  "y": 125
+                },
+                {
+                  "x": 450,
+                  "y": 90
+                }
+              ]
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0004_di",
+              "bpmnElement": "SequenceFlow-0004",
+              "di:waypoint": [
+                {
+                  "x": 550,
+                  "y": 90
+                },
+                {
+                  "x": 600,
+                  "y": 125
+                }
+              ]
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0005_di",
+              "bpmnElement": "SequenceFlow-0005",
+              "di:waypoint": [
+                {
+                  "x": 375,
+                  "y": 150
+                },
+                {
+                  "x": 450,
+                  "y": 240
+                }
+              ]
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0006_di",
+              "bpmnElement": "SequenceFlow-0006",
+              "di:waypoint": [
+                {
+                  "x": 625,
+                  "y": 125
+                },
+                {
+                  "x": 700,
+                  "y": 90
+                }
+              ]
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0007_di",
+              "bpmnElement": "SequenceFlow-0007",
+              "di:waypoint": [
+                {
+                  "x": 625,
+                  "y": 150
+                },
+                {
+                  "x": 650,
+                  "y": 200
+                }
+              ]
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0008_di",
+              "bpmnElement": "SequenceFlow-0008",
+              "di:waypoint": [
+                {
+                  "x": 800,
+                  "y": 90
+                },
+                {
+                  "x": 850,
+                  "y": 90
+                }
+              ]
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0009_di",
+              "bpmnElement": "SequenceFlow-0009",
+              "di:waypoint": [
+                {
+                  "x": 950,
+                  "y": 90
+                },
+                {
+                  "x": 1000,
+                  "y": 90
+                }
+              ]
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0010_di",
+              "bpmnElement": "SequenceFlow-0010",
+              "di:waypoint": [
+                {
+                  "x": 1100,
+                  "y": 90
+                },
+                {
+                  "x": 1150,
+                  "y": 90
+                }
+              ]
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0011_di",
+              "bpmnElement": "SequenceFlow-0011",
+              "di:waypoint": [
+                {
+                  "x": 1100,
+                  "y": 150
+                },
+                {
+                  "x": 1150,
+                  "y": 130
+                }
+              ]
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0012_di",
+              "bpmnElement": "SequenceFlow-0012",
+              "di:waypoint": [
+                {
+                  "x": 1250,
+                  "y": 90
+                },
+                {
+                  "x": 1300,
+                  "y": 118
+                }
+              ]
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0013_di",
+              "bpmnElement": "SequenceFlow-0013",
+              "di:waypoint": [
+                {
+                  "x": 700,
+                  "y": 240
+                },
+                {
+                  "x": 1300,
+                  "y": 136
+                }
+              ]
+            }
+          },
+          {
+            "bpmndi:BPMNEdge": {
+              "id": "SequenceFlow-0014_di",
+              "bpmnElement": "SequenceFlow-0014",
+              "di:waypoint": [
+                {
+                  "x": 500,
+                  "y": 240
+                },
+                {
+                  "x": 1300,
+                  "y": 136
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

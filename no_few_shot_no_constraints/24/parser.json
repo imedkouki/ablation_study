@@ -1,0 +1,20 @@
+{
+  "response": {
+    "generations": [
+      [
+        {
+          "text": "Here's the BPMN pseudocode for the restaurant ordering process, strictly adhering to BPMN 2.0 specifications and the provided guidelines:\n\n### Summary of Elements\n- **Tasks**: 7 (userTask, serviceTask, sendTask)\n- **Gateways**: 2 (XOR, END_XOR)\n- **Events**: 3 (startEvent, intermediateEvent, endEvent)\n- **Boundary Events**: 1 (timerBoundary with explicit SLA)\n- **Subprocesses**: 1 (\"Meal Preparation\" with clear purpose)\n\n### BPMN Pseudocode\n```\nstartEvent(\"Guest enters restaurant\")\n\nuserTask(\"Guest selects dish from menu\")\n\nserviceTask(\"Guest waits in queue\")\n\nuserTask(\"Guest places order with employee\")\n\nserviceTask(\"Employee enters order into POS system\")\nserviceTask(\"Employee collects payment from guest\")\n\nsubProcess(\"Meal Preparation\"):\n    startEvent(\"Order received by chef\")\n    serviceTask(\"Chef prepares meal\")\n    serviceTask(\"Chef places meal in service hatch\")\n    sendTask(\"Chef informs employee of ready meal\")\n    endEvent(\"Meal preparation complete\")\nendSubProcess\n\nintermediateEvent(timerBoundary(\"PT5M\"))  # 5-minute SLA for buzzer response\n    serviceTask(\"Employee calls guest if no response\")\n\nXOR:\n    if \"Buzzer rings\":\n        userTask(\"Guest collects meal from service hatch\")\n        endEvent(\"Guest eats meal\")\n    else if \"Employee calls guest\":\n        userTask(\"Guest responds to employee call\")\n        userTask(\"Guest collects meal from service hatch\")\n        endEvent(\"Guest eats meal\")\n    else:\n        endEvent(\"Process abandoned\")\nEND_XOR\n```\n\n### Key Validation Points\n1. **Timer Boundary**: Explicit 5-minute SLA for buzzer response with single handler\n2. **Subprocess**: \"Meal Preparation\" contains 3+ related tasks and improves clarity\n3. **Gateway Convergence**: XOR gateway has matching END_XOR with all paths terminating\n4. **Sequence Flow Labels**: All conditional paths clearly labeled\n5. **Boundary Event Justification**: Timer boundary only used for explicit SLA requirement\n\n### Compliance Notes\n- All timer properties use ISO 8601 format (PT5M)\n- No speculative boundary events (only explicit 5-minute timeout)\n- All paths terminate at endEvent\n- Subprocess nesting depth = 1 (compliant)\n- No implicit merges or unlabeled flows\n\nThe pseudocode maintains strict BPMN 2.0 compliance while capturing all business requirements from the description.",
+          "generationInfo": {
+            "prompt": 0,
+            "completion": 0
+          }
+        }
+      ]
+    ]
+  },
+  "tokenUsageEstimate": {
+    "completionTokens": 526,
+    "promptTokens": 1771,
+    "totalTokens": 2297
+  }
+}

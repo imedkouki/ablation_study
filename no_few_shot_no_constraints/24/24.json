@@ -1,0 +1,282 @@
+{
+  "bpmn:Definitions": {
+    "xmlns:bpmn": "http://www.omg.org/spec/BPMN/20100524/MODEL",
+    "xmlns:bpmndi": "http://www.omg.org/spec/BPMN/20100524/DI",
+    "xmlns:dc": "http://www.omg.org/spec/DD/20100524/DC",
+    "id": "Definitions-0001",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "exporter": "BPMN Modeler",
+    "exporterVersion": "1.0",
+    "rootElements": [
+      {
+        "bpmn:Process": {
+          "id": "Process-0001",
+          "isExecutable": true,
+          "flowElements": [
+            {
+              "bpmn:StartEvent": {
+                "id": "StartEvent-0001",
+                "name": "Guest enters restaurant"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0001",
+                "sourceRef": "StartEvent-0001",
+                "targetRef": "UserTask-0001"
+              }
+            },
+            {
+              "bpmn:UserTask": {
+                "id": "UserTask-0001",
+                "name": "Guest selects dish from menu"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0002",
+                "sourceRef": "UserTask-0001",
+                "targetRef": "ServiceTask-0001"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0001",
+                "name": "Guest waits in queue"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0003",
+                "sourceRef": "ServiceTask-0001",
+                "targetRef": "UserTask-0002"
+              }
+            },
+            {
+              "bpmn:UserTask": {
+                "id": "UserTask-0002",
+                "name": "Guest places order with employee"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0004",
+                "sourceRef": "UserTask-0002",
+                "targetRef": "ServiceTask-0002"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0002",
+                "name": "Employee enters order into POS system"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0005",
+                "sourceRef": "ServiceTask-0002",
+                "targetRef": "ServiceTask-0003"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0003",
+                "name": "Employee collects payment from guest"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0006",
+                "sourceRef": "ServiceTask-0003",
+                "targetRef": "SubProcess-0001"
+              }
+            },
+            {
+              "bpmn:SubProcess": {
+                "id": "SubProcess-0001",
+                "name": "Meal Preparation",
+                "flowElements": [
+                  {
+                    "bpmn:StartEvent": {
+                      "id": "StartEvent-0002",
+                      "name": "Order received by chef"
+                    }
+                  },
+                  {
+                    "bpmn:SequenceFlow": {
+                      "id": "SequenceFlow-0007",
+                      "sourceRef": "StartEvent-0002",
+                      "targetRef": "ServiceTask-0004"
+                    }
+                  },
+                  {
+                    "bpmn:ServiceTask": {
+                      "id": "ServiceTask-0004",
+                      "name": "Chef prepares meal"
+                    }
+                  },
+                  {
+                    "bpmn:SequenceFlow": {
+                      "id": "SequenceFlow-0008",
+                      "sourceRef": "ServiceTask-0004",
+                      "targetRef": "ServiceTask-0005"
+                    }
+                  },
+                  {
+                    "bpmn:ServiceTask": {
+                      "id": "ServiceTask-0005",
+                      "name": "Chef places meal in service hatch"
+                    }
+                  },
+                  {
+                    "bpmn:SequenceFlow": {
+                      "id": "SequenceFlow-0009",
+                      "sourceRef": "ServiceTask-0005",
+                      "targetRef": "SendTask-0001"
+                    }
+                  },
+                  {
+                    "bpmn:SendTask": {
+                      "id": "SendTask-0001",
+                      "name": "Chef informs employee of ready meal"
+                    }
+                  },
+                  {
+                    "bpmn:SequenceFlow": {
+                      "id": "SequenceFlow-0010",
+                      "sourceRef": "SendTask-0001",
+                      "targetRef": "EndEvent-0001"
+                    }
+                  },
+                  {
+                    "bpmn:EndEvent": {
+                      "id": "EndEvent-0001",
+                      "name": "Meal preparation complete"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0011",
+                "sourceRef": "SubProcess-0001",
+                "targetRef": "IntermediateCatchEvent-0001"
+              }
+            },
+            {
+              "bpmn:IntermediateCatchEvent": {
+                "id": "IntermediateCatchEvent-0001",
+                "name": "Buzzer rings",
+                "outgoing": "SequenceFlow-0012"
+              }
+            },
+            {
+              "bpmn:BoundaryEvent": {
+                "id": "BoundaryEvent-0001",
+                "attachedToRef": "IntermediateCatchEvent-0001",
+                "cancelActivity": false,
+                "timerEventDefinition": {
+                  "timeDuration": "PT5M"
+                },
+                "outgoing": "SequenceFlow-0013"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0012",
+                "sourceRef": "IntermediateCatchEvent-0001",
+                "targetRef": "ExclusiveGateway-0001",
+                "conditionExpression": "Buzzer rings"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0013",
+                "sourceRef": "BoundaryEvent-0001",
+                "targetRef": "ServiceTask-0006"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0006",
+                "name": "Employee calls guest if no response"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0014",
+                "sourceRef": "ServiceTask-0006",
+                "targetRef": "ExclusiveGateway-0001",
+                "conditionExpression": "Employee calls guest"
+              }
+            },
+            {
+              "bpmn:ExclusiveGateway": {
+                "id": "ExclusiveGateway-0001",
+                "name": "XOR",
+                "default": "SequenceFlow-0015"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0015",
+                "sourceRef": "ExclusiveGateway-0001",
+                "targetRef": "EndEvent-0002",
+                "name": "Process abandoned"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0016",
+                "sourceRef": "ExclusiveGateway-0001",
+                "targetRef": "UserTask-0003",
+                "conditionExpression": "Buzzer rings"
+              }
+            },
+            {
+              "bpmn:UserTask": {
+                "id": "UserTask-0003",
+                "name": "Guest collects meal from service hatch"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0017",
+                "sourceRef": "UserTask-0003",
+                "targetRef": "EndEvent-0002"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0018",
+                "sourceRef": "ExclusiveGateway-0001",
+                "targetRef": "UserTask-0004",
+                "conditionExpression": "Employee calls guest"
+              }
+            },
+            {
+              "bpmn:UserTask": {
+                "id": "UserTask-0004",
+                "name": "Guest responds to employee call"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0019",
+                "sourceRef": "UserTask-0004",
+                "targetRef": "UserTask-0003"
+              }
+            },
+            {
+              "bpmn:EndEvent": {
+                "id": "EndEvent-0002",
+                "name": "Guest eats meal"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

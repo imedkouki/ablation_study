@@ -1,0 +1,187 @@
+{
+  "definitions": {
+    "id": "Definitions-0001",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "exporter": "BPMN Modeler",
+    "exporterVersion": "1.0",
+    "process": {
+      "id": "Process-0001",
+      "isExecutable": false,
+      "flowElements": [
+        {
+          "id": "StartEvent-0001",
+          "name": "Work Accident Report Initiation",
+          "incoming": [],
+          "outgoing": ["SequenceFlow-0001"]
+        },
+        {
+          "id": "UserTask-0001",
+          "name": "Collect accident details",
+          "incoming": ["SequenceFlow-0001"],
+          "outgoing": ["SequenceFlow-0002"]
+        },
+        {
+          "id": "ServiceTask-0001",
+          "name": "Validate accident criteria",
+          "incoming": ["SequenceFlow-0002"],
+          "outgoing": ["SequenceFlow-0003"]
+        },
+        {
+          "id": "ExclusiveGateway-0001",
+          "name": "Does accident meet criteria?",
+          "incoming": ["SequenceFlow-0003"],
+          "outgoing": ["SequenceFlow-0004", "SequenceFlow-0005"]
+        },
+        {
+          "id": "ServiceTask-0002",
+          "name": "Classify accident type",
+          "incoming": ["SequenceFlow-0004"],
+          "outgoing": ["SequenceFlow-0006"]
+        },
+        {
+          "id": "ExclusiveGateway-0002",
+          "name": "Accident severity",
+          "incoming": ["SequenceFlow-0006"],
+          "outgoing": ["SequenceFlow-0007", "SequenceFlow-0008"]
+        },
+        {
+          "id": "UserTask-0002",
+          "name": "Notify employer immediately",
+          "incoming": ["SequenceFlow-0007"],
+          "outgoing": ["SequenceFlow-0009"]
+        },
+        {
+          "id": "SendTask-0001",
+          "name": "Send: Report to Labour Inspectorate",
+          "incoming": ["SequenceFlow-0009"],
+          "outgoing": ["SequenceFlow-0010"]
+        },
+        {
+          "id": "SendTask-0002",
+          "name": "Send: Report to insurance provider",
+          "incoming": ["SequenceFlow-0010"],
+          "outgoing": ["SequenceFlow-0011"]
+        },
+        {
+          "id": "UserTask-0003",
+          "name": "Notify employer within 5 days",
+          "incoming": ["SequenceFlow-0008"],
+          "outgoing": ["SequenceFlow-0012"]
+        },
+        {
+          "id": "SendTask-0003",
+          "name": "Send: Report to insurance provider",
+          "incoming": ["SequenceFlow-0012"],
+          "outgoing": ["SequenceFlow-0013"]
+        },
+        {
+          "id": "EndEvent-0001",
+          "name": "Process Complete",
+          "incoming": ["SequenceFlow-0011", "SequenceFlow-0013"]
+        },
+        {
+          "id": "EndEvent-0002",
+          "name": "No Action Required",
+          "incoming": ["SequenceFlow-0005"]
+        },
+        {
+          "id": "BoundaryEvent-0001",
+          "name": "5 days",
+          "attachedToRef": "SendTask-0002",
+          "outgoing": ["SequenceFlow-0014"]
+        },
+        {
+          "id": "SendTask-0004",
+          "name": "Send: Late Report to insurance provider",
+          "incoming": ["SequenceFlow-0014"],
+          "outgoing": ["SequenceFlow-0015"]
+        },
+        {
+          "id": "EndEvent-0003",
+          "name": "Process Complete",
+          "incoming": ["SequenceFlow-0015"]
+        }
+      ],
+      "sequenceFlows": [
+        {
+          "id": "SequenceFlow-0001",
+          "sourceRef": "StartEvent-0001",
+          "targetRef": "UserTask-0001"
+        },
+        {
+          "id": "SequenceFlow-0002",
+          "sourceRef": "UserTask-0001",
+          "targetRef": "ServiceTask-0001"
+        },
+        {
+          "id": "SequenceFlow-0003",
+          "sourceRef": "ServiceTask-0001",
+          "targetRef": "ExclusiveGateway-0001"
+        },
+        {
+          "id": "SequenceFlow-0004",
+          "sourceRef": "ExclusiveGateway-0001",
+          "targetRef": "ServiceTask-0002",
+          "conditionExpression": "${accident meets work criteria}"
+        },
+        {
+          "id": "SequenceFlow-0005",
+          "sourceRef": "ExclusiveGateway-0001",
+          "targetRef": "EndEvent-0002"
+        },
+        {
+          "id": "SequenceFlow-0006",
+          "sourceRef": "ServiceTask-0002",
+          "targetRef": "ExclusiveGateway-0002"
+        },
+        {
+          "id": "SequenceFlow-0007",
+          "sourceRef": "ExclusiveGateway-0002",
+          "targetRef": "UserTask-0002",
+          "conditionExpression": "${fatality or serious injury}"
+        },
+        {
+          "id": "SequenceFlow-0008",
+          "sourceRef": "ExclusiveGateway-0002",
+          "targetRef": "UserTask-0003",
+          "conditionExpression": "${minor injury or near-miss}"
+        },
+        {
+          "id": "SequenceFlow-0009",
+          "sourceRef": "UserTask-0002",
+          "targetRef": "SendTask-0001"
+        },
+        {
+          "id": "SequenceFlow-0010",
+          "sourceRef": "SendTask-0001",
+          "targetRef": "SendTask-0002"
+        },
+        {
+          "id": "SequenceFlow-0011",
+          "sourceRef": "SendTask-0002",
+          "targetRef": "EndEvent-0001"
+        },
+        {
+          "id": "SequenceFlow-0012",
+          "sourceRef": "UserTask-0003",
+          "targetRef": "SendTask-0003"
+        },
+        {
+          "id": "SequenceFlow-0013",
+          "sourceRef": "SendTask-0003",
+          "targetRef": "EndEvent-0001"
+        },
+        {
+          "id": "SequenceFlow-0014",
+          "sourceRef": "BoundaryEvent-0001",
+          "targetRef": "SendTask-0004"
+        },
+        {
+          "id": "SequenceFlow-0015",
+          "sourceRef": "SendTask-0004",
+          "targetRef": "EndEvent-0003"
+        }
+      ]
+    }
+  }
+}

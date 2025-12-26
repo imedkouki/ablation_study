@@ -1,0 +1,398 @@
+{
+  "definitions": {
+    "id": "Definitions-0001",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "exporter": "BPMN Modeler",
+    "exporterVersion": "1.0",
+    "process": {
+      "id": "Process-0001",
+      "isExecutable": false,
+      "flowElements": [
+        {
+          "id": "StartEvent-0001",
+          "name": "Application submission",
+          "incoming": [],
+          "outgoing": ["SequenceFlow-0001"],
+          "$type": "bpmn:StartEvent"
+        },
+        {
+          "id": "ReceiveTask-0001",
+          "name": "Receive: Application submission",
+          "incoming": ["SequenceFlow-0001"],
+          "outgoing": ["SequenceFlow-0002"],
+          "$type": "bpmn:ReceiveTask"
+        },
+        {
+          "id": "UserTask-0001",
+          "name": "Review application and documents",
+          "incoming": ["SequenceFlow-0002"],
+          "outgoing": ["SequenceFlow-0003"],
+          "$type": "bpmn:UserTask"
+        },
+        {
+          "id": "ExclusiveGateway-0001",
+          "incoming": ["SequenceFlow-0003"],
+          "outgoing": ["SequenceFlow-0004", "SequenceFlow-0005"],
+          "$type": "bpmn:ExclusiveGateway"
+        },
+        {
+          "id": "SendTask-0001",
+          "name": "Send: Missing documents notification",
+          "incoming": ["SequenceFlow-0004"],
+          "outgoing": ["SequenceFlow-0006"],
+          "$type": "bpmn:SendTask"
+        },
+        {
+          "id": "ReceiveTask-0002",
+          "name": "Receive: Missing documents",
+          "incoming": ["SequenceFlow-0006"],
+          "outgoing": ["SequenceFlow-0007"],
+          "$type": "bpmn:ReceiveTask"
+        },
+        {
+          "id": "ServiceTask-0001",
+          "name": "Evaluate application",
+          "incoming": ["SequenceFlow-0005"],
+          "outgoing": ["SequenceFlow-0008"],
+          "$type": "bpmn:ServiceTask"
+        },
+        {
+          "id": "ParallelGateway-0001",
+          "incoming": ["SequenceFlow-0008"],
+          "outgoing": ["SequenceFlow-0009", "SequenceFlow-0010"],
+          "$type": "bpmn:ParallelGateway"
+        },
+        {
+          "id": "ServiceTask-0002",
+          "name": "Process fees/waivers",
+          "incoming": ["SequenceFlow-0009"],
+          "outgoing": ["SequenceFlow-0011"],
+          "$type": "bpmn:ServiceTask"
+        },
+        {
+          "id": "ServiceTask-0003",
+          "name": "Evaluate application",
+          "incoming": ["SequenceFlow-0010"],
+          "outgoing": ["SequenceFlow-0012"],
+          "$type": "bpmn:ServiceTask"
+        },
+        {
+          "id": "ParallelGateway-0002",
+          "incoming": ["SequenceFlow-0011", "SequenceFlow-0012"],
+          "outgoing": ["SequenceFlow-0013"],
+          "$type": "bpmn:ParallelGateway"
+        },
+        {
+          "id": "ExclusiveGateway-0002",
+          "incoming": ["SequenceFlow-0013"],
+          "outgoing": ["SequenceFlow-0014", "SequenceFlow-0015"],
+          "$type": "bpmn:ExclusiveGateway"
+        },
+        {
+          "id": "SendTask-0002",
+          "name": "Send: Acceptance letter",
+          "incoming": ["SequenceFlow-0014"],
+          "outgoing": ["SequenceFlow-0016"],
+          "$type": "bpmn:SendTask"
+        },
+        {
+          "id": "ReceiveTask-0003",
+          "name": "Receive: Enrollment confirmation",
+          "incoming": ["SequenceFlow-0016"],
+          "outgoing": ["SequenceFlow-0017"],
+          "$type": "bpmn:ReceiveTask"
+        },
+        {
+          "id": "TimerBoundaryEvent-0001",
+          "name": "30-day confirmation deadline",
+          "timeDate": "P30D",
+          "attachedToRef": "ReceiveTask-0003",
+          "outgoing": ["SequenceFlow-0018"],
+          "$type": "bpmn:BoundaryEvent"
+        },
+        {
+          "id": "ExclusiveGateway-0003",
+          "incoming": ["SequenceFlow-0017"],
+          "outgoing": ["SequenceFlow-0019", "SequenceFlow-0020"],
+          "$type": "bpmn:ExclusiveGateway"
+        },
+        {
+          "id": "SendTask-0003",
+          "name": "Send: Orientation materials",
+          "incoming": ["SequenceFlow-0019"],
+          "outgoing": ["SequenceFlow-0021"],
+          "$type": "bpmn:SendTask"
+        },
+        {
+          "id": "ServiceTask-0004",
+          "name": "Set up student accounts",
+          "incoming": ["SequenceFlow-0021"],
+          "outgoing": ["SequenceFlow-0022"],
+          "$type": "bpmn:ServiceTask"
+        },
+        {
+          "id": "ExclusiveGateway-0004",
+          "incoming": ["SequenceFlow-0022"],
+          "outgoing": ["SequenceFlow-0023", "SequenceFlow-0024"],
+          "$type": "bpmn:ExclusiveGateway"
+        },
+        {
+          "id": "ServiceTask-0005",
+          "name": "Assist with visa processing",
+          "incoming": ["SequenceFlow-0023"],
+          "outgoing": ["SequenceFlow-0025"],
+          "$type": "bpmn:ServiceTask"
+        },
+        {
+          "id": "SequenceFlow-0024",
+          "sourceRef": "ExclusiveGateway-0004",
+          "targetRef": "ServiceTask-0006",
+          "conditionExpression": "$internationalStudent == false"
+        },
+        {
+          "id": "ServiceTask-0006",
+          "name": "Issue student ID card",
+          "incoming": ["SequenceFlow-0024", "SequenceFlow-0025"],
+          "outgoing": ["SequenceFlow-0026"],
+          "$type": "bpmn:ServiceTask"
+        },
+        {
+          "id": "SubProcess-0001",
+          "name": "Create study plan",
+          "incoming": ["SequenceFlow-0026"],
+          "outgoing": ["SequenceFlow-0027"],
+          "flowElements": [
+            {
+              "id": "StartEvent-0002",
+              "name": "Study plan start",
+              "incoming": [],
+              "outgoing": ["SequenceFlow-0028"],
+              "$type": "bpmn:StartEvent"
+            },
+            {
+              "id": "ServiceTask-0007",
+              "name": "Meet with academic advisor",
+              "incoming": ["SequenceFlow-0028"],
+              "outgoing": ["SequenceFlow-0029"],
+              "$type": "bpmn:ServiceTask"
+            },
+            {
+              "id": "ServiceTask-0008",
+              "name": "Select courses",
+              "incoming": ["SequenceFlow-0029"],
+              "outgoing": ["SequenceFlow-0030"],
+              "$type": "bpmn:ServiceTask"
+            },
+            {
+              "id": "ServiceTask-0009",
+              "name": "Resolve schedule conflicts",
+              "incoming": ["SequenceFlow-0030"],
+              "outgoing": ["SequenceFlow-0031"],
+              "$type": "bpmn:ServiceTask"
+            },
+            {
+              "id": "EndEvent-0003",
+              "name": "Study plan completed",
+              "incoming": ["SequenceFlow-0031"],
+              "outgoing": [],
+              "$type": "bpmn:EndEvent"
+            }
+          ],
+          "$type": "bpmn:SubProcess"
+        },
+        {
+          "id": "ServiceTask-0010",
+          "name": "Begin attending classes",
+          "incoming": ["SequenceFlow-0027"],
+          "outgoing": [],
+          "$type": "bpmn:ServiceTask"
+        },
+        {
+          "id": "EndEvent-0001",
+          "name": "Process completed",
+          "incoming": ["SequenceFlow-0020"],
+          "outgoing": [],
+          "$type": "bpmn:EndEvent"
+        },
+        {
+          "id": "SendTask-0004",
+          "name": "Send: Rejection letter",
+          "incoming": ["SequenceFlow-0015"],
+          "outgoing": ["SequenceFlow-0032"],
+          "$type": "bpmn:SendTask"
+        },
+        {
+          "id": "EndEvent-0002",
+          "name": "Application rejected",
+          "incoming": ["SequenceFlow-0032"],
+          "outgoing": [],
+          "$type": "bpmn:EndEvent"
+        }
+      ],
+      "sequenceFlows": [
+        {
+          "id": "SequenceFlow-0001",
+          "sourceRef": "StartEvent-0001",
+          "targetRef": "ReceiveTask-0001"
+        },
+        {
+          "id": "SequenceFlow-0002",
+          "sourceRef": "ReceiveTask-0001",
+          "targetRef": "UserTask-0001"
+        },
+        {
+          "id": "SequenceFlow-0003",
+          "sourceRef": "UserTask-0001",
+          "targetRef": "ExclusiveGateway-0001"
+        },
+        {
+          "id": "SequenceFlow-0004",
+          "sourceRef": "ExclusiveGateway-0001",
+          "targetRef": "SendTask-0001",
+          "conditionExpression": "$documentsMissing == true"
+        },
+        {
+          "id": "SequenceFlow-0005",
+          "sourceRef": "ExclusiveGateway-0001",
+          "targetRef": "ServiceTask-0001",
+          "conditionExpression": "$documentsMissing == false"
+        },
+        {
+          "id": "SequenceFlow-0006",
+          "sourceRef": "SendTask-0001",
+          "targetRef": "ReceiveTask-0002"
+        },
+        {
+          "id": "SequenceFlow-0007",
+          "sourceRef": "ReceiveTask-0002",
+          "targetRef": "UserTask-0001"
+        },
+        {
+          "id": "SequenceFlow-0008",
+          "sourceRef": "ServiceTask-0001",
+          "targetRef": "ParallelGateway-0001"
+        },
+        {
+          "id": "SequenceFlow-0009",
+          "sourceRef": "ParallelGateway-0001",
+          "targetRef": "ServiceTask-0002"
+        },
+        {
+          "id": "SequenceFlow-0010",
+          "sourceRef": "ParallelGateway-0001",
+          "targetRef": "ServiceTask-0003"
+        },
+        {
+          "id": "SequenceFlow-0011",
+          "sourceRef": "ServiceTask-0002",
+          "targetRef": "ParallelGateway-0002"
+        },
+        {
+          "id": "SequenceFlow-0012",
+          "sourceRef": "ServiceTask-0003",
+          "targetRef": "ParallelGateway-0002"
+        },
+        {
+          "id": "SequenceFlow-0013",
+          "sourceRef": "ParallelGateway-0002",
+          "targetRef": "ExclusiveGateway-0002"
+        },
+        {
+          "id": "SequenceFlow-0014",
+          "sourceRef": "ExclusiveGateway-0002",
+          "targetRef": "SendTask-0002",
+          "conditionExpression": "$accepted == true"
+        },
+        {
+          "id": "SequenceFlow-0015",
+          "sourceRef": "ExclusiveGateway-0002",
+          "targetRef": "SendTask-0004",
+          "conditionExpression": "$accepted == false"
+        },
+        {
+          "id": "SequenceFlow-0016",
+          "sourceRef": "SendTask-0002",
+          "targetRef": "ReceiveTask-0003"
+        },
+        {
+          "id": "SequenceFlow-0017",
+          "sourceRef": "ReceiveTask-0003",
+          "targetRef": "ExclusiveGateway-0003"
+        },
+        {
+          "id": "SequenceFlow-0018",
+          "sourceRef": "TimerBoundaryEvent-0001",
+          "targetRef": "ExclusiveGateway-0003"
+        },
+        {
+          "id": "SequenceFlow-0019",
+          "sourceRef": "ExclusiveGateway-0003",
+          "targetRef": "SendTask-0003",
+          "conditionExpression": "$confirmed == true"
+        },
+        {
+          "id": "SequenceFlow-0020",
+          "sourceRef": "ExclusiveGateway-0003",
+          "targetRef": "EndEvent-0001",
+          "conditionExpression": "$confirmed == false"
+        },
+        {
+          "id": "SequenceFlow-0021",
+          "sourceRef": "SendTask-0003",
+          "targetRef": "ServiceTask-0004"
+        },
+        {
+          "id": "SequenceFlow-0022",
+          "sourceRef": "ServiceTask-0004",
+          "targetRef": "ExclusiveGateway-0004"
+        },
+        {
+          "id": "SequenceFlow-0023",
+          "sourceRef": "ExclusiveGateway-0004",
+          "targetRef": "ServiceTask-0005",
+          "conditionExpression": "$internationalStudent == true"
+        },
+        {
+          "id": "SequenceFlow-0025",
+          "sourceRef": "ServiceTask-0005",
+          "targetRef": "ServiceTask-0006"
+        },
+        {
+          "id": "SequenceFlow-0026",
+          "sourceRef": "ServiceTask-0006",
+          "targetRef": "SubProcess-0001"
+        },
+        {
+          "id": "SequenceFlow-0027",
+          "sourceRef": "SubProcess-0001",
+          "targetRef": "ServiceTask-0010"
+        },
+        {
+          "id": "SequenceFlow-0028",
+          "sourceRef": "StartEvent-0002",
+          "targetRef": "ServiceTask-0007"
+        },
+        {
+          "id": "SequenceFlow-0029",
+          "sourceRef": "ServiceTask-0007",
+          "targetRef": "ServiceTask-0008"
+        },
+        {
+          "id": "SequenceFlow-0030",
+          "sourceRef": "ServiceTask-0008",
+          "targetRef": "ServiceTask-0009"
+        },
+        {
+          "id": "SequenceFlow-0031",
+          "sourceRef": "ServiceTask-0009",
+          "targetRef": "EndEvent-0003"
+        },
+        {
+          "id": "SequenceFlow-0032",
+          "sourceRef": "SendTask-0004",
+          "targetRef": "EndEvent-0002"
+        }
+      ]
+    }
+  }
+}

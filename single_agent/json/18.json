@@ -1,0 +1,557 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "UniversityEnrollmentDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Generator",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "UniversityEnrollmentProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent_001",
+          "name": "Application Submitted"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_001",
+          "name": "Review Application and Documents"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_001",
+          "name": "Documents Complete?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask_001",
+          "name": "Notify Applicant of Missing Documents"
+        },
+        {
+          "$type": "bpmn:ReceiveTask",
+          "id": "ReceiveTask_001",
+          "name": "Receive Missing Documents"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_002",
+          "name": "Split for Evaluation and Fees",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_002",
+          "name": "Evaluate Application (Admissions Committee)"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_001",
+          "name": "Process Application Fees/Waivers (Finance)"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_003",
+          "name": "Join Evaluation and Fees",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_004",
+          "name": "Application Accepted?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask_002",
+          "name": "Send Acceptance Letter"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask_003",
+          "name": "Send Rejection Letter"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_001",
+          "name": "Application Rejected"
+        },
+        {
+          "$type": "bpmn:ReceiveTask",
+          "id": "ReceiveTask_002",
+          "name": "Confirm Enrollment by Deadline"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_005",
+          "name": "Enrollment Confirmed?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_002",
+          "name": "Application Cancelled (No Confirmation)"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_006",
+          "name": "Split for Orientation and Accounts",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask_004",
+          "name": "Send Orientation Materials"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_002",
+          "name": "Set Up Student Accounts (IT)"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_007",
+          "name": "Join Orientation and Accounts",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_008",
+          "name": "International Student?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_003",
+          "name": "Assist with Visa Processing (International Office)"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_003",
+          "name": "Obtain Student ID Card"
+        },
+        {
+          "$type": "bpmn:SubProcess",
+          "id": "SubProcess_001",
+          "name": "Study Plan Creation",
+          "flowElements": [
+            {
+              "$type": "bpmn:StartEvent",
+              "id": "StartEvent_002",
+              "name": "Start Study Plan"
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask_004",
+              "name": "Meet with Academic Advisor"
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask_005",
+              "name": "Select Courses"
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask_006",
+              "name": "Resolve Schedule Conflicts"
+            },
+            {
+              "$type": "bpmn:EndEvent",
+              "id": "EndEvent_003",
+              "name": "Study Plan Complete"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_020",
+              "sourceRef": "StartEvent_002",
+              "targetRef": "UserTask_004"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_021",
+              "sourceRef": "UserTask_004",
+              "targetRef": "UserTask_005"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_022",
+              "sourceRef": "UserTask_005",
+              "targetRef": "UserTask_006"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_023",
+              "sourceRef": "UserTask_006",
+              "targetRef": "EndEvent_003"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_004",
+          "name": "Begin Attending Classes"
+        },
+        {
+          "$type": "bpmn:SubProcess",
+          "id": "SubProcess_002",
+          "name": "Semester Cycle",
+          "flowElements": [
+            {
+              "$type": "bpmn:StartEvent",
+              "id": "StartEvent_003",
+              "name": "Semester Begins"
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask_007",
+              "name": "Add/Drop Courses (Within Add/Drop Period)"
+            },
+            {
+              "$type": "bpmn:ServiceTask",
+              "id": "ServiceTask_005",
+              "name": "Post Grades"
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask_008",
+              "name": "Review Grades Online"
+            },
+            {
+              "$type": "bpmn:ExclusiveGateway",
+              "id": "Gateway_009",
+              "name": "Grievance?",
+              "gatewayDirection": "Diverging"
+            },
+            {
+              "$type": "bpmn:SubProcess",
+              "id": "SubProcess_003",
+              "name": "Appeals Process",
+              "flowElements": [
+                {
+                  "$type": "bpmn:StartEvent",
+                  "id": "StartEvent_004",
+                  "name": "Appeal Initiated"
+                },
+                {
+                  "$type": "bpmn:UserTask",
+                  "id": "UserTask_009",
+                  "name": "Submit Appeal Form"
+                },
+                {
+                  "$type": "bpmn:UserTask",
+                  "id": "UserTask_010",
+                  "name": "Meet with Appeals Committee"
+                },
+                {
+                  "$type": "bpmn:ReceiveTask",
+                  "id": "ReceiveTask_003",
+                  "name": "Await Decision"
+                },
+                {
+                  "$type": "bpmn:EndEvent",
+                  "id": "EndEvent_004",
+                  "name": "Appeal Process Complete"
+                },
+                {
+                  "$type": "bpmn:SequenceFlow",
+                  "id": "Flow_030",
+                  "sourceRef": "StartEvent_004",
+                  "targetRef": "UserTask_009"
+                },
+                {
+                  "$type": "bpmn:SequenceFlow",
+                  "id": "Flow_031",
+                  "sourceRef": "UserTask_009",
+                  "targetRef": "UserTask_010"
+                },
+                {
+                  "$type": "bpmn:SequenceFlow",
+                  "id": "Flow_032",
+                  "sourceRef": "UserTask_010",
+                  "targetRef": "ReceiveTask_003"
+                },
+                {
+                  "$type": "bpmn:SequenceFlow",
+                  "id": "Flow_033",
+                  "sourceRef": "ReceiveTask_003",
+                  "targetRef": "EndEvent_004"
+                }
+              ]
+            },
+            {
+              "$type": "bpmn:ExclusiveGateway",
+              "id": "Gateway_010",
+              "name": "Continue or End?",
+              "gatewayDirection": "Diverging"
+            },
+            {
+              "$type": "bpmn:EndEvent",
+              "id": "EndEvent_005",
+              "name": "Graduation"
+            },
+            {
+              "$type": "bpmn:EndEvent",
+              "id": "EndEvent_006",
+              "name": "Withdrawal"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_034",
+              "sourceRef": "StartEvent_003",
+              "targetRef": "UserTask_007"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_035",
+              "sourceRef": "UserTask_007",
+              "targetRef": "ServiceTask_005"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_036",
+              "sourceRef": "ServiceTask_005",
+              "targetRef": "UserTask_008"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_037",
+              "sourceRef": "UserTask_008",
+              "targetRef": "Gateway_009"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_038",
+              "name": "yes",
+              "sourceRef": "Gateway_009",
+              "targetRef": "SubProcess_003"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_039",
+              "name": "no",
+              "sourceRef": "Gateway_009",
+              "targetRef": "Gateway_010",
+              "isDefault": true
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_040",
+              "sourceRef": "SubProcess_003",
+              "targetRef": "Gateway_010"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_041",
+              "name": "graduate",
+              "sourceRef": "Gateway_010",
+              "targetRef": "EndEvent_005"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_042",
+              "name": "withdraw",
+              "sourceRef": "Gateway_010",
+              "targetRef": "EndEvent_006"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "Flow_043",
+              "name": "continue",
+              "sourceRef": "Gateway_010",
+              "targetRef": "StartEvent_003"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_001",
+          "sourceRef": "StartEvent_001",
+          "targetRef": "UserTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_002",
+          "sourceRef": "UserTask_001",
+          "targetRef": "Gateway_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_003",
+          "name": "missing",
+          "sourceRef": "Gateway_001",
+          "targetRef": "SendTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_004",
+          "name": "complete",
+          "sourceRef": "Gateway_001",
+          "targetRef": "Gateway_002",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_005",
+          "sourceRef": "SendTask_001",
+          "targetRef": "ReceiveTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_006",
+          "sourceRef": "ReceiveTask_001",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_007",
+          "sourceRef": "Gateway_002",
+          "targetRef": "UserTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_008",
+          "sourceRef": "Gateway_002",
+          "targetRef": "ServiceTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_009",
+          "sourceRef": "UserTask_002",
+          "targetRef": "Gateway_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_010",
+          "sourceRef": "ServiceTask_001",
+          "targetRef": "Gateway_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_011",
+          "sourceRef": "Gateway_003",
+          "targetRef": "Gateway_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_012",
+          "name": "accepted",
+          "sourceRef": "Gateway_004",
+          "targetRef": "SendTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_013",
+          "name": "rejected",
+          "sourceRef": "Gateway_004",
+          "targetRef": "SendTask_003",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_014",
+          "sourceRef": "SendTask_002",
+          "targetRef": "ReceiveTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_015",
+          "sourceRef": "SendTask_003",
+          "targetRef": "EndEvent_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_016",
+          "sourceRef": "ReceiveTask_002",
+          "targetRef": "Gateway_005"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_017",
+          "name": "confirmed",
+          "sourceRef": "Gateway_005",
+          "targetRef": "Gateway_006"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_018",
+          "name": "not confirmed",
+          "sourceRef": "Gateway_005",
+          "targetRef": "EndEvent_002",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_019",
+          "sourceRef": "Gateway_006",
+          "targetRef": "SendTask_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_024",
+          "sourceRef": "Gateway_006",
+          "targetRef": "ServiceTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_025",
+          "sourceRef": "SendTask_004",
+          "targetRef": "Gateway_007"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_026",
+          "sourceRef": "ServiceTask_002",
+          "targetRef": "Gateway_007"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_027",
+          "sourceRef": "Gateway_007",
+          "targetRef": "Gateway_008"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_028",
+          "name": "yes",
+          "sourceRef": "Gateway_008",
+          "targetRef": "UserTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_029",
+          "name": "no",
+          "sourceRef": "Gateway_008",
+          "targetRef": "ServiceTask_003",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_044",
+          "sourceRef": "UserTask_003",
+          "targetRef": "ServiceTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_045",
+          "sourceRef": "ServiceTask_003",
+          "targetRef": "SubProcess_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_046",
+          "sourceRef": "SubProcess_001",
+          "targetRef": "ServiceTask_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_047",
+          "sourceRef": "ServiceTask_004",
+          "targetRef": "SubProcess_002"
+        }
+      ]
+    }
+  ]
+}

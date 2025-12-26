@@ -1,0 +1,311 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "WorkAccidentReportingDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Generator",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "WorkAccidentReportingProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent_001",
+          "name": "Accident Occurs"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_001",
+          "name": "Assess Accident Circumstances",
+          "documentation": "Determine if accident qualifies as work-related based on: employment context, location, time, cause, or special circumstances (training, childcare, medical visits, etc.)"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_001",
+          "name": "Work-Related?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_002",
+          "name": "Record Non-Work Accident",
+          "documentation": "Document accident for internal records (not reportable as work accident)"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_001",
+          "name": "Process Complete (Non-Work)"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_002",
+          "name": "Severity Check",
+          "gatewayDirection": "Diverging",
+          "documentation": "Determine if accident meets reporting thresholds (fatality, 3+ days incapacity, etc.)"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_003",
+          "name": "Immediate Employer Notification",
+          "documentation": "Employee informs employer about: accident details, near-misses, or identified safety risks"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_003",
+          "name": "Split Reporting Paths",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_001",
+          "name": "Notify Labour Inspectorate",
+          "documentation": "Employer reports fatalities/serious injuries immediately if not already reported to emergency services",
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:TimerEventDefinition",
+              "timeDuration": "PT1H"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_004",
+          "name": "Prepare Accident Report",
+          "documentation": "Collect all required documentation: witness statements, medical reports, photos, etc."
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_002",
+          "name": "Submit to Accident Insurance",
+          "documentation": "File report with responsible insurance provider within 5 days (3 copies for schools/universities)",
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:TimerEventDefinition",
+              "timeDuration": "P5D"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask_001",
+          "name": "Notify School Directorate",
+          "documentation": "For students/schoolchildren: report to competent education authority"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_003",
+          "name": "Private Insurance Notification",
+          "documentation": "For privately insured: submit written report per policy conditions (3 days for fatalities)",
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:TimerEventDefinition",
+              "timeDuration": "P3D"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_005",
+          "name": "Self-Employed Self-Report",
+          "documentation": "Self-employed persons report their own accidents to insurance provider"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_004",
+          "name": "Join Reporting Paths",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_006",
+          "name": "Follow-Up Actions",
+          "documentation": "Implement corrective measures, safety improvements, or additional investigations as needed"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_002",
+          "name": "Process Complete (Work-Related)"
+        },
+        {
+          "$type": "bpmn:BoundaryEvent",
+          "id": "BoundaryEvent_001",
+          "name": "Reporting Deadline Missed",
+          "attachedToRef": "ServiceTask_002",
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:TimerEventDefinition",
+              "timeDuration": "P6D"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_007",
+          "name": "Handle Late Reporting",
+          "documentation": "Document reason for delay and submit with late penalty if applicable"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_001",
+          "sourceRef": "StartEvent_001",
+          "targetRef": "UserTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_002",
+          "sourceRef": "UserTask_001",
+          "targetRef": "Gateway_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_003",
+          "name": "Not work-related",
+          "sourceRef": "Gateway_001",
+          "targetRef": "UserTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_004",
+          "name": "Work-related",
+          "sourceRef": "Gateway_001",
+          "targetRef": "UserTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_005",
+          "sourceRef": "UserTask_002",
+          "targetRef": "EndEvent_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_006",
+          "sourceRef": "UserTask_003",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_007",
+          "name": "Minor (no reporting required)",
+          "sourceRef": "Gateway_002",
+          "targetRef": "UserTask_006",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${incapacityDays < 3 && !fatality}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_008",
+          "name": "Reportable",
+          "sourceRef": "Gateway_002",
+          "targetRef": "Gateway_003",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_009",
+          "sourceRef": "Gateway_003",
+          "targetRef": "ServiceTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_010",
+          "sourceRef": "Gateway_003",
+          "targetRef": "UserTask_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_011",
+          "sourceRef": "ServiceTask_001",
+          "targetRef": "Gateway_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_012",
+          "sourceRef": "UserTask_004",
+          "targetRef": "ServiceTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_013",
+          "sourceRef": "UserTask_004",
+          "targetRef": "SendTask_001",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${insuredType == 'student'}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_014",
+          "sourceRef": "UserTask_004",
+          "targetRef": "ServiceTask_003",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${insuranceType == 'private'}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_015",
+          "sourceRef": "UserTask_004",
+          "targetRef": "UserTask_005",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${employmentType == 'self-employed'}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_016",
+          "sourceRef": "ServiceTask_002",
+          "targetRef": "Gateway_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_017",
+          "sourceRef": "SendTask_001",
+          "targetRef": "Gateway_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_018",
+          "sourceRef": "ServiceTask_003",
+          "targetRef": "Gateway_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_019",
+          "sourceRef": "UserTask_005",
+          "targetRef": "Gateway_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_020",
+          "sourceRef": "Gateway_004",
+          "targetRef": "UserTask_006"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_021",
+          "sourceRef": "UserTask_006",
+          "targetRef": "EndEvent_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_022",
+          "sourceRef": "UserTask_007",
+          "targetRef": "EndEvent_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_023",
+          "sourceRef": "BoundaryEvent_001",
+          "targetRef": "UserTask_007"
+        }
+      ]
+    }
+  ]
+}

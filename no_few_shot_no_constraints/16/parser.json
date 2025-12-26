@@ -1,0 +1,20 @@
+{
+  "response": {
+    "generations": [
+      [
+        {
+          "text": "### Process Elements Summary:\n**Tasks:**\n- Send Audit Notification (sendTask)\n- Prepare Financial Statements (userTask)\n- Gather Documents (userTask)\n- Check Regulatory Updates (serviceTask)\n- Submit Documents (sendTask)\n- Review Submission (userTask)\n- Request Clarifications (sendTask)\n- Provide Clarifications (userTask)\n- Conduct Risk Assessment (scriptTask)\n- Evaluate Financial Risks (scriptTask)\n- Evaluate Operational Risks (scriptTask)\n- Evaluate Compliance Risks (scriptTask)\n- Launch Detailed Investigation (subProcess)\n- Compile Audit Report (serviceTask)\n- Review Report (userTask)\n- Update Report (serviceTask)\n- Distribute Report (sendTask)\n- Archive Report (serviceTask)\n\n**Gateways:**\n- XOR (for discrepancies found/not found)\n- AND (for parallel risk evaluations)\n- XOR (for report approval/revision)\n\n**Events:**\n- Start, End\n\n**Subprocesses:**\n- Detailed Investigation Subprocess (includes data analysis, interviews, and site visits)\n\n**Complexity:** High (due to nested conditions, parallel paths, and subprocess)\n\n---\n\n### BPMN Pseudocode:\n```python\nstartEvent(\"Annual Audit Process Start\")\n\nsendTask(\"Audit coordinator sends notification to regional office\")\n\nAND:\n    userTask(\"Regional office prepares financial statements\")\n    userTask(\"Regional office gathers necessary documents\")\n    serviceTask(\"Compliance team checks regulatory updates\")\nEND_AND\n\nsendTask(\"Regional office submits documents to central audit team\")\n\nuserTask(\"Central audit team reviews submission\")\n\nXOR gateway:\n    if (discrepancies found):\n        sendTask(\"Request clarifications from regional office\")\n        userTask(\"Regional office provides clarifications\")\n    else:\n        scriptTask(\"Conduct risk assessment\")\n\nAND:\n    scriptTask(\"Evaluate financial risks\")\n    scriptTask(\"Evaluate operational risks\")\n    scriptTask(\"Evaluate compliance risks\")\nEND_AND\n\nXOR gateway:\n    if (high risk identified):\n        subProcess(\"Detailed Investigation Subprocess\"):\n            startEvent(\"Investigation Start\")\n            scriptTask(\"Perform data analysis\")\n            userTask(\"Conduct interviews\")\n            XOR gateway:\n                if (site visit required):\n                    userTask(\"Schedule and conduct site visit\")\n                else:\n                    scriptTask(\"Proceed without site visit\")\n            endEvent(\"Investigation End\")\n        endSubProcess\n    else:\n        serviceTask(\"Compile audit report\")\n\nuserTask(\"Audit director reviews report\")\n\nXOR gateway:\n    if (report approved):\n        AND:\n            sendTask(\"Distribute final report to executive board\")\n            serviceTask(\"Archive report\")\n        END_AND\n    else:\n        serviceTask(\"Audit team updates report\")\n        userTask(\"Resubmit report to audit director\")\n\nendEvent(\"Annual Audit Process End\")\n```",
+          "generationInfo": {
+            "prompt": 0,
+            "completion": 0
+          }
+        }
+      ]
+    ]
+  },
+  "tokenUsageEstimate": {
+    "completionTokens": 562,
+    "promptTokens": 1825,
+    "totalTokens": 2387
+  }
+}

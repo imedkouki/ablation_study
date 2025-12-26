@@ -1,0 +1,498 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "FarmingBotDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Generator",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "FarmingBotProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent_001",
+          "name": "Farming Bot Initiated"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_001",
+          "name": "Select Resources (1-10)"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_002",
+          "name": "Prioritize Resources"
+        },
+        {
+          "$type": "bpmn:BusinessRuleTask",
+          "id": "BusinessRuleTask_001",
+          "name": "Resolve Resource Dependencies"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_001",
+          "name": "Split Resource Collection",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_001",
+          "name": "Collect Resource 1"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_002",
+          "name": "Collect Resource 2"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_003",
+          "name": "Collect Resource 3"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_004",
+          "name": "Collect Resource 4"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_005",
+          "name": "Collect Resource 5"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_006",
+          "name": "Collect Resource 6"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_007",
+          "name": "Collect Resource 7"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_008",
+          "name": "Collect Resource 8"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_009",
+          "name": "Collect Resource 9"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_010",
+          "name": "Collect Resource 10"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_002",
+          "name": "Join Resource Collection",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_011",
+          "name": "Start Farming Bot"
+        },
+        {
+          "$type": "bpmn:IntermediateCatchEvent",
+          "id": "IntermediateCatchEvent_001",
+          "name": "Natural Disaster",
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:SignalEventDefinition",
+              "id": "SignalEventDefinition_001",
+              "signalRef": "NaturalDisasterSignal"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:ScriptTask",
+          "id": "ScriptTask_001",
+          "name": "Calculate Setback Impact"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask_001",
+          "name": "Notify Player of Milestone"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_003",
+          "name": "Update Resource List (Optional)"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_003",
+          "name": "Update Resources?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_012",
+          "name": "Apply Resource Updates"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_004",
+          "name": "Farming Complete?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_004",
+          "name": "Select Friends to Notify"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_005",
+          "name": "Select Materials to Share"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask_002",
+          "name": "Brag to Friends"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask_003",
+          "name": "Send Materials to Friends"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_001",
+          "name": "Farming Complete"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_001",
+          "sourceRef": "StartEvent_001",
+          "targetRef": "UserTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_002",
+          "sourceRef": "UserTask_001",
+          "targetRef": "UserTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_003",
+          "sourceRef": "UserTask_002",
+          "targetRef": "BusinessRuleTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_004",
+          "sourceRef": "BusinessRuleTask_001",
+          "targetRef": "Gateway_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_005",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ServiceTask_001",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${resource1Selected}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_006",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ServiceTask_002",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${resource2Selected}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_007",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ServiceTask_003",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${resource3Selected}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_008",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ServiceTask_004",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${resource4Selected}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_009",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ServiceTask_005",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${resource5Selected}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_010",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ServiceTask_006",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${resource6Selected}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_011",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ServiceTask_007",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${resource7Selected}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_012",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ServiceTask_008",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${resource8Selected}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_013",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ServiceTask_009",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${resource9Selected}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_014",
+          "sourceRef": "Gateway_001",
+          "targetRef": "ServiceTask_010",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${resource10Selected}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_015",
+          "sourceRef": "ServiceTask_001",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_016",
+          "sourceRef": "ServiceTask_002",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_017",
+          "sourceRef": "ServiceTask_003",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_018",
+          "sourceRef": "ServiceTask_004",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_019",
+          "sourceRef": "ServiceTask_005",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_020",
+          "sourceRef": "ServiceTask_006",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_021",
+          "sourceRef": "ServiceTask_007",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_022",
+          "sourceRef": "ServiceTask_008",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_023",
+          "sourceRef": "ServiceTask_009",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_024",
+          "sourceRef": "ServiceTask_010",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_025",
+          "sourceRef": "Gateway_002",
+          "targetRef": "ServiceTask_011"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_026",
+          "sourceRef": "ServiceTask_011",
+          "targetRef": "IntermediateCatchEvent_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_027",
+          "sourceRef": "IntermediateCatchEvent_001",
+          "targetRef": "ScriptTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_028",
+          "sourceRef": "ScriptTask_001",
+          "targetRef": "ServiceTask_011"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_029",
+          "sourceRef": "ServiceTask_011",
+          "targetRef": "SendTask_001",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${milestoneReached}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_030",
+          "sourceRef": "SendTask_001",
+          "targetRef": "UserTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_031",
+          "sourceRef": "ServiceTask_011",
+          "targetRef": "Gateway_003",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${updateRequested}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_032",
+          "sourceRef": "ServiceTask_011",
+          "targetRef": "Gateway_004",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${!updateRequested}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_033",
+          "sourceRef": "UserTask_003",
+          "targetRef": "ServiceTask_012",
+          "name": "update"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_034",
+          "sourceRef": "ServiceTask_012",
+          "targetRef": "ServiceTask_011"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_035",
+          "sourceRef": "Gateway_003",
+          "targetRef": "ServiceTask_012",
+          "name": "update"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_036",
+          "sourceRef": "Gateway_003",
+          "targetRef": "Gateway_004",
+          "name": "no update",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_037",
+          "sourceRef": "Gateway_004",
+          "targetRef": "UserTask_004",
+          "name": "complete",
+          "conditionExpression": {
+            "$type": "bpmn:FormalExpression",
+            "body": "${farmingComplete}"
+          }
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_038",
+          "sourceRef": "Gateway_004",
+          "targetRef": "ServiceTask_011",
+          "name": "continue",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_039",
+          "sourceRef": "UserTask_004",
+          "targetRef": "UserTask_005"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_040",
+          "sourceRef": "UserTask_005",
+          "targetRef": "SendTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_041",
+          "sourceRef": "UserTask_005",
+          "targetRef": "SendTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_042",
+          "sourceRef": "SendTask_002",
+          "targetRef": "EndEvent_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_043",
+          "sourceRef": "SendTask_003",
+          "targetRef": "EndEvent_001"
+        }
+      ]
+    },
+    {
+      "$type": "bpmn:Signal",
+      "id": "NaturalDisasterSignal",
+      "name": "NaturalDisasterSignal"
+    }
+  ]
+}

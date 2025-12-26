@@ -1,0 +1,340 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "AustriaWorkLiveDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Generator",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "AustriaWorkLiveProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent_001",
+          "name": "Process Initiated"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_001",
+          "name": "Parallel Preparation",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_001",
+          "name": "Search Accommodation"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_002",
+          "name": "Negotiate Rental Agreement"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_003",
+          "name": "Research Bank Options"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_004",
+          "name": "Open Bank Account"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "Gateway_002",
+          "name": "Synchronize Preparation",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_005",
+          "name": "Gather Visa Documents",
+          "documentation": [
+            "Visa application form",
+            "Valid travel document (+3 months validity, 2 empty pages, issued <10 years ago)",
+            "Passport photo (35x45mm)",
+            "Travel health insurance (€30,000 coverage, Schengen-wide)",
+            "Proof of sufficient funds",
+            "Proof of accommodation (rental agreement)",
+            "Return flight ticket",
+            "Employment contract (if applicable)",
+            "Additional documents as requested by consulate"
+          ]
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_001",
+          "name": "Verify Consulate Jurisdiction",
+          "documentation": [
+            "Determine competent Austrian representation based on:",
+            "- Main travel destination (for Schengen visas)",
+            "- Place of residence (for Type D visas)",
+            "- First entry point (if no main destination)"
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_006",
+          "name": "Schedule Visa Appointment"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_007",
+          "name": "Attend Visa Interview",
+          "documentation": [
+            "Submit all required documents",
+            "Pay visa fee",
+            "Provide biometric data if required"
+          ]
+        },
+        {
+          "$type": "bpmn:ReceiveTask",
+          "id": "ReceiveTask_001",
+          "name": "Wait for Visa Decision",
+          "documentation": [
+            "Processing time: typically 15 days (may vary)",
+            "Possible outcomes: Approved, Rejected, Additional documents requested"
+          ]
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "Gateway_003",
+          "name": "Visa Decision?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_008",
+          "name": "Handle Visa Approval",
+          "documentation": [
+            "Collect visa from consulate",
+            "Verify visa details (validity period, type, entries)",
+            "Plan travel dates within visa validity"
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_009",
+          "name": "Handle Visa Rejection",
+          "documentation": [
+            "Review rejection reasons",
+            "Appeal if possible or reapply with additional documents",
+            "Consider alternative visa types if applicable"
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_010",
+          "name": "Provide Additional Documents",
+          "documentation": [
+            "Gather requested documents",
+            "Submit to consulate within specified deadline",
+            "Return to waiting state"
+          ]
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_002",
+          "name": "Register Address in Austria",
+          "documentation": [
+            "Required within 3 days of moving in",
+            "Bring: passport, rental contract, registration form (Meldezettel)",
+            "Done at local registration office (Meldeamt)"
+          ]
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask_003",
+          "name": "Apply for Red-White-Red Card",
+          "documentation": [
+            "If staying >6 months for employment",
+            "Requirements: job offer, qualifications recognition, proof of accommodation",
+            "Submit at Austrian embassy/consulate or in Austria if already on valid visa"
+          ],
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:TimerEventDefinition",
+              "timeCycle": "RRULE:FREQ=MONTHLY;INTERVAL=6"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:BoundaryEvent",
+          "id": "BoundaryEvent_001",
+          "name": "Visa Expiry Reminder",
+          "attachedToRef": "ServiceTask_003",
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:TimerEventDefinition",
+              "timeDuration": "P30D"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask_011",
+          "name": "Renew Visa/RWR Card",
+          "documentation": [
+            "Start renewal process 2-3 months before expiry",
+            "Similar documents as initial application",
+            "May require proof of continued employment/financial means"
+          ]
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_001",
+          "name": "Process Complete - Living in Austria"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent_002",
+          "name": "Process Aborted - Visa Rejected"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_001",
+          "sourceRef": "StartEvent_001",
+          "targetRef": "Gateway_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_002",
+          "sourceRef": "Gateway_001",
+          "targetRef": "UserTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_003",
+          "sourceRef": "UserTask_001",
+          "targetRef": "UserTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_004",
+          "sourceRef": "Gateway_001",
+          "targetRef": "UserTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_005",
+          "sourceRef": "UserTask_003",
+          "targetRef": "UserTask_004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_006",
+          "sourceRef": "UserTask_002",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_007",
+          "sourceRef": "UserTask_004",
+          "targetRef": "Gateway_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_008",
+          "sourceRef": "Gateway_002",
+          "targetRef": "UserTask_005"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_009",
+          "sourceRef": "UserTask_005",
+          "targetRef": "ServiceTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_010",
+          "sourceRef": "ServiceTask_001",
+          "targetRef": "UserTask_006"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_011",
+          "sourceRef": "UserTask_006",
+          "targetRef": "UserTask_007"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_012",
+          "sourceRef": "UserTask_007",
+          "targetRef": "ReceiveTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_013",
+          "sourceRef": "ReceiveTask_001",
+          "targetRef": "Gateway_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_014",
+          "name": "Approved",
+          "sourceRef": "Gateway_003",
+          "targetRef": "UserTask_008"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_015",
+          "name": "Rejected",
+          "sourceRef": "Gateway_003",
+          "targetRef": "UserTask_009"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_016",
+          "name": "Additional Documents",
+          "sourceRef": "Gateway_003",
+          "targetRef": "UserTask_010",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_017",
+          "sourceRef": "UserTask_010",
+          "targetRef": "ReceiveTask_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_018",
+          "sourceRef": "UserTask_008",
+          "targetRef": "ServiceTask_002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_019",
+          "sourceRef": "ServiceTask_002",
+          "targetRef": "ServiceTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_020",
+          "sourceRef": "ServiceTask_003",
+          "targetRef": "EndEvent_001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_021",
+          "sourceRef": "BoundaryEvent_001",
+          "targetRef": "UserTask_011"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_022",
+          "sourceRef": "UserTask_011",
+          "targetRef": "ServiceTask_003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "Flow_023",
+          "sourceRef": "UserTask_009",
+          "targetRef": "EndEvent_002"
+        }
+      ]
+    }
+  ]
+}

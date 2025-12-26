@@ -1,0 +1,201 @@
+{
+  "bpmn:Definitions": {
+    "xmlns:bpmn": "http://www.omg.org/spec/BPMN/20100524/MODEL",
+    "xmlns:bpmndi": "http://www.omg.org/spec/BPMN/20100524/DI",
+    "xmlns:dc": "http://www.omg.org/spec/DD/20100524/DC",
+    "xmlns:di": "http://www.omg.org/spec/DD/20100524/DI",
+    "id": "Definitions-0001",
+    "targetNamespace": "http://bpmn.io/schema/bpmn",
+    "rootElements": [
+      {
+        "bpmn:Process": {
+          "id": "Process-0001",
+          "isExecutable": true,
+          "flowElements": [
+            {
+              "bpmn:StartEvent": {
+                "id": "StartEvent-0001",
+                "name": "New Order Received"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0001",
+                "name": "Validate Order Details"
+              }
+            },
+            {
+              "bpmn:ExclusiveGateway": {
+                "id": "ExclusiveGateway-0001",
+                "name": "Order Validation Gateway",
+                "default": "SequenceFlow-0004"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0002",
+                "name": "Check Inventory"
+              }
+            },
+            {
+              "bpmn:ExclusiveGateway": {
+                "id": "ExclusiveGateway-0002",
+                "name": "Inventory Check Gateway",
+                "default": "SequenceFlow-0007"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0003",
+                "name": "Pack Order"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0004",
+                "name": "Ship Order"
+              }
+            },
+            {
+              "bpmn:SendTask": {
+                "id": "SendTask-0001",
+                "name": "Send Confirmation Email"
+              }
+            },
+            {
+              "bpmn:ServiceTask": {
+                "id": "ServiceTask-0005",
+                "name": "Place Purchase Order"
+              }
+            },
+            {
+              "bpmn:IntermediateCatchEvent": {
+                "id": "IntermediateCatchEvent-0001",
+                "name": "Wait for 3 Days",
+                "eventDefinitions": [
+                  {
+                    "bpmn:TimerEventDefinition": {
+                      "id": "TimerEventDefinition-0001",
+                      "timeDuration": "P3D"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "bpmn:SendTask": {
+                "id": "SendTask-0002",
+                "name": "Notify Customer of Invalid Order"
+              }
+            },
+            {
+              "bpmn:EndEvent": {
+                "id": "EndEvent-0001",
+                "name": "Order Processing Complete"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0001",
+                "sourceRef": "StartEvent-0001",
+                "targetRef": "ServiceTask-0001"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0002",
+                "sourceRef": "ServiceTask-0001",
+                "targetRef": "ExclusiveGateway-0001"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0003",
+                "sourceRef": "ExclusiveGateway-0001",
+                "targetRef": "ServiceTask-0002",
+                "conditionExpression": {
+                  "resource": "http://www.omg.org/spec/BPMN/20100524/MODEL",
+                  "expression": "Order is valid"
+                }
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0004",
+                "sourceRef": "ExclusiveGateway-0001",
+                "targetRef": "SendTask-0002"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0005",
+                "sourceRef": "ServiceTask-0002",
+                "targetRef": "ExclusiveGateway-0002"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0006",
+                "sourceRef": "ExclusiveGateway-0002",
+                "targetRef": "ServiceTask-0003",
+                "conditionExpression": {
+                  "resource": "http://www.omg.org/spec/BPMN/20100524/MODEL",
+                  "expression": "Inventory is sufficient"
+                }
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0007",
+                "sourceRef": "ExclusiveGateway-0002",
+                "targetRef": "ServiceTask-0005"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0008",
+                "sourceRef": "ServiceTask-0003",
+                "targetRef": "ServiceTask-0004"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0009",
+                "sourceRef": "ServiceTask-0004",
+                "targetRef": "SendTask-0001"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0010",
+                "sourceRef": "SendTask-0001",
+                "targetRef": "EndEvent-0001"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0011",
+                "sourceRef": "ServiceTask-0005",
+                "targetRef": "IntermediateCatchEvent-0001"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0012",
+                "sourceRef": "IntermediateCatchEvent-0001",
+                "targetRef": "ServiceTask-0003"
+              }
+            },
+            {
+              "bpmn:SequenceFlow": {
+                "id": "SequenceFlow-0013",
+                "sourceRef": "SendTask-0002",
+                "targetRef": "EndEvent-0001"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,668 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "Definitions_UniversityEnrollment",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Modeler",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "Process_UniversityEnrollment",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent-ApplicationSubmitted-id-0001",
+          "name": "Application Submitted"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ReviewApplication-id-0002",
+          "name": "Admissions Office Reviews Application and Documents"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-DocumentsComplete-id-0003",
+          "name": "Documents Complete?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-NotifyMissingDocuments-id-0004",
+          "name": "Send: Notification to Applicant (Missing Documents)"
+        },
+        {
+          "$type": "bpmn:ReceiveTask",
+          "id": "ReceiveTask-ReceiveMissingDocuments-id-0005",
+          "name": "Receive: Missing Documents from Applicant"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StartToReview-id-0001",
+          "sourceRef": "StartEvent-ApplicationSubmitted-id-0001",
+          "targetRef": "UserTask-ReviewApplication-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ReviewToDocumentsCheck-id-0002",
+          "sourceRef": "UserTask-ReviewApplication-id-0002",
+          "targetRef": "ExclusiveGateway-DocumentsComplete-id-0003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DocumentsMissing-id-0003",
+          "name": "documents_missing",
+          "sourceRef": "ExclusiveGateway-DocumentsComplete-id-0003",
+          "targetRef": "SendTask-NotifyMissingDocuments-id-0004",
+          "isDefault": false
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DocumentsComplete-id-0004",
+          "name": "documents_complete",
+          "sourceRef": "ExclusiveGateway-DocumentsComplete-id-0003",
+          "targetRef": "ParallelGateway-SplitEvaluation-id-0006",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-NotifyToReceiveMissing-id-0005",
+          "sourceRef": "SendTask-NotifyMissingDocuments-id-0004",
+          "targetRef": "ReceiveTask-ReceiveMissingDocuments-id-0005"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ReceiveMissingToMerge-id-0006",
+          "sourceRef": "ReceiveTask-ReceiveMissingDocuments-id-0005",
+          "targetRef": "ParallelGateway-SplitEvaluation-id-0006"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "ParallelGateway-SplitEvaluation-id-0006",
+          "name": "Parallel Evaluation",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-EvaluateApplication-id-0007",
+          "name": "Admissions Committee Evaluates Application"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-ProcessFees-id-0008",
+          "name": "Finance Department Processes Fees/Waivers"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToEvaluate-id-0007",
+          "sourceRef": "ParallelGateway-SplitEvaluation-id-0006",
+          "targetRef": "UserTask-EvaluateApplication-id-0007"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToProcessFees-id-0008",
+          "sourceRef": "ParallelGateway-SplitEvaluation-id-0006",
+          "targetRef": "ServiceTask-ProcessFees-id-0008"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-ApplicationOutcome-id-0009",
+          "name": "Application Outcome",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-EvaluateToOutcome-id-0009",
+          "sourceRef": "UserTask-EvaluateApplication-id-0007",
+          "targetRef": "ExclusiveGateway-ApplicationOutcome-id-0009"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-SendAcceptanceLetter-id-0010",
+          "name": "Send: Acceptance Letter"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-SendRejectionLetter-id-0011",
+          "name": "Send: Rejection Letter"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-ApplicationRejected-id-0012",
+          "name": "Application Rejected"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ApplicationApproved-id-0010",
+          "name": "application_approved",
+          "sourceRef": "ExclusiveGateway-ApplicationOutcome-id-0009",
+          "targetRef": "SendTask-SendAcceptanceLetter-id-0010",
+          "isDefault": false
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ApplicationRejected-id-0011",
+          "name": "application_rejected",
+          "sourceRef": "ExclusiveGateway-ApplicationOutcome-id-0009",
+          "targetRef": "SendTask-SendRejectionLetter-id-0011",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SendRejectionToEnd-id-0012",
+          "sourceRef": "SendTask-SendRejectionLetter-id-0011",
+          "targetRef": "EndEvent-ApplicationRejected-id-0012"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "ParallelGateway-JoinEvaluation-id-0013",
+          "name": "Join Evaluation",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SendAcceptanceToJoin-id-0013",
+          "sourceRef": "SendTask-SendAcceptanceLetter-id-0010",
+          "targetRef": "ParallelGateway-JoinEvaluation-id-0013"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ProcessFeesToJoin-id-0014",
+          "sourceRef": "ServiceTask-ProcessFees-id-0008",
+          "targetRef": "ParallelGateway-JoinEvaluation-id-0013"
+        },
+        {
+          "$type": "bpmn:ReceiveTask",
+          "id": "ReceiveTask-ConfirmEnrollment-id-0015",
+          "name": "Receive: Enrollment Confirmation from Student"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-JoinToConfirmEnrollment-id-0015",
+          "sourceRef": "ParallelGateway-JoinEvaluation-id-0013",
+          "targetRef": "ReceiveTask-ConfirmEnrollment-id-0015"
+        },
+        {
+          "$type": "bpmn:BoundaryEvent",
+          "id": "BoundaryEvent-EnrollmentDeadline-id-0016",
+          "name": "7-Day Enrollment Deadline",
+          "attachedToRef": "ReceiveTask-ConfirmEnrollment-id-0015",
+          "cancelActivity": true,
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:TimerEventDefinition",
+              "timeDuration": "P7D"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-CancelApplication-id-0017",
+          "name": "Cancel Application (Deadline Missed)"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-SendCancellationNotice-id-0018",
+          "name": "Send: Cancellation Notice"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-ApplicationCanceled-id-0019",
+          "name": "Application Canceled (No Confirmation)"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DeadlineToCancel-id-0016",
+          "sourceRef": "BoundaryEvent-EnrollmentDeadline-id-0016",
+          "targetRef": "ServiceTask-CancelApplication-id-0017"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CancelToNotice-id-0017",
+          "sourceRef": "ServiceTask-CancelApplication-id-0017",
+          "targetRef": "SendTask-SendCancellationNotice-id-0018"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-NoticeToCanceledEnd-id-0018",
+          "sourceRef": "SendTask-SendCancellationNotice-id-0018",
+          "targetRef": "EndEvent-ApplicationCanceled-id-0019"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-EnrollmentConfirmed-id-0020",
+          "name": "Enrollment Confirmed?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ConfirmEnrollmentToCheck-id-0019",
+          "sourceRef": "ReceiveTask-ConfirmEnrollment-id-0015",
+          "targetRef": "ExclusiveGateway-EnrollmentConfirmed-id-0020"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-SendOrientationMaterials-id-0021",
+          "name": "Send: Orientation Materials"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-SetupITAccounts-id-0022",
+          "name": "IT Department Sets Up Student Accounts (Email, Portal, Library)"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-EnrollmentConfirmedToOrientation-id-0020",
+          "name": "enrollment_confirmed",
+          "sourceRef": "ExclusiveGateway-EnrollmentConfirmed-id-0020",
+          "targetRef": "SendTask-SendOrientationMaterials-id-0021",
+          "isDefault": false
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-EnrollmentNotConfirmedToEnd-id-0021",
+          "name": "enrollment_not_confirmed",
+          "sourceRef": "ExclusiveGateway-EnrollmentConfirmed-id-0020",
+          "targetRef": "EndEvent-ApplicationCanceled-id-0019",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-OrientationToITSetup-id-0022",
+          "sourceRef": "SendTask-SendOrientationMaterials-id-0021",
+          "targetRef": "ServiceTask-SetupITAccounts-id-0022"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-InternationalStudent-id-0023",
+          "name": "International Student?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ITSetupToInternationalCheck-id-0023",
+          "sourceRef": "ServiceTask-SetupITAccounts-id-0022",
+          "targetRef": "ExclusiveGateway-InternationalStudent-id-0023"
+        },
+        {
+          "$type": "bpmn:SubProcess",
+          "id": "SubProcess-VisaProcessing-id-0024",
+          "name": "Visa Processing",
+          "flowElements": [
+            {
+              "$type": "bpmn:StartEvent",
+              "id": "StartEvent-VisaProcessingInitiated-id-0025",
+              "name": "Visa Processing Initiated"
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask-ReviewVisaDocuments-id-0026",
+              "name": "International Student Office Reviews Visa Documents"
+            },
+            {
+              "$type": "bpmn:ServiceTask",
+              "id": "ServiceTask-IssueVisaDocumentation-id-0027",
+              "name": "Issue Visa Documentation"
+            },
+            {
+              "$type": "bpmn:SendTask",
+              "id": "SendTask-SendVisaApprovalNotice-id-0028",
+              "name": "Send: Visa Approval Notice to Student"
+            },
+            {
+              "$type": "bpmn:EndEvent",
+              "id": "EndEvent-VisaProcessingComplete-id-0029",
+              "name": "Visa Processing Complete"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-VisaStartToReview-id-0025",
+              "sourceRef": "StartEvent-VisaProcessingInitiated-id-0025",
+              "targetRef": "UserTask-ReviewVisaDocuments-id-0026"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-ReviewToIssueVisa-id-0026",
+              "sourceRef": "UserTask-ReviewVisaDocuments-id-0026",
+              "targetRef": "ServiceTask-IssueVisaDocumentation-id-0027"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-IssueVisaToNotice-id-0027",
+              "sourceRef": "ServiceTask-IssueVisaDocumentation-id-0027",
+              "targetRef": "SendTask-SendVisaApprovalNotice-id-0028"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-NoticeToVisaEnd-id-0028",
+              "sourceRef": "SendTask-SendVisaApprovalNotice-id-0028",
+              "targetRef": "EndEvent-VisaProcessingComplete-id-0029"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-InternationalYesToVisa-id-0024",
+          "name": "student_is_international",
+          "sourceRef": "ExclusiveGateway-InternationalStudent-id-0023",
+          "targetRef": "SubProcess-VisaProcessing-id-0024",
+          "isDefault": false
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-InternationalNoToStudyPlan-id-0025",
+          "name": "student_not_international",
+          "sourceRef": "ExclusiveGateway-InternationalStudent-id-0023",
+          "targetRef": "SubProcess-CreateStudyPlan-id-0030",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SubProcess",
+          "id": "SubProcess-CreateStudyPlan-id-0030",
+          "name": "Create Study Plan",
+          "flowElements": [
+            {
+              "$type": "bpmn:StartEvent",
+              "id": "StartEvent-StudyPlanCreationStarted-id-0031",
+              "name": "Study Plan Creation Started"
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask-MeetAdvisor-id-0032",
+              "name": "Meet with Academic Advisor"
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask-SelectCourses-id-0033",
+              "name": "Select Courses"
+            },
+            {
+              "$type": "bpmn:ExclusiveGateway",
+              "id": "ExclusiveGateway-ScheduleConflicts-id-0034",
+              "name": "Schedule Conflicts?",
+              "gatewayDirection": "Diverging"
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask-ResolveConflicts-id-0035",
+              "name": "Resolve Schedule Conflicts with Advisor"
+            },
+            {
+              "$type": "bpmn:ServiceTask",
+              "id": "ServiceTask-FinalizeStudyPlan-id-0036",
+              "name": "Finalize and Submit Study Plan"
+            },
+            {
+              "$type": "bpmn:EndEvent",
+              "id": "EndEvent-StudyPlanApproved-id-0037",
+              "name": "Study Plan Approved"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-StudyPlanStartToMeetAdvisor-id-0031",
+              "sourceRef": "StartEvent-StudyPlanCreationStarted-id-0031",
+              "targetRef": "UserTask-MeetAdvisor-id-0032"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-MeetAdvisorToSelectCourses-id-0032",
+              "sourceRef": "UserTask-MeetAdvisor-id-0032",
+              "targetRef": "UserTask-SelectCourses-id-0033"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-SelectCoursesToConflictsCheck-id-0033",
+              "sourceRef": "UserTask-SelectCourses-id-0033",
+              "targetRef": "ExclusiveGateway-ScheduleConflicts-id-0034"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-ConflictsExist-id-0034",
+              "name": "schedule_conflicts_exist",
+              "sourceRef": "ExclusiveGateway-ScheduleConflicts-id-0034",
+              "targetRef": "UserTask-ResolveConflicts-id-0035",
+              "isDefault": false
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-NoConflicts-id-0035",
+              "name": "no_conflicts",
+              "sourceRef": "ExclusiveGateway-ScheduleConflicts-id-0034",
+              "targetRef": "ServiceTask-FinalizeStudyPlan-id-0036",
+              "isDefault": true
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-ResolveConflictsToFinalize-id-0036",
+              "sourceRef": "UserTask-ResolveConflicts-id-0035",
+              "targetRef": "ServiceTask-FinalizeStudyPlan-id-0036"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-FinalizeToStudyPlanEnd-id-0037",
+              "sourceRef": "ServiceTask-FinalizeStudyPlan-id-0036",
+              "targetRef": "EndEvent-StudyPlanApproved-id-0037"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-VisaToStudyPlan-id-0029",
+          "sourceRef": "SubProcess-VisaProcessing-id-0024",
+          "targetRef": "SubProcess-CreateStudyPlan-id-0030"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-AttendClasses-id-0038",
+          "name": "Student Attends Classes"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StudyPlanToAttendClasses-id-0038",
+          "sourceRef": "SubProcess-CreateStudyPlan-id-0030",
+          "targetRef": "UserTask-AttendClasses-id-0038"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-AddDropCourses-id-0039",
+          "name": "Add/Drop Courses (Within Add/Drop Period)"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AttendClassesToAddDrop-id-0039",
+          "sourceRef": "UserTask-AttendClasses-id-0038",
+          "targetRef": "UserTask-AddDropCourses-id-0039"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-PostGrades-id-0040",
+          "name": "Post Grades at Semester End"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AddDropToPostGrades-id-0040",
+          "sourceRef": "UserTask-AddDropCourses-id-0039",
+          "targetRef": "ServiceTask-PostGrades-id-0040"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-StudentAppeals-id-0041",
+          "name": "Student Files Appeal?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PostGradesToAppealCheck-id-0041",
+          "sourceRef": "ServiceTask-PostGrades-id-0040",
+          "targetRef": "ExclusiveGateway-StudentAppeals-id-0041"
+        },
+        {
+          "$type": "bpmn:SubProcess",
+          "id": "SubProcess-AppealsProcess-id-0042",
+          "name": "Appeals Process",
+          "flowElements": [
+            {
+              "$type": "bpmn:StartEvent",
+              "id": "StartEvent-AppealSubmitted-id-0043",
+              "name": "Appeal Submitted"
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask-SubmitAppealForm-id-0044",
+              "name": "Student Submits Appeal Form"
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask-ReviewAppeal-id-0045",
+              "name": "Appeals Committee Reviews Case"
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask-MeetAppealsCommittee-id-0046",
+              "name": "Appeals Committee Meets with Student"
+            },
+            {
+              "$type": "bpmn:ExclusiveGateway",
+              "id": "ExclusiveGateway-AppealDecision-id-0047",
+              "name": "Appeal Decision",
+              "gatewayDirection": "Diverging"
+            },
+            {
+              "$type": "bpmn:ServiceTask",
+              "id": "ServiceTask-UpdateRecord-id-0048",
+              "name": "Update Student Record (Appeal Approved)"
+            },
+            {
+              "$type": "bpmn:SendTask",
+              "id": "SendTask-SendAppealRejection-id-0049",
+              "name": "Send: Appeal Rejection Notice"
+            },
+            {
+              "$type": "bpmn:EndEvent",
+              "id": "EndEvent-AppealProcessComplete-id-0050",
+              "name": "Appeal Process Complete"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-AppealStartToSubmitForm-id-0043",
+              "sourceRef": "StartEvent-AppealSubmitted-id-0043",
+              "targetRef": "UserTask-SubmitAppealForm-id-0044"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-SubmitFormToReview-id-0044",
+              "sourceRef": "UserTask-SubmitAppealForm-id-0044",
+              "targetRef": "UserTask-ReviewAppeal-id-0045"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-ReviewToMeetCommittee-id-0045",
+              "sourceRef": "UserTask-ReviewAppeal-id-0045",
+              "targetRef": "UserTask-MeetAppealsCommittee-id-0046"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-MeetCommitteeToDecision-id-0046",
+              "sourceRef": "UserTask-MeetAppealsCommittee-id-0046",
+              "targetRef": "ExclusiveGateway-AppealDecision-id-0047"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-AppealApproved-id-0047",
+              "name": "appeal_approved",
+              "sourceRef": "ExclusiveGateway-AppealDecision-id-0047",
+              "targetRef": "ServiceTask-UpdateRecord-id-0048",
+              "isDefault": false
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-AppealRejected-id-0048",
+              "name": "appeal_rejected",
+              "sourceRef": "ExclusiveGateway-AppealDecision-id-0047",
+              "targetRef": "SendTask-SendAppealRejection-id-0049",
+              "isDefault": true
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-UpdateRecordToAppealEnd-id-0049",
+              "sourceRef": "ServiceTask-UpdateRecord-id-0048",
+              "targetRef": "EndEvent-AppealProcessComplete-id-0050"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-SendRejectionToAppealEnd-id-0050",
+              "sourceRef": "SendTask-SendAppealRejection-id-0049",
+              "targetRef": "EndEvent-AppealProcessComplete-id-0050"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AppealYesToAppealsProcess-id-0042",
+          "name": "student_files_appeal",
+          "sourceRef": "ExclusiveGateway-StudentAppeals-id-0041",
+          "targetRef": "SubProcess-AppealsProcess-id-0042",
+          "isDefault": false
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AppealNoToSemesterLoop-id-0043",
+          "name": "no_appeal",
+          "sourceRef": "ExclusiveGateway-StudentAppeals-id-0041",
+          "targetRef": "ExclusiveGateway-StudentStatus-id-0051",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AppealsProcessToSemesterLoop-id-0044",
+          "sourceRef": "SubProcess-AppealsProcess-id-0042",
+          "targetRef": "ExclusiveGateway-StudentStatus-id-0051"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-StudentStatus-id-0051",
+          "name": "Student Status",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-StudentGraduated-id-0052",
+          "name": "Student Graduated"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-StudentWithdrew-id-0053",
+          "name": "Student Withdrew"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SemesterLoopToStatusCheck-id-0045",
+          "sourceRef": "ServiceTask-PostGrades-id-0040",
+          "targetRef": "ExclusiveGateway-StudentStatus-id-0051"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StudentGraduated-id-0051",
+          "name": "student_graduates",
+          "sourceRef": "ExclusiveGateway-StudentStatus-id-0051",
+          "targetRef": "EndEvent-StudentGraduated-id-0052",
+          "isDefault": false
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StudentWithdrew-id-0052",
+          "name": "student_withdrew",
+          "sourceRef": "ExclusiveGateway-StudentStatus-id-0051",
+          "targetRef": "EndEvent-StudentWithdrew-id-0053",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AttendClassesLoopBack-id-0046",
+          "sourceRef": "UserTask-AttendClasses-id-0038",
+          "targetRef": "ExclusiveGateway-StudentStatus-id-0051"
+        }
+      ]
+    }
+  ]
+}

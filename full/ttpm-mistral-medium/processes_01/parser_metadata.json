@@ -1,0 +1,42 @@
+{
+  "parser_metadata": {
+    "model": "mistral-medium-latest",
+    "temperature": 0.2,
+    "api_key_set": true,
+    "response_metadata": {
+      "token_usage": {
+        "prompt_tokens": 6526,
+        "total_tokens": 7458,
+        "completion_tokens": 932
+      },
+      "model_name": "mistral-medium-latest",
+      "model": "mistral-medium-latest",
+      "finish_reason": "stop",
+      "model_provider": "mistralai"
+    },
+    "usage_metadata": {
+      "input_tokens": 6526,
+      "output_tokens": 932,
+      "total_tokens": 7458
+    },
+    "id": "lc_run--d0ee6af3-9837-48c4-884e-08a8dddb90f8-0"
+  },
+  "process_info": {
+    "tasks_count": 0,
+    "gateways_count": 0,
+    "events_count": 0,
+    "boundary_events_count": 0,
+    "subprocesses_count": 0,
+    "pseudocode_lines": 0,
+    "elements_extracted": false,
+    "pseudocode_extracted": false
+  },
+  "structured_elements": {
+    "tasks": [],
+    "gateways": [],
+    "events": [],
+    "boundary_events": [],
+    "subprocesses": []
+  },
+  "status": "success"
+}

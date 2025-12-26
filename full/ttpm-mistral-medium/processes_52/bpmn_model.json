@@ -1,0 +1,115 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "DismissalProcessDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Modeler",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "DismissalProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "MessageStartEvent-DismissalReceivedFromMPON-id-0001",
+          "name": "Dismissal Process Initiated",
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:MessageEventDefinition",
+              "name": "DismissalReceivedFromMPON"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:ReceiveTask",
+          "id": "ReceiveTask-ReceiveDismissalFromMPON-id-0001",
+          "name": "Receive: dismissal from MPON"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-MPOOReviewsDismissal-id-0001",
+          "name": "MPOO reviews dismissal"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-DismissalDecision-id-0001",
+          "name": "Dismissal Decision",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-SendOppositionToDismissal-id-0001",
+          "name": "Send: opposition to dismissal"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-SendConfirmationOfDismissal-id-0002",
+          "name": "Send: confirmation of dismissal"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-ConvergePaths-id-0002",
+          "name": "Converge Paths",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-DismissalProcessComplete-id-0001",
+          "name": "Dismissal Process Complete"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StartToReceive-id-0001",
+          "sourceRef": "MessageStartEvent-DismissalReceivedFromMPON-id-0001",
+          "targetRef": "ReceiveTask-ReceiveDismissalFromMPON-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ReceiveToReview-id-0002",
+          "sourceRef": "ReceiveTask-ReceiveDismissalFromMPON-id-0001",
+          "targetRef": "UserTask-MPOOReviewsDismissal-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ReviewToDecision-id-0003",
+          "sourceRef": "UserTask-MPOOReviewsDismissal-id-0001",
+          "targetRef": "ExclusiveGateway-DismissalDecision-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DecisionToOppose-id-0004",
+          "name": "MPOO opposes dismissal",
+          "sourceRef": "ExclusiveGateway-DismissalDecision-id-0001",
+          "targetRef": "SendTask-SendOppositionToDismissal-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DecisionToConfirm-id-0005",
+          "name": "MPOO confirms dismissal",
+          "sourceRef": "ExclusiveGateway-DismissalDecision-id-0001",
+          "targetRef": "SendTask-SendConfirmationOfDismissal-id-0002",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-OpposeToConverge-id-0006",
+          "sourceRef": "SendTask-SendOppositionToDismissal-id-0001",
+          "targetRef": "ExclusiveGateway-ConvergePaths-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ConfirmToConverge-id-0007",
+          "sourceRef": "SendTask-SendConfirmationOfDismissal-id-0002",
+          "targetRef": "ExclusiveGateway-ConvergePaths-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ConvergeToEnd-id-0008",
+          "sourceRef": "ExclusiveGateway-ConvergePaths-id-0002",
+          "targetRef": "EndEvent-DismissalProcessComplete-id-0001"
+        }
+      ]
+    }
+  ]
+}

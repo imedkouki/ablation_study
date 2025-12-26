@@ -1,0 +1,344 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "Definitions_CentralVenousCatheterization",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Modeler",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "Process_CentralVenousCatheterization",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent-Initiated-id-0001",
+          "name": "Central Venous Catheterization Initiated"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-PrepareImplements-id-0001",
+          "name": "Prepare implements"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-WashHands-id-0002",
+          "name": "Wash hands and wear sterile clothes"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-CleanPunctureArea-id-0003",
+          "name": "Clean puncture area"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-DrapePunctureZone-id-0004",
+          "name": "Drape puncture zone"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ConfigureUltrasound-id-0005",
+          "name": "Configure ultrasound"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ApplyGelToProbe-id-0006",
+          "name": "Apply gel to probe"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-CoverProbe-id-0007",
+          "name": "Cover probe and apply sterile gel"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-PositionProbeAndPatient-id-0008",
+          "name": "Position probe and patient"
+        },
+        {
+          "$type": "bpmn:InclusiveGateway",
+          "id": "InclusiveGateway-VeinIdentification-id-0001",
+          "name": "Identify vein",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-IdentifyVeinAnatomic-id-0009",
+          "name": "Identify vein using anatomic landmarks"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-IdentifyVeinDoppler-id-0010",
+          "name": "Identify vein using Doppler"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-IdentifyVeinCompression-id-0011",
+          "name": "Identify vein using compression"
+        },
+        {
+          "$type": "bpmn:InclusiveGateway",
+          "id": "InclusiveGateway-VeinIdentificationJoin-id-0002",
+          "name": "Vein identification complete",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-AnesthetizeAndPuncture-id-0012",
+          "name": "Anesthetize and puncture"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-CheckBloodReturn-id-0013",
+          "name": "Check blood return"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-BloodReturn-id-0001",
+          "name": "Blood return correct?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-DropProbe-id-0014",
+          "name": "Drop probe and remove syringe"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-InstallGuidewire-id-0015",
+          "name": "Install guidewire"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-RemoveTrocar-id-0016",
+          "name": "Remove trocar"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-CheckWirePosition-id-0017",
+          "name": "Check wire position [long/short axis]"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-WirePosition-id-0001",
+          "name": "Wire position correct?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-WidenPathway-id-0018",
+          "name": "Widen pathway"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-AdvanceCatheter-id-0019",
+          "name": "Advance catheter"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-RemoveGuidewire-id-0020",
+          "name": "Remove guidewire"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-VerifyFlow-id-0021",
+          "name": "Verify flow/reflow and catheter position"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-ProcedureComplete-id-0001",
+          "name": "Procedure Complete"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StartToPrepare-id-0001",
+          "sourceRef": "StartEvent-Initiated-id-0001",
+          "targetRef": "UserTask-PrepareImplements-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PrepareToWash-id-0002",
+          "sourceRef": "UserTask-PrepareImplements-id-0001",
+          "targetRef": "UserTask-WashHands-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-WashToClean-id-0003",
+          "sourceRef": "UserTask-WashHands-id-0002",
+          "targetRef": "UserTask-CleanPunctureArea-id-0003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CleanToDrape-id-0004",
+          "sourceRef": "UserTask-CleanPunctureArea-id-0003",
+          "targetRef": "UserTask-DrapePunctureZone-id-0004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DrapeToConfigure-id-0005",
+          "sourceRef": "UserTask-DrapePunctureZone-id-0004",
+          "targetRef": "UserTask-ConfigureUltrasound-id-0005"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ConfigureToApplyGel-id-0006",
+          "sourceRef": "UserTask-ConfigureUltrasound-id-0005",
+          "targetRef": "UserTask-ApplyGelToProbe-id-0006"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ApplyGelToCover-id-0007",
+          "sourceRef": "UserTask-ApplyGelToProbe-id-0006",
+          "targetRef": "UserTask-CoverProbe-id-0007"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CoverToPosition-id-0008",
+          "sourceRef": "UserTask-CoverProbe-id-0007",
+          "targetRef": "UserTask-PositionProbeAndPatient-id-0008"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PositionToVeinIdentification-id-0009",
+          "sourceRef": "UserTask-PositionProbeAndPatient-id-0008",
+          "targetRef": "InclusiveGateway-VeinIdentification-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-VeinIdentificationToAnatomic-id-0010",
+          "sourceRef": "InclusiveGateway-VeinIdentification-id-0001",
+          "targetRef": "UserTask-IdentifyVeinAnatomic-id-0009",
+          "name": "anatomic"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-VeinIdentificationToDoppler-id-0011",
+          "sourceRef": "InclusiveGateway-VeinIdentification-id-0001",
+          "targetRef": "UserTask-IdentifyVeinDoppler-id-0010",
+          "name": "doppler"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-VeinIdentificationToCompression-id-0012",
+          "sourceRef": "InclusiveGateway-VeinIdentification-id-0001",
+          "targetRef": "UserTask-IdentifyVeinCompression-id-0011",
+          "name": "compression"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AnatomicToJoin-id-0013",
+          "sourceRef": "UserTask-IdentifyVeinAnatomic-id-0009",
+          "targetRef": "InclusiveGateway-VeinIdentificationJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DopplerToJoin-id-0014",
+          "sourceRef": "UserTask-IdentifyVeinDoppler-id-0010",
+          "targetRef": "InclusiveGateway-VeinIdentificationJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CompressionToJoin-id-0015",
+          "sourceRef": "UserTask-IdentifyVeinCompression-id-0011",
+          "targetRef": "InclusiveGateway-VeinIdentificationJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-JoinToAnesthetize-id-0016",
+          "sourceRef": "InclusiveGateway-VeinIdentificationJoin-id-0002",
+          "targetRef": "UserTask-AnesthetizeAndPuncture-id-0012"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AnesthetizeToCheckBlood-id-0017",
+          "sourceRef": "UserTask-AnesthetizeAndPuncture-id-0012",
+          "targetRef": "UserTask-CheckBloodReturn-id-0013"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CheckBloodToGateway-id-0018",
+          "sourceRef": "UserTask-CheckBloodReturn-id-0013",
+          "targetRef": "ExclusiveGateway-BloodReturn-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-BloodReturnCorrectToDrop-id-0019",
+          "sourceRef": "ExclusiveGateway-BloodReturn-id-0001",
+          "targetRef": "UserTask-DropProbe-id-0014",
+          "name": "blood_return == correct"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-BloodReturnIncorrectToAnesthetize-id-0020",
+          "sourceRef": "ExclusiveGateway-BloodReturn-id-0001",
+          "targetRef": "UserTask-AnesthetizeAndPuncture-id-0012",
+          "name": "blood_return == incorrect",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DropToInstallGuidewire-id-0021",
+          "sourceRef": "UserTask-DropProbe-id-0014",
+          "targetRef": "UserTask-InstallGuidewire-id-0015"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-InstallToRemoveTrocar-id-0022",
+          "sourceRef": "UserTask-InstallGuidewire-id-0015",
+          "targetRef": "UserTask-RemoveTrocar-id-0016"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-RemoveToCheckWire-id-0023",
+          "sourceRef": "UserTask-RemoveTrocar-id-0016",
+          "targetRef": "UserTask-CheckWirePosition-id-0017"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CheckWireToGateway-id-0024",
+          "sourceRef": "UserTask-CheckWirePosition-id-0017",
+          "targetRef": "ExclusiveGateway-WirePosition-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-WirePositionCorrectToWiden-id-0025",
+          "sourceRef": "ExclusiveGateway-WirePosition-id-0001",
+          "targetRef": "UserTask-WidenPathway-id-0018",
+          "name": "wire_position == correct"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-WirePositionIncorrectToAnesthetize-id-0026",
+          "sourceRef": "ExclusiveGateway-WirePosition-id-0001",
+          "targetRef": "UserTask-AnesthetizeAndPuncture-id-0012",
+          "name": "wire_position == incorrect",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-WidenToAdvance-id-0027",
+          "sourceRef": "UserTask-WidenPathway-id-0018",
+          "targetRef": "UserTask-AdvanceCatheter-id-0019"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AdvanceToRemoveGuidewire-id-0028",
+          "sourceRef": "UserTask-AdvanceCatheter-id-0019",
+          "targetRef": "UserTask-RemoveGuidewire-id-0020"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-RemoveGuidewireToVerify-id-0029",
+          "sourceRef": "UserTask-RemoveGuidewire-id-0020",
+          "targetRef": "UserTask-VerifyFlow-id-0021"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-VerifyToEnd-id-0030",
+          "sourceRef": "UserTask-VerifyFlow-id-0021",
+          "targetRef": "EndEvent-ProcedureComplete-id-0001"
+        }
+      ]
+    }
+  ]
+}

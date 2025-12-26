@@ -1,0 +1,136 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "Customer-Inquiry-Process-Definitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Modeler",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "Customer-Inquiry-Process",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent-CustomerInquiryReceived-id-0001",
+          "name": "Customer inquiry received"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-CollectCustomerInfo-id-0001",
+          "name": "Collect customer information and concerns"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-AddressConcerns-id-0002",
+          "name": "Address customer questions/concerns"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-CustomerInterested-id-0001",
+          "name": "Customer interested?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-GuideProductSelection-id-0003",
+          "name": "Guide customer through product selection"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ProvideQuote-id-0004",
+          "name": "Provide quote to customer"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-PlaceOrder-id-0001",
+          "name": "Place order in system"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-RecordOrder-id-0002",
+          "name": "Record order details"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-SendConfirmation-id-0001",
+          "name": "Send order confirmation to customer"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-OrderConfirmed-id-0001",
+          "name": "Order placed and confirmed"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-CustomerNotInterested-id-0002",
+          "name": "Customer not interested"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StartToCollectInfo-id-0001",
+          "sourceRef": "StartEvent-CustomerInquiryReceived-id-0001",
+          "targetRef": "UserTask-CollectCustomerInfo-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CollectToAddress-id-0002",
+          "sourceRef": "UserTask-CollectCustomerInfo-id-0001",
+          "targetRef": "UserTask-AddressConcerns-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AddressToGateway-id-0003",
+          "sourceRef": "UserTask-AddressConcerns-id-0002",
+          "targetRef": "ExclusiveGateway-CustomerInterested-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-GatewayToGuideProduct-id-0004",
+          "name": "customer_interested == true",
+          "sourceRef": "ExclusiveGateway-CustomerInterested-id-0001",
+          "targetRef": "UserTask-GuideProductSelection-id-0003",
+          "isDefault": false
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-GuideToProvideQuote-id-0005",
+          "sourceRef": "UserTask-GuideProductSelection-id-0003",
+          "targetRef": "UserTask-ProvideQuote-id-0004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ProvideToPlaceOrder-id-0006",
+          "sourceRef": "UserTask-ProvideQuote-id-0004",
+          "targetRef": "ServiceTask-PlaceOrder-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PlaceToRecord-id-0007",
+          "sourceRef": "ServiceTask-PlaceOrder-id-0001",
+          "targetRef": "ServiceTask-RecordOrder-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-RecordToSendConfirmation-id-0008",
+          "sourceRef": "ServiceTask-RecordOrder-id-0002",
+          "targetRef": "SendTask-SendConfirmation-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SendToEndConfirmed-id-0009",
+          "sourceRef": "SendTask-SendConfirmation-id-0001",
+          "targetRef": "EndEvent-OrderConfirmed-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-GatewayToEndNotInterested-id-0010",
+          "name": "customer_interested == false",
+          "sourceRef": "ExclusiveGateway-CustomerInterested-id-0001",
+          "targetRef": "EndEvent-CustomerNotInterested-id-0002",
+          "isDefault": true
+        }
+      ]
+    }
+  ]
+}

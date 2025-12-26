@@ -1,0 +1,346 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "Definitions_WorkAccidentReporting",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Modeler (https://bpmn.io)",
+  "exporterVersion": "18.0.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "Process_WorkAccidentReporting",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent-AccidentOccurs-id-0001",
+          "name": "Accident Occurs"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ReportAccidentToEmployer-id-0001",
+          "name": "Report Accident to Employer"
+        },
+        {
+          "$type": "bpmn:BoundaryEvent",
+          "id": "BoundaryEvent-Timer24H-ReportAccident-id-0001",
+          "name": "24 Hour Timeout",
+          "attachedToRef": "UserTask-ReportAccidentToEmployer-id-0001",
+          "cancelActivity": true,
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:TimerEventDefinition",
+              "timeDuration": "PT24H"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-EscalationToHR-id-0001",
+          "name": "Send: Escalation to HR"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-AccidentContext-id-0001",
+          "name": "Accident Context",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-EmployerAssessesSeverity-id-0001",
+          "name": "Employer Assesses Severity"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-DirectorateReviewSchools-id-0001",
+          "name": "Directorate Review (Schools)"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-LogIncidentInSystem-id-0001",
+          "name": "Log Incident in System"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-AssessReportingRequirement-id-0001",
+          "name": "Assess Reporting Requirement",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-ReportToLabourInspectorate-id-0001",
+          "name": "Send: Report to Labour Inspectorate"
+        },
+        {
+          "$type": "bpmn:SubProcess",
+          "id": "SubProcess-GenerateInsuranceReport-id-0001",
+          "name": "Generate Insurance Report",
+          "flowElements": [
+            {
+              "$type": "bpmn:StartEvent",
+              "id": "StartEvent-GenerateReport-id-0001",
+              "name": "Generate Report"
+            },
+            {
+              "$type": "bpmn:ServiceTask",
+              "id": "ServiceTask-ValidateIncidentData-id-0001",
+              "name": "Validate Incident Data"
+            },
+            {
+              "$type": "bpmn:ServiceTask",
+              "id": "ServiceTask-FormatReportForInsurance-id-0001",
+              "name": "Format Report for Insurance"
+            },
+            {
+              "$type": "bpmn:ServiceTask",
+              "id": "ServiceTask-AttachSupportingDocuments-id-0001",
+              "name": "Attach Supporting Documents"
+            },
+            {
+              "$type": "bpmn:EndEvent",
+              "id": "EndEvent-ReportReady-id-0001",
+              "name": "Report Ready"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-GenerateToValidate-id-0001",
+              "sourceRef": "StartEvent-GenerateReport-id-0001",
+              "targetRef": "ServiceTask-ValidateIncidentData-id-0001"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-ValidateToFormat-id-0002",
+              "sourceRef": "ServiceTask-ValidateIncidentData-id-0001",
+              "targetRef": "ServiceTask-FormatReportForInsurance-id-0001"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-FormatToAttach-id-0003",
+              "sourceRef": "ServiceTask-FormatReportForInsurance-id-0001",
+              "targetRef": "ServiceTask-AttachSupportingDocuments-id-0001"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-AttachToEnd-id-0004",
+              "sourceRef": "ServiceTask-AttachSupportingDocuments-id-0001",
+              "targetRef": "EndEvent-ReportReady-id-0001"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-ReportToInsuranceProvider-id-0001",
+          "name": "Send: Report to Insurance Provider"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-ReportToCompetentDirectorate-id-0001",
+          "name": "Send: Report to Competent Directorate"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-ConfirmationToEmployee-id-0001",
+          "name": "Send: Confirmation to Employee"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-ProcessComplete-id-0001",
+          "name": "Process Complete"
+        },
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent-DailyAudit-id-0001",
+          "name": "Daily Audit Trigger",
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:TimerEventDefinition",
+              "timeCycle": "RRULE:FREQ=DAILY;BYHOUR=8;BYMINUTE=0"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-QueryUnreportedIncidents-id-0001",
+          "name": "Query Unreported Incidents"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-UnreportedIncidents-id-0001",
+          "name": "Unreported Incidents Found?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-ComplianceAlertToManagement-id-0001",
+          "name": "Send: Compliance Alert to Management"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-AuditComplete-id-0001",
+          "name": "Audit Complete"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StartToReport-id-0001",
+          "sourceRef": "StartEvent-AccidentOccurs-id-0001",
+          "targetRef": "UserTask-ReportAccidentToEmployer-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ReportToContextGateway-id-0002",
+          "sourceRef": "UserTask-ReportAccidentToEmployer-id-0001",
+          "targetRef": "ExclusiveGateway-AccidentContext-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-BoundaryToEscalation-id-0003",
+          "sourceRef": "BoundaryEvent-Timer24H-ReportAccident-id-0001",
+          "targetRef": "SendTask-EscalationToHR-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-EscalationToLog-id-0004",
+          "sourceRef": "SendTask-EscalationToHR-id-0001",
+          "targetRef": "ServiceTask-LogIncidentInSystem-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ContextToWorkRelated-id-0005",
+          "sourceRef": "ExclusiveGateway-AccidentContext-id-0001",
+          "targetRef": "UserTask-EmployerAssessesSeverity-id-0001",
+          "name": "work_related"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ContextToSchoolRelated-id-0006",
+          "sourceRef": "ExclusiveGateway-AccidentContext-id-0001",
+          "targetRef": "UserTask-DirectorateReviewSchools-id-0001",
+          "name": "school_related"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ContextToLogOnly-id-0007",
+          "sourceRef": "ExclusiveGateway-AccidentContext-id-0001",
+          "targetRef": "ServiceTask-LogIncidentInSystem-id-0001",
+          "name": "non_work_related OR agricultural_special_case",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AssessToReportingGateway-id-0008",
+          "sourceRef": "UserTask-EmployerAssessesSeverity-id-0001",
+          "targetRef": "ExclusiveGateway-AssessReportingRequirement-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DirectorateToReportingGateway-id-0009",
+          "sourceRef": "UserTask-DirectorateReviewSchools-id-0001",
+          "targetRef": "ExclusiveGateway-AssessReportingRequirement-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-LogToConfirmation-id-0010",
+          "sourceRef": "ServiceTask-LogIncidentInSystem-id-0001",
+          "targetRef": "SendTask-ConfirmationToEmployee-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ReportingToLabourInspectorate-id-0011",
+          "sourceRef": "ExclusiveGateway-AssessReportingRequirement-id-0001",
+          "targetRef": "SendTask-ReportToLabourInspectorate-id-0001",
+          "name": "fatality OR serious_injury"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ReportingToInsurance-id-0012",
+          "sourceRef": "ExclusiveGateway-AssessReportingRequirement-id-0001",
+          "targetRef": "SubProcess-GenerateInsuranceReport-id-0001",
+          "name": "incapacity >= 3_days"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ReportingToDirectorate-id-0013",
+          "sourceRef": "ExclusiveGateway-AssessReportingRequirement-id-0001",
+          "targetRef": "SubProcess-GenerateInsuranceReport-id-0001",
+          "name": "school_related"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ReportingToLogOnly-id-0014",
+          "sourceRef": "ExclusiveGateway-AssessReportingRequirement-id-0001",
+          "targetRef": "ServiceTask-LogIncidentInSystem-id-0001",
+          "name": "",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-LabourInspectorateToGenerate-id-0015",
+          "sourceRef": "SendTask-ReportToLabourInspectorate-id-0001",
+          "targetRef": "SubProcess-GenerateInsuranceReport-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-GenerateToInsuranceProvider-id-0016",
+          "sourceRef": "SubProcess-GenerateInsuranceReport-id-0001",
+          "targetRef": "SendTask-ReportToInsuranceProvider-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DirectorateToGenerate-id-0017",
+          "sourceRef": "SubProcess-GenerateInsuranceReport-id-0001",
+          "targetRef": "SendTask-ReportToCompetentDirectorate-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-InsuranceToConfirmation-id-0018",
+          "sourceRef": "SendTask-ReportToInsuranceProvider-id-0001",
+          "targetRef": "SendTask-ConfirmationToEmployee-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DirectorateToConfirmation-id-0019",
+          "sourceRef": "SendTask-ReportToCompetentDirectorate-id-0001",
+          "targetRef": "SendTask-ConfirmationToEmployee-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ConfirmationToEnd-id-0020",
+          "sourceRef": "SendTask-ConfirmationToEmployee-id-0001",
+          "targetRef": "EndEvent-ProcessComplete-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AuditStartToQuery-id-0021",
+          "sourceRef": "StartEvent-DailyAudit-id-0001",
+          "targetRef": "ServiceTask-QueryUnreportedIncidents-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-QueryToUnreportedGateway-id-0022",
+          "sourceRef": "ServiceTask-QueryUnreportedIncidents-id-0001",
+          "targetRef": "ExclusiveGateway-UnreportedIncidents-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-UnreportedToAlert-id-0023",
+          "sourceRef": "ExclusiveGateway-UnreportedIncidents-id-0001",
+          "targetRef": "SendTask-ComplianceAlertToManagement-id-0001",
+          "name": "unreported_incidents_found"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-UnreportedToAuditEnd-id-0024",
+          "sourceRef": "ExclusiveGateway-UnreportedIncidents-id-0001",
+          "targetRef": "EndEvent-AuditComplete-id-0001",
+          "name": "",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AlertToAuditEnd-id-0025",
+          "sourceRef": "SendTask-ComplianceAlertToManagement-id-0001",
+          "targetRef": "EndEvent-AuditComplete-id-0001"
+        }
+      ]
+    }
+  ]
+}

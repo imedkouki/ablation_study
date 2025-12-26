@@ -1,0 +1,363 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "HiringProcessDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Modeler",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "HiringProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent-HiringNeedIdentified-id-0001",
+          "name": "Hiring Need Identified",
+          "outgoing": [
+            "SequenceFlow-StartToJobCreation-id-0001"
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-HRCreatesJobDescription-id-0001",
+          "name": "HR creates job description",
+          "incoming": [
+            "SequenceFlow-StartToJobCreation-id-0001"
+          ],
+          "outgoing": [
+            "SequenceFlow-JobCreationToPost-id-0002"
+          ]
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-PostJobOnBoards-id-0001",
+          "name": "Post job on boards",
+          "incoming": [
+            "SequenceFlow-JobCreationToPost-id-0002"
+          ],
+          "outgoing": [
+            "SequenceFlow-PostToScreen-id-0003"
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ScreenResumes-id-0001",
+          "name": "Screen resumes",
+          "incoming": [
+            "SequenceFlow-PostToScreen-id-0003"
+          ],
+          "outgoing": [
+            "SequenceFlow-ScreenToPhoneInterviews-id-0004"
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ConductPhoneInterviews-id-0001",
+          "name": "Conduct phone interviews",
+          "incoming": [
+            "SequenceFlow-ScreenToPhoneInterviews-id-0004"
+          ],
+          "outgoing": [
+            "SequenceFlow-PhoneToScheduleInterviews-id-0005"
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ScheduleInterviews-id-0001",
+          "name": "Schedule in-person/virtual interviews",
+          "incoming": [
+            "SequenceFlow-PhoneToScheduleInterviews-id-0005"
+          ],
+          "outgoing": [
+            "SequenceFlow-ScheduleToFinalInterviews-id-0006"
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ConductFinalInterviews-id-0001",
+          "name": "Conduct final interviews",
+          "incoming": [
+            "SequenceFlow-ScheduleToFinalInterviews-id-0006"
+          ],
+          "outgoing": [
+            "SequenceFlow-FinalToSelectCandidate-id-0007"
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-SelectCandidate-id-0001",
+          "name": "Select candidate",
+          "incoming": [
+            "SequenceFlow-FinalToSelectCandidate-id-0007"
+          ],
+          "outgoing": [
+            "SequenceFlow-SelectToOfferDecision-id-0008"
+          ]
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-OfferDecision-id-0001",
+          "name": "Offer Decision",
+          "gatewayDirection": "Diverging",
+          "incoming": [
+            "SequenceFlow-SelectToOfferDecision-id-0008"
+          ],
+          "outgoing": [
+            "SequenceFlow-OfferDecisionToExtendOffer-id-0009",
+            "SequenceFlow-OfferDecisionToPositionOpen-id-0010"
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ExtendOffer-id-0001",
+          "name": "Extend offer",
+          "incoming": [
+            "SequenceFlow-OfferDecisionToExtendOffer-id-0009"
+          ],
+          "outgoing": [
+            "SequenceFlow-ExtendToSalaryNegotiation-id-0011"
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-SalaryNegotiation-id-0001",
+          "name": "Salary negotiation",
+          "incoming": [
+            "SequenceFlow-ExtendToSalaryNegotiation-id-0011"
+          ],
+          "outgoing": [
+            "SequenceFlow-NegotiationToAgreementCheck-id-0012"
+          ]
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-AgreementCheck-id-0001",
+          "name": "Agreement Check",
+          "gatewayDirection": "Diverging",
+          "incoming": [
+            "SequenceFlow-NegotiationToAgreementCheck-id-0012"
+          ],
+          "outgoing": [
+            "SequenceFlow-AgreementCheckToOnboarding-id-0013",
+            "SequenceFlow-AgreementCheckToOfferWithdrawn-id-0014"
+          ]
+        },
+        {
+          "$type": "bpmn:SubProcess",
+          "id": "SubProcess-Onboarding-id-0001",
+          "name": "Onboarding",
+          "incoming": [
+            "SequenceFlow-AgreementCheckToOnboarding-id-0013"
+          ],
+          "outgoing": [
+            "SequenceFlow-OnboardingCompleteToProcessComplete-id-0019"
+          ],
+          "flowElements": [
+            {
+              "$type": "bpmn:StartEvent",
+              "id": "StartEvent-OnboardingStart-id-0001",
+              "name": "Onboarding Start",
+              "outgoing": [
+                "SequenceFlow-OnboardingStartToGeneratePaperwork-id-0001"
+              ]
+            },
+            {
+              "$type": "bpmn:ServiceTask",
+              "id": "ServiceTask-GenerateOnboardingPaperwork-id-0001",
+              "name": "Generate onboarding paperwork",
+              "incoming": [
+                "SequenceFlow-OnboardingStartToGeneratePaperwork-id-0001"
+              ],
+              "outgoing": [
+                "SequenceFlow-GenerateToOrientation-id-0002"
+              ]
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask-CompleteOrientation-id-0001",
+              "name": "Complete orientation",
+              "incoming": [
+                "SequenceFlow-GenerateToOrientation-id-0002"
+              ],
+              "outgoing": [
+                "SequenceFlow-OrientationToTraining-id-0003"
+              ]
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask-CompleteTraining-id-0001",
+              "name": "Complete training",
+              "incoming": [
+                "SequenceFlow-OrientationToTraining-id-0003"
+              ],
+              "outgoing": [
+                "SequenceFlow-TrainingToOnboardingComplete-id-0004"
+              ]
+            },
+            {
+              "$type": "bpmn:EndEvent",
+              "id": "EndEvent-OnboardingComplete-id-0001",
+              "name": "Onboarding Complete",
+              "incoming": [
+                "SequenceFlow-TrainingToOnboardingComplete-id-0004"
+              ]
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-OnboardingStartToGeneratePaperwork-id-0001",
+              "sourceRef": "StartEvent-OnboardingStart-id-0001",
+              "targetRef": "ServiceTask-GenerateOnboardingPaperwork-id-0001"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-GenerateToOrientation-id-0002",
+              "sourceRef": "ServiceTask-GenerateOnboardingPaperwork-id-0001",
+              "targetRef": "UserTask-CompleteOrientation-id-0001"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-OrientationToTraining-id-0003",
+              "sourceRef": "UserTask-CompleteOrientation-id-0001",
+              "targetRef": "UserTask-CompleteTraining-id-0001"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-TrainingToOnboardingComplete-id-0004",
+              "sourceRef": "UserTask-CompleteTraining-id-0001",
+              "targetRef": "EndEvent-OnboardingComplete-id-0001"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-HiringProcessComplete-id-0001",
+          "name": "Hiring Process Complete",
+          "incoming": [
+            "SequenceFlow-OnboardingCompleteToProcessComplete-id-0019"
+          ]
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-OfferWithdrawn-id-0001",
+          "name": "Offer Withdrawn",
+          "incoming": [
+            "SequenceFlow-AgreementCheckToOfferWithdrawn-id-0014"
+          ]
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-PositionRemainsOpen-id-0001",
+          "name": "Position Remains Open",
+          "incoming": [
+            "SequenceFlow-OfferDecisionToPositionOpen-id-0010"
+          ]
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-ProcessComplete-id-0001",
+          "name": "Process Complete",
+          "incoming": [
+            "SequenceFlow-OnboardingCompleteToProcessComplete-id-0019",
+            "SequenceFlow-AgreementCheckToOfferWithdrawn-id-0014",
+            "SequenceFlow-OfferDecisionToPositionOpen-id-0010"
+          ]
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StartToJobCreation-id-0001",
+          "sourceRef": "StartEvent-HiringNeedIdentified-id-0001",
+          "targetRef": "UserTask-HRCreatesJobDescription-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-JobCreationToPost-id-0002",
+          "sourceRef": "UserTask-HRCreatesJobDescription-id-0001",
+          "targetRef": "ServiceTask-PostJobOnBoards-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PostToScreen-id-0003",
+          "sourceRef": "ServiceTask-PostJobOnBoards-id-0001",
+          "targetRef": "UserTask-ScreenResumes-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ScreenToPhoneInterviews-id-0004",
+          "sourceRef": "UserTask-ScreenResumes-id-0001",
+          "targetRef": "UserTask-ConductPhoneInterviews-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PhoneToScheduleInterviews-id-0005",
+          "sourceRef": "UserTask-ConductPhoneInterviews-id-0001",
+          "targetRef": "UserTask-ScheduleInterviews-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ScheduleToFinalInterviews-id-0006",
+          "sourceRef": "UserTask-ScheduleInterviews-id-0001",
+          "targetRef": "UserTask-ConductFinalInterviews-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-FinalToSelectCandidate-id-0007",
+          "sourceRef": "UserTask-ConductFinalInterviews-id-0001",
+          "targetRef": "UserTask-SelectCandidate-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SelectToOfferDecision-id-0008",
+          "sourceRef": "UserTask-SelectCandidate-id-0001",
+          "targetRef": "ExclusiveGateway-OfferDecision-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-OfferDecisionToExtendOffer-id-0009",
+          "name": "offer accepted",
+          "sourceRef": "ExclusiveGateway-OfferDecision-id-0001",
+          "targetRef": "UserTask-ExtendOffer-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-OfferDecisionToPositionOpen-id-0010",
+          "name": "offer rejected",
+          "sourceRef": "ExclusiveGateway-OfferDecision-id-0001",
+          "targetRef": "EndEvent-PositionRemainsOpen-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ExtendToSalaryNegotiation-id-0011",
+          "sourceRef": "UserTask-ExtendOffer-id-0001",
+          "targetRef": "UserTask-SalaryNegotiation-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-NegotiationToAgreementCheck-id-0012",
+          "sourceRef": "UserTask-SalaryNegotiation-id-0001",
+          "targetRef": "ExclusiveGateway-AgreementCheck-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AgreementCheckToOnboarding-id-0013",
+          "name": "agreement reached",
+          "sourceRef": "ExclusiveGateway-AgreementCheck-id-0001",
+          "targetRef": "SubProcess-Onboarding-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AgreementCheckToOfferWithdrawn-id-0014",
+          "name": "no agreement",
+          "sourceRef": "ExclusiveGateway-AgreementCheck-id-0001",
+          "targetRef": "EndEvent-OfferWithdrawn-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-OnboardingCompleteToProcessComplete-id-0019",
+          "sourceRef": "SubProcess-Onboarding-id-0001",
+          "targetRef": "EndEvent-ProcessComplete-id-0001"
+        }
+      ]
+    }
+  ]
+}

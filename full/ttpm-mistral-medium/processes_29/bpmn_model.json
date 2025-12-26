@@ -1,0 +1,255 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "Definitions_AustriaRelocationProcess",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Modeler (https://bpmn.io)",
+  "exporterVersion": "18.0.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "Process_AustriaRelocation-id-0001",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "MessageStartEvent-VisaApplicationTrigger-id-0001",
+          "name": "Visa Application Trigger",
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:MessageEventDefinition",
+              "name": "VisaApplicationTrigger"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-GatherVisaDocuments-id-0001",
+          "name": "Gather Visa Documents"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-SubmitVisaApplication-id-0001",
+          "name": "Submit Visa Application"
+        },
+        {
+          "$type": "bpmn:ReceiveTask",
+          "id": "ReceiveTask-ReceiveVisaDecision-id-0001",
+          "name": "Receive: Visa Decision"
+        },
+        {
+          "$type": "bpmn:BoundaryEvent",
+          "id": "BoundaryEvent-Timer15DayVisaDecision-id-0001",
+          "name": "15 Day SLA Timeout",
+          "attachedToRef": "ReceiveTask-ReceiveVisaDecision-id-0001",
+          "cancelActivity": true,
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:TimerEventDefinition",
+              "timeDuration": "P15D"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-SendEscalationToConsulate-id-0001",
+          "name": "Send: Escalation to Consulate"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-VisaDecision-id-0001",
+          "name": "Visa Decision?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-NegotiateAccommodation-id-0001",
+          "name": "Negotiate Accommodation"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-OpenBankAccount-id-0001",
+          "name": "Open Bank Account"
+        },
+        {
+          "$type": "bpmn:BoundaryEvent",
+          "id": "BoundaryEvent-ErrorBankAccount-id-0001",
+          "name": "Bank Document Rejection",
+          "attachedToRef": "ServiceTask-OpenBankAccount-id-0001",
+          "cancelActivity": true,
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:ErrorEventDefinition",
+              "errorRef": "BANK_DOCUMENT_ERROR"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ResolveBankDocumentIssues-id-0001",
+          "name": "Resolve Bank Document Issues"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "ParallelGateway-SplitAccommodationBank-id-0001",
+          "name": "Parallel Execution",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "ParallelGateway-JoinAccommodationBank-id-0001",
+          "name": "Synchronize Branches",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-RelocationComplete-id-0001",
+          "name": "Relocation Complete"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-VisaRejected-id-0002",
+          "name": "Visa Rejected"
+        },
+        {
+          "$type": "bpmn:SubProcess",
+          "id": "SubProcess-VisaRenewal-id-0001",
+          "name": "Visa Renewal",
+          "flowElements": [
+            {
+              "$type": "bpmn:StartEvent",
+              "id": "TimerStartEvent-VisaRenewalReminder-id-0001",
+              "name": "Visa Renewal Reminder",
+              "eventDefinitions": [
+                {
+                  "$type": "bpmn:TimerEventDefinition",
+                  "timeCycle": "RRULE:FREQ=MONTHLY;INTERVAL=6;BYMONTHDAY=1"
+                }
+              ]
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask-SubmitRenewalApplication-id-0001",
+              "name": "Submit Renewal Application"
+            },
+            {
+              "$type": "bpmn:ReceiveTask",
+              "id": "ReceiveTask-ReceiveRenewalDecision-id-0001",
+              "name": "Receive: Renewal Decision"
+            },
+            {
+              "$type": "bpmn:EndEvent",
+              "id": "EndEvent-RenewalComplete-id-0001",
+              "name": "Renewal Complete"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-ReminderToSubmit-id-0001",
+              "sourceRef": "TimerStartEvent-VisaRenewalReminder-id-0001",
+              "targetRef": "UserTask-SubmitRenewalApplication-id-0001"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-SubmitToReceive-id-0002",
+              "sourceRef": "UserTask-SubmitRenewalApplication-id-0001",
+              "targetRef": "ReceiveTask-ReceiveRenewalDecision-id-0001"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-ReceiveToEnd-id-0003",
+              "sourceRef": "ReceiveTask-ReceiveRenewalDecision-id-0001",
+              "targetRef": "EndEvent-RenewalComplete-id-0001"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-TriggerToGather-id-0001",
+          "sourceRef": "MessageStartEvent-VisaApplicationTrigger-id-0001",
+          "targetRef": "UserTask-GatherVisaDocuments-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-GatherToSubmit-id-0002",
+          "sourceRef": "UserTask-GatherVisaDocuments-id-0001",
+          "targetRef": "ServiceTask-SubmitVisaApplication-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SubmitToReceive-id-0003",
+          "sourceRef": "ServiceTask-SubmitVisaApplication-id-0001",
+          "targetRef": "ReceiveTask-ReceiveVisaDecision-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-BoundaryToEscalation-id-0004",
+          "sourceRef": "BoundaryEvent-Timer15DayVisaDecision-id-0001",
+          "targetRef": "SendTask-SendEscalationToConsulate-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ReceiveToGateway-id-0005",
+          "sourceRef": "ReceiveTask-ReceiveVisaDecision-id-0001",
+          "targetRef": "ExclusiveGateway-VisaDecision-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-GatewayToParallel-id-0006",
+          "name": "visa_approved",
+          "sourceRef": "ExclusiveGateway-VisaDecision-id-0001",
+          "targetRef": "ParallelGateway-SplitAccommodationBank-id-0001",
+          "isDefault": false
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-GatewayToRejected-id-0007",
+          "name": "",
+          "sourceRef": "ExclusiveGateway-VisaDecision-id-0001",
+          "targetRef": "EndEvent-VisaRejected-id-0002",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToAccommodation-id-0008",
+          "sourceRef": "ParallelGateway-SplitAccommodationBank-id-0001",
+          "targetRef": "UserTask-NegotiateAccommodation-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToBank-id-0009",
+          "sourceRef": "ParallelGateway-SplitAccommodationBank-id-0001",
+          "targetRef": "ServiceTask-OpenBankAccount-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-BankBoundaryToResolve-id-0010",
+          "sourceRef": "BoundaryEvent-ErrorBankAccount-id-0001",
+          "targetRef": "UserTask-ResolveBankDocumentIssues-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ResolveToJoin-id-0011",
+          "sourceRef": "UserTask-ResolveBankDocumentIssues-id-0001",
+          "targetRef": "ParallelGateway-JoinAccommodationBank-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AccommodationToJoin-id-0012",
+          "sourceRef": "UserTask-NegotiateAccommodation-id-0001",
+          "targetRef": "ParallelGateway-JoinAccommodationBank-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-BankToJoin-id-0013",
+          "sourceRef": "ServiceTask-OpenBankAccount-id-0001",
+          "targetRef": "ParallelGateway-JoinAccommodationBank-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-JoinToComplete-id-0014",
+          "sourceRef": "ParallelGateway-JoinAccommodationBank-id-0001",
+          "targetRef": "EndEvent-RelocationComplete-id-0001"
+        }
+      ]
+    }
+  ]
+}

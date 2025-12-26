@@ -1,0 +1,664 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "farming-bot-definitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Modeler",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "CustomFarmingBotProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "MessageStartEvent-FarmingRequest-id-0001",
+          "name": "Farming Request Received",
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:MessageEventDefinition",
+              "name": "FarmingRequest"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-SelectResources-id-0001",
+          "name": "Select Resources"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-DefineDependencies-id-0002",
+          "name": "Define Dependencies"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-ValidateDependencies-id-0003",
+          "name": "Validate Dependencies"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-ToolCheck-id-0001",
+          "name": "Tools Required?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SubProcess",
+          "id": "SubProcess-ToolCreation-id-0001",
+          "name": "Tool Creation",
+          "flowElements": [
+            {
+              "$type": "bpmn:StartEvent",
+              "id": "StartEvent-ToolCreationStart-id-0001",
+              "name": "Tool Creation Start"
+            },
+            {
+              "$type": "bpmn:ParallelGateway",
+              "id": "ParallelGateway-ToolCheckSplit-id-0001",
+              "name": "Parallel Tool Checks",
+              "gatewayDirection": "Diverging"
+            },
+            {
+              "$type": "bpmn:ServiceTask",
+              "id": "ServiceTask-CheckRequiredTools-id-0001",
+              "name": "Check Required Tools"
+            },
+            {
+              "$type": "bpmn:UserTask",
+              "id": "UserTask-ConfirmToolCreation-id-0001",
+              "name": "Confirm Tool Creation"
+            },
+            {
+              "$type": "bpmn:ParallelGateway",
+              "id": "ParallelGateway-ToolCheckJoin-id-0002",
+              "name": "Tool Check Complete",
+              "gatewayDirection": "Converging"
+            },
+            {
+              "$type": "bpmn:ServiceTask",
+              "id": "ServiceTask-CreateTool-id-0001",
+              "name": "Create Tool"
+            },
+            {
+              "$type": "bpmn:EndEvent",
+              "id": "EndEvent-ToolCreationComplete-id-0001",
+              "name": "Tool Creation Complete"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-ToolStartToSplit-id-0001",
+              "sourceRef": "StartEvent-ToolCreationStart-id-0001",
+              "targetRef": "ParallelGateway-ToolCheckSplit-id-0001"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-SplitToCheckTools-id-0002",
+              "sourceRef": "ParallelGateway-ToolCheckSplit-id-0001",
+              "targetRef": "ServiceTask-CheckRequiredTools-id-0001"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-SplitToConfirm-id-0003",
+              "sourceRef": "ParallelGateway-ToolCheckSplit-id-0001",
+              "targetRef": "UserTask-ConfirmToolCreation-id-0001"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-CheckToJoin-id-0004",
+              "sourceRef": "ServiceTask-CheckRequiredTools-id-0001",
+              "targetRef": "ParallelGateway-ToolCheckJoin-id-0002"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-ConfirmToJoin-id-0005",
+              "sourceRef": "UserTask-ConfirmToolCreation-id-0001",
+              "targetRef": "ParallelGateway-ToolCheckJoin-id-0002"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-JoinToCreate-id-0006",
+              "sourceRef": "ParallelGateway-ToolCheckJoin-id-0002",
+              "targetRef": "ServiceTask-CreateTool-id-0001"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-CreateToEnd-id-0007",
+              "sourceRef": "ServiceTask-CreateTool-id-0001",
+              "targetRef": "EndEvent-ToolCreationComplete-id-0001"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:SubProcess",
+          "id": "SubProcess-ResourceFarming-id-0001",
+          "name": "Resource Farming",
+          "flowElements": [
+            {
+              "$type": "bpmn:StartEvent",
+              "id": "StartEvent-FarmingStart-id-0001",
+              "name": "Farming Start"
+            },
+            {
+              "$type": "bpmn:ParallelGateway",
+              "id": "ParallelGateway-FarmingSplit-id-0001",
+              "name": "Start Parallel Farming",
+              "gatewayDirection": "Diverging"
+            },
+            {
+              "$type": "bpmn:ParallelGateway",
+              "id": "ParallelGateway-FarmingJoin-id-0002",
+              "name": "Complete Parallel Farming",
+              "gatewayDirection": "Converging"
+            },
+            {
+              "$type": "bpmn:EndEvent",
+              "id": "EndEvent-FarmingComplete-id-0001",
+              "name": "Farming Complete"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-FarmingStartToSplit-id-0001",
+              "sourceRef": "StartEvent-FarmingStart-id-0001",
+              "targetRef": "ParallelGateway-FarmingSplit-id-0001"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-SplitToJoin-id-0002",
+              "sourceRef": "ParallelGateway-FarmingSplit-id-0001",
+              "targetRef": "ParallelGateway-FarmingJoin-id-0002"
+            },
+            {
+              "$type": "bpmn:SequenceFlow",
+              "id": "SequenceFlow-JoinToComplete-id-0003",
+              "sourceRef": "ParallelGateway-FarmingJoin-id-0002",
+              "targetRef": "EndEvent-FarmingComplete-id-0001"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:InclusiveGateway",
+          "id": "InclusiveGateway-DynamicUpdates-id-0001",
+          "name": "Dynamic Updates Available?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-UpdateResourceList-id-0001",
+          "name": "Update Resource List"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-RevalidateDependencies-id-0001",
+          "name": "Revalidate Dependencies"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-UpdateValid-id-0001",
+          "name": "Update Valid?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ResolveConflicts-id-0001",
+          "name": "Resolve Conflicts"
+        },
+        {
+          "$type": "bpmn:InclusiveGateway",
+          "id": "InclusiveGateway-UpdateJoin-id-0002",
+          "name": "Update Processing Complete",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-SelectSharingOptions-id-0001",
+          "name": "Select Sharing Options"
+        },
+        {
+          "$type": "bpmn:InclusiveGateway",
+          "id": "InclusiveGateway-ShareDecision-id-0001",
+          "name": "Share with Friends?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-SendMaterials-id-0001",
+          "name": "Send materials to friends"
+        },
+        {
+          "$type": "bpmn:InclusiveGateway",
+          "id": "InclusiveGateway-ShareJoin-id-0002",
+          "name": "Sharing Complete",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-ProcessComplete-id-0001",
+          "name": "Process Complete"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-SharedWithFriends-id-0001",
+          "name": "Shared With Friends"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StartToSelect-id-0001",
+          "sourceRef": "MessageStartEvent-FarmingRequest-id-0001",
+          "targetRef": "UserTask-SelectResources-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SelectToDefine-id-0002",
+          "sourceRef": "UserTask-SelectResources-id-0001",
+          "targetRef": "UserTask-DefineDependencies-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DefineToValidate-id-0003",
+          "sourceRef": "UserTask-DefineDependencies-id-0002",
+          "targetRef": "ServiceTask-ValidateDependencies-id-0003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ValidateToToolCheck-id-0004",
+          "sourceRef": "ServiceTask-ValidateDependencies-id-0003",
+          "targetRef": "ExclusiveGateway-ToolCheck-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ToolCheckToToolCreation-id-0005",
+          "name": "tools required",
+          "sourceRef": "ExclusiveGateway-ToolCheck-id-0001",
+          "targetRef": "SubProcess-ToolCreation-id-0001",
+          "isDefault": false
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ToolCheckToFarming-id-0006",
+          "name": "no tools required",
+          "sourceRef": "ExclusiveGateway-ToolCheck-id-0001",
+          "targetRef": "SubProcess-ResourceFarming-id-0001",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ToolCreationToFarming-id-0007",
+          "sourceRef": "SubProcess-ToolCreation-id-0001",
+          "targetRef": "SubProcess-ResourceFarming-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-FarmingToUpdates-id-0008",
+          "sourceRef": "SubProcess-ResourceFarming-id-0001",
+          "targetRef": "InclusiveGateway-DynamicUpdates-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-UpdatesToUpdateTask-id-0009",
+          "name": "update requested",
+          "sourceRef": "InclusiveGateway-DynamicUpdates-id-0001",
+          "targetRef": "UserTask-UpdateResourceList-id-0001",
+          "isDefault": false
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-UpdatesToSharing-id-0010",
+          "name": "no updates",
+          "sourceRef": "InclusiveGateway-DynamicUpdates-id-0001",
+          "targetRef": "UserTask-SelectSharingOptions-id-0001",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-UpdateToRevalidate-id-0011",
+          "sourceRef": "UserTask-UpdateResourceList-id-0001",
+          "targetRef": "ServiceTask-RevalidateDependencies-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-RevalidateToValidCheck-id-0012",
+          "sourceRef": "ServiceTask-RevalidateDependencies-id-0001",
+          "targetRef": "ExclusiveGateway-UpdateValid-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ValidToFarming-id-0013",
+          "name": "changes valid",
+          "sourceRef": "ExclusiveGateway-UpdateValid-id-0001",
+          "targetRef": "SubProcess-ResourceFarming-id-0001",
+          "isDefault": false
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ValidToResolve-id-0014",
+          "name": "changes invalid",
+          "sourceRef": "ExclusiveGateway-UpdateValid-id-0001",
+          "targetRef": "UserTask-ResolveConflicts-id-0001",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ResolveToFarming-id-0015",
+          "sourceRef": "UserTask-ResolveConflicts-id-0001",
+          "targetRef": "SubProcess-ResourceFarming-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-UpdatePathsToJoin-id-0016",
+          "sourceRef": "UserTask-UpdateResourceList-id-0001",
+          "targetRef": "InclusiveGateway-UpdateJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ResolveToJoin-id-0017",
+          "sourceRef": "UserTask-ResolveConflicts-id-0001",
+          "targetRef": "InclusiveGateway-UpdateJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-FarmingCompleteToJoin-id-0018",
+          "sourceRef": "SubProcess-ResourceFarming-id-0001",
+          "targetRef": "InclusiveGateway-UpdateJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-UpdateJoinToSharing-id-0019",
+          "sourceRef": "InclusiveGateway-UpdateJoin-id-0002",
+          "targetRef": "UserTask-SelectSharingOptions-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SharingToShareDecision-id-0020",
+          "sourceRef": "UserTask-SelectSharingOptions-id-0001",
+          "targetRef": "InclusiveGateway-ShareDecision-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ShareDecisionToSend-id-0021",
+          "name": "share selected",
+          "sourceRef": "InclusiveGateway-ShareDecision-id-0001",
+          "targetRef": "SendTask-SendMaterials-id-0001",
+          "isDefault": false
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ShareDecisionToComplete-id-0022",
+          "name": "no sharing",
+          "sourceRef": "InclusiveGateway-ShareDecision-id-0001",
+          "targetRef": "EndEvent-ProcessComplete-id-0001",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SendToShareJoin-id-0023",
+          "sourceRef": "SendTask-SendMaterials-id-0001",
+          "targetRef": "InclusiveGateway-ShareJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ShareJoinToSharedEnd-id-0024",
+          "sourceRef": "InclusiveGateway-ShareJoin-id-0002",
+          "targetRef": "EndEvent-SharedWithFriends-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ShareJoinToComplete-id-0025",
+          "sourceRef": "InclusiveGateway-ShareJoin-id-0002",
+          "targetRef": "EndEvent-ProcessComplete-id-0001"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-StartFarmingResource1-id-0001",
+          "name": "Start Farming Resource 1"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-StartFarmingResource2-id-0002",
+          "name": "Start Farming Resource 2"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-StartFarmingResource3-id-0003",
+          "name": "Start Farming Resource 3"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-StartFarmingResource4-id-0004",
+          "name": "Start Farming Resource 4"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-StartFarmingResource5-id-0005",
+          "name": "Start Farming Resource 5"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-StartFarmingResource6-id-0006",
+          "name": "Start Farming Resource 6"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-StartFarmingResource7-id-0007",
+          "name": "Start Farming Resource 7"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-StartFarmingResource8-id-0008",
+          "name": "Start Farming Resource 8"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-StartFarmingResource9-id-0009",
+          "name": "Start Farming Resource 9"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-StartFarmingResource10-id-0010",
+          "name": "Start Farming Resource 10"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-CalculateMilestones-id-0001",
+          "name": "Calculate Milestones"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-MilestoneNotification-id-0001",
+          "name": "Send milestone notification"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-AssessDamage-id-0001",
+          "name": "Assess Damage"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-RecoverResources-id-0001",
+          "name": "Recover Resources"
+        },
+        {
+          "$type": "bpmn:BoundaryEvent",
+          "id": "BoundaryEvent-Timer1Hour-Resource1-id-0001",
+          "name": "1 Hour Milestone Check",
+          "attachedToRef": "ServiceTask-StartFarmingResource1-id-0001",
+          "cancelActivity": false,
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:TimerEventDefinition",
+              "timeDuration": "PT1H"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:BoundaryEvent",
+          "id": "BoundaryEvent-SignalDisaster-Resource1-id-0001",
+          "name": "Natural Disaster",
+          "attachedToRef": "ServiceTask-StartFarmingResource1-id-0001",
+          "cancelActivity": true,
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:SignalEventDefinition",
+              "signalRef": "NaturalDisaster"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToResource1-id-0026",
+          "sourceRef": "ParallelGateway-FarmingSplit-id-0001",
+          "targetRef": "ServiceTask-StartFarmingResource1-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToResource2-id-0027",
+          "sourceRef": "ParallelGateway-FarmingSplit-id-0001",
+          "targetRef": "ServiceTask-StartFarmingResource2-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToResource3-id-0028",
+          "sourceRef": "ParallelGateway-FarmingSplit-id-0001",
+          "targetRef": "ServiceTask-StartFarmingResource3-id-0003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToResource4-id-0029",
+          "sourceRef": "ParallelGateway-FarmingSplit-id-0001",
+          "targetRef": "ServiceTask-StartFarmingResource4-id-0004"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToResource5-id-0030",
+          "sourceRef": "ParallelGateway-FarmingSplit-id-0001",
+          "targetRef": "ServiceTask-StartFarmingResource5-id-0005"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToResource6-id-0031",
+          "sourceRef": "ParallelGateway-FarmingSplit-id-0001",
+          "targetRef": "ServiceTask-StartFarmingResource6-id-0006"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToResource7-id-0032",
+          "sourceRef": "ParallelGateway-FarmingSplit-id-0001",
+          "targetRef": "ServiceTask-StartFarmingResource7-id-0007"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToResource8-id-0033",
+          "sourceRef": "ParallelGateway-FarmingSplit-id-0001",
+          "targetRef": "ServiceTask-StartFarmingResource8-id-0008"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToResource9-id-0034",
+          "sourceRef": "ParallelGateway-FarmingSplit-id-0001",
+          "targetRef": "ServiceTask-StartFarmingResource9-id-0009"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SplitToResource10-id-0035",
+          "sourceRef": "ParallelGateway-FarmingSplit-id-0001",
+          "targetRef": "ServiceTask-StartFarmingResource10-id-0010"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-Resource1ToJoin-id-0036",
+          "sourceRef": "ServiceTask-StartFarmingResource1-id-0001",
+          "targetRef": "ParallelGateway-FarmingJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-Resource2ToJoin-id-0037",
+          "sourceRef": "ServiceTask-StartFarmingResource2-id-0002",
+          "targetRef": "ParallelGateway-FarmingJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-Resource3ToJoin-id-0038",
+          "sourceRef": "ServiceTask-StartFarmingResource3-id-0003",
+          "targetRef": "ParallelGateway-FarmingJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-Resource4ToJoin-id-0039",
+          "sourceRef": "ServiceTask-StartFarmingResource4-id-0004",
+          "targetRef": "ParallelGateway-FarmingJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-Resource5ToJoin-id-0040",
+          "sourceRef": "ServiceTask-StartFarmingResource5-id-0005",
+          "targetRef": "ParallelGateway-FarmingJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-Resource6ToJoin-id-0041",
+          "sourceRef": "ServiceTask-StartFarmingResource6-id-0006",
+          "targetRef": "ParallelGateway-FarmingJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-Resource7ToJoin-id-0042",
+          "sourceRef": "ServiceTask-StartFarmingResource7-id-0007",
+          "targetRef": "ParallelGateway-FarmingJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-Resource8ToJoin-id-0043",
+          "sourceRef": "ServiceTask-StartFarmingResource8-id-0008",
+          "targetRef": "ParallelGateway-FarmingJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-Resource9ToJoin-id-0044",
+          "sourceRef": "ServiceTask-StartFarmingResource9-id-0009",
+          "targetRef": "ParallelGateway-FarmingJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-Resource10ToJoin-id-0045",
+          "sourceRef": "ServiceTask-StartFarmingResource10-id-0010",
+          "targetRef": "ParallelGateway-FarmingJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-TimerToMilestone-id-0046",
+          "sourceRef": "BoundaryEvent-Timer1Hour-Resource1-id-0001",
+          "targetRef": "ServiceTask-CalculateMilestones-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-MilestoneToNotification-id-0047",
+          "sourceRef": "ServiceTask-CalculateMilestones-id-0001",
+          "targetRef": "SendTask-MilestoneNotification-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DisasterToAssess-id-0048",
+          "sourceRef": "BoundaryEvent-SignalDisaster-Resource1-id-0001",
+          "targetRef": "ServiceTask-AssessDamage-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AssessToRecover-id-0049",
+          "sourceRef": "ServiceTask-AssessDamage-id-0001",
+          "targetRef": "ServiceTask-RecoverResources-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-RecoverToJoin-id-0050",
+          "sourceRef": "ServiceTask-RecoverResources-id-0001",
+          "targetRef": "ParallelGateway-FarmingJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-NotificationToFarming-id-0051",
+          "sourceRef": "SendTask-MilestoneNotification-id-0001",
+          "targetRef": "ServiceTask-StartFarmingResource1-id-0001"
+        }
+      ]
+    }
+  ]
+}

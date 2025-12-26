@@ -1,0 +1,167 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "Definitions_EnergyDrinkBottlingInspection",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Modeler",
+  "exporterVersion": "2.0.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "Process_EnergyDrinkBottlingInspection",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent-InspectionStarted-id-0001",
+          "name": "Inspection Started"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-EnterMachineType-id-0001",
+          "name": "Enter Machine Type"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-EnterSerialNumber-id-0002",
+          "name": "Enter Serial Number"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-AnswerInspectionQuestions-id-0003",
+          "name": "Answer Inspection Questions"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-CollectAutomaticValues-id-0001",
+          "name": "Collect Automatic Values"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-CheckAutomaticValues-id-0001",
+          "name": "Check Automatic Values",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-CheckQuestionAnswers-id-0001",
+          "name": "Check Question Answers",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-ValidateAllInputs-id-0001",
+          "name": "Validate All Inputs"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-AnswerAdditionalQuestions-id-0001",
+          "name": "Answer Additional Questions"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-ValidateAllInputs-id-0002",
+          "name": "Validate All Inputs"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-InspectionComplete-id-0001",
+          "name": "Inspection Complete"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-InspectionFailed-id-0002",
+          "name": "Inspection Failed"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-MergeQuestionAnswers-id-0001",
+          "name": "Merge Question Answers",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StartToEnterMachineType-id-0001",
+          "sourceRef": "StartEvent-InspectionStarted-id-0001",
+          "targetRef": "UserTask-EnterMachineType-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-EnterMachineTypeToEnterSerialNumber-id-0002",
+          "sourceRef": "UserTask-EnterMachineType-id-0001",
+          "targetRef": "UserTask-EnterSerialNumber-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-EnterSerialNumberToAnswerQuestions-id-0003",
+          "sourceRef": "UserTask-EnterSerialNumber-id-0002",
+          "targetRef": "UserTask-AnswerInspectionQuestions-id-0003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AnswerQuestionsToCollectValues-id-0004",
+          "sourceRef": "UserTask-AnswerInspectionQuestions-id-0003",
+          "targetRef": "ServiceTask-CollectAutomaticValues-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CollectValuesToCheckValues-id-0005",
+          "sourceRef": "ServiceTask-CollectAutomaticValues-id-0001",
+          "targetRef": "ExclusiveGateway-CheckAutomaticValues-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CheckValuesToCheckAnswers-id-0006",
+          "sourceRef": "ExclusiveGateway-CheckAutomaticValues-id-0001",
+          "targetRef": "ExclusiveGateway-CheckQuestionAnswers-id-0001",
+          "name": "values_within_spec"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CheckValuesToFailed-id-0007",
+          "sourceRef": "ExclusiveGateway-CheckAutomaticValues-id-0001",
+          "targetRef": "EndEvent-InspectionFailed-id-0002",
+          "name": "values_out_of_spec",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CheckAnswersToValidate-id-0008",
+          "sourceRef": "ExclusiveGateway-CheckQuestionAnswers-id-0001",
+          "targetRef": "ServiceTask-ValidateAllInputs-id-0001",
+          "name": "answers_acceptable"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CheckAnswersToAdditionalQuestions-id-0009",
+          "sourceRef": "ExclusiveGateway-CheckQuestionAnswers-id-0001",
+          "targetRef": "UserTask-AnswerAdditionalQuestions-id-0001",
+          "name": "answers_require_followup"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AdditionalQuestionsToValidate-id-0010",
+          "sourceRef": "UserTask-AnswerAdditionalQuestions-id-0001",
+          "targetRef": "ServiceTask-ValidateAllInputs-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ValidateToMerge-id-0011",
+          "sourceRef": "ServiceTask-ValidateAllInputs-id-0001",
+          "targetRef": "ExclusiveGateway-MergeQuestionAnswers-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ValidateToMerge-id-0012",
+          "sourceRef": "ServiceTask-ValidateAllInputs-id-0002",
+          "targetRef": "ExclusiveGateway-MergeQuestionAnswers-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-MergeToComplete-id-0013",
+          "sourceRef": "ExclusiveGateway-MergeQuestionAnswers-id-0001",
+          "targetRef": "EndEvent-InspectionComplete-id-0001"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "inventory-restock-definitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Modeler (https://bpmn.io)",
+  "exporterVersion": "18.0.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "Inventory-Restock-Process-id-0001",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent-InventoryThresholdReached-id-0001",
+          "name": "Inventory Threshold Reached",
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:ConditionalEventDefinition",
+              "condition": "inventory_level <= reorder_threshold"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-MonitorInventoryLevels-id-0001",
+          "name": "Monitor inventory levels"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ProcurementTeamReviewsSuppliers-id-0001",
+          "name": "Procurement team reviews suppliers"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-PlaceOrderWithSupplier-id-0001",
+          "name": "Place order with selected supplier"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-UpdateInventorySystem-id-0001",
+          "name": "Update inventory system with expected delivery dates"
+        },
+        {
+          "$type": "bpmn:ReceiveTask",
+          "id": "ReceiveTask-ReceiveStockFromSupplier-id-0001",
+          "name": "Receive stock from supplier"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-InspectStockQuality-id-0001",
+          "name": "Inspect stock quality"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-RecordStockInSystem-id-0001",
+          "name": "Record stock in inventory system"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-PlaceStockOnShelves-id-0001",
+          "name": "Place stock on shelves/storage"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-UpdateInventoryLevelsPostRestock-id-0001",
+          "name": "Update inventory levels post-restock"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-InventoryRestockComplete-id-0001",
+          "name": "Inventory restock complete"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StartToMonitor-id-0001",
+          "sourceRef": "StartEvent-InventoryThresholdReached-id-0001",
+          "targetRef": "ServiceTask-MonitorInventoryLevels-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-MonitorToReview-id-0002",
+          "sourceRef": "ServiceTask-MonitorInventoryLevels-id-0001",
+          "targetRef": "UserTask-ProcurementTeamReviewsSuppliers-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ReviewToPlaceOrder-id-0003",
+          "sourceRef": "UserTask-ProcurementTeamReviewsSuppliers-id-0001",
+          "targetRef": "ServiceTask-PlaceOrderWithSupplier-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PlaceOrderToUpdateSystem-id-0004",
+          "sourceRef": "ServiceTask-PlaceOrderWithSupplier-id-0001",
+          "targetRef": "ServiceTask-UpdateInventorySystem-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-UpdateSystemToReceiveStock-id-0005",
+          "sourceRef": "ServiceTask-UpdateInventorySystem-id-0001",
+          "targetRef": "ReceiveTask-ReceiveStockFromSupplier-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ReceiveStockToInspect-id-0006",
+          "sourceRef": "ReceiveTask-ReceiveStockFromSupplier-id-0001",
+          "targetRef": "UserTask-InspectStockQuality-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-InspectToRecord-id-0007",
+          "sourceRef": "UserTask-InspectStockQuality-id-0001",
+          "targetRef": "ServiceTask-RecordStockInSystem-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-RecordToPlaceStock-id-0008",
+          "sourceRef": "ServiceTask-RecordStockInSystem-id-0001",
+          "targetRef": "ServiceTask-PlaceStockOnShelves-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PlaceStockToUpdateLevels-id-0009",
+          "sourceRef": "ServiceTask-PlaceStockOnShelves-id-0001",
+          "targetRef": "ServiceTask-UpdateInventoryLevelsPostRestock-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-UpdateLevelsToEnd-id-0010",
+          "sourceRef": "ServiceTask-UpdateInventoryLevelsPostRestock-id-0001",
+          "targetRef": "EndEvent-InventoryRestockComplete-id-0001"
+        }
+      ]
+    }
+  ]
+}

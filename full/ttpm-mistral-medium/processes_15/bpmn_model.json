@@ -1,0 +1,203 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "ComplianceAuditProcess-Definitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Modeler (https://bpmn.io)",
+  "exporterVersion": "2.0.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "ComplianceAuditProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent-ComplianceAuditScheduled-id-0001",
+          "name": "Compliance Audit Scheduled"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "ParallelGateway-PreparationSplit-id-0001",
+          "name": "Parallel Preparation",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-PrepareDocumentation-id-0001",
+          "name": "Prepare Documentation"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-GatherEvidence-id-0002",
+          "name": "Gather Evidence"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ConductSelfAssessment-id-0001",
+          "name": "Conduct Self-Assessment"
+        },
+        {
+          "$type": "bpmn:ParallelGateway",
+          "id": "ParallelGateway-PreparationJoin-id-0002",
+          "name": "Synchronize Preparation",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-AuditorsReview-id-0001",
+          "name": "Auditors Review Processes and Identify Gaps"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-GapsIdentified-id-0001",
+          "name": "Gaps Identified?",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ImplementCorrections-id-0001",
+          "name": "Implement Corrections/Improvements"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-GapsResolved-id-0002",
+          "name": "Gaps Resolved?",
+          "gatewayDirection": "Converging"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-FinalAudit-id-0001",
+          "name": "Final Audit by External Auditors"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-FinalAuditOutcome-id-0003",
+          "name": "Final Audit Outcome",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-IssueCertification-id-0001",
+          "name": "Issue Compliance Certification"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-CertificationAwarded-id-0001",
+          "name": "Certification Awarded"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-AuditFailed-id-0002",
+          "name": "Audit Failed - Process Terminated"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StartToPreparationSplit-id-0001",
+          "sourceRef": "StartEvent-ComplianceAuditScheduled-id-0001",
+          "targetRef": "ParallelGateway-PreparationSplit-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PreparationSplitToPrepareDocs-id-0002",
+          "sourceRef": "ParallelGateway-PreparationSplit-id-0001",
+          "targetRef": "ServiceTask-PrepareDocumentation-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PreparationSplitToGatherEvidence-id-0003",
+          "sourceRef": "ParallelGateway-PreparationSplit-id-0001",
+          "targetRef": "ServiceTask-GatherEvidence-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PreparationSplitToSelfAssessment-id-0004",
+          "sourceRef": "ParallelGateway-PreparationSplit-id-0001",
+          "targetRef": "UserTask-ConductSelfAssessment-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PrepareDocsToPreparationJoin-id-0005",
+          "sourceRef": "ServiceTask-PrepareDocumentation-id-0001",
+          "targetRef": "ParallelGateway-PreparationJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-GatherEvidenceToPreparationJoin-id-0006",
+          "sourceRef": "ServiceTask-GatherEvidence-id-0002",
+          "targetRef": "ParallelGateway-PreparationJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SelfAssessmentToPreparationJoin-id-0007",
+          "sourceRef": "UserTask-ConductSelfAssessment-id-0001",
+          "targetRef": "ParallelGateway-PreparationJoin-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PreparationJoinToAuditorsReview-id-0008",
+          "sourceRef": "ParallelGateway-PreparationJoin-id-0002",
+          "targetRef": "UserTask-AuditorsReview-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-AuditorsReviewToGapsIdentified-id-0009",
+          "sourceRef": "UserTask-AuditorsReview-id-0001",
+          "targetRef": "ExclusiveGateway-GapsIdentified-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-GapsIdentifiedToImplementCorrections-id-0010",
+          "sourceRef": "ExclusiveGateway-GapsIdentified-id-0001",
+          "targetRef": "UserTask-ImplementCorrections-id-0001",
+          "name": "gaps_identified = true"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-GapsIdentifiedToFinalAudit-id-0011",
+          "sourceRef": "ExclusiveGateway-GapsIdentified-id-0001",
+          "targetRef": "UserTask-FinalAudit-id-0001",
+          "name": "",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ImplementCorrectionsToGapsResolved-id-0012",
+          "sourceRef": "UserTask-ImplementCorrections-id-0001",
+          "targetRef": "ExclusiveGateway-GapsResolved-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-GapsResolvedToFinalAudit-id-0013",
+          "sourceRef": "ExclusiveGateway-GapsResolved-id-0002",
+          "targetRef": "UserTask-FinalAudit-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-FinalAuditToFinalAuditOutcome-id-0014",
+          "sourceRef": "UserTask-FinalAudit-id-0001",
+          "targetRef": "ExclusiveGateway-FinalAuditOutcome-id-0003"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-FinalAuditOutcomeToIssueCertification-id-0015",
+          "sourceRef": "ExclusiveGateway-FinalAuditOutcome-id-0003",
+          "targetRef": "ServiceTask-IssueCertification-id-0001",
+          "name": "final_audit_passed = true"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-FinalAuditOutcomeToAuditFailed-id-0016",
+          "sourceRef": "ExclusiveGateway-FinalAuditOutcome-id-0003",
+          "targetRef": "EndEvent-AuditFailed-id-0002",
+          "name": "final_audit_passed = false"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-IssueCertificationToCertificationAwarded-id-0017",
+          "sourceRef": "ServiceTask-IssueCertification-id-0001",
+          "targetRef": "EndEvent-CertificationAwarded-id-0001"
+        }
+      ]
+    }
+  ]
+}

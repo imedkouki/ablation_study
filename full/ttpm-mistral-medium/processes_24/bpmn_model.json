@@ -1,0 +1,183 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "RestaurantOrderProcess",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Modeler",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "Process-RestaurantOrder-id-0001",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent-GuestEnters-id-0001",
+          "name": "Guest enters restaurant"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-ChooseDish-id-0001",
+          "name": "Guest chooses dish"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-PlaceOrder-id-0002",
+          "name": "Guest places order"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-EnterOrderPOS-id-0001",
+          "name": "Employee enters order in POS"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-CollectPayment-id-0001",
+          "name": "Employee collects payment"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-SetupBuzzer-id-0001",
+          "name": "Employee sets up buzzer"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-OrderToChef-id-0001",
+          "name": "Send: order to chef"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-PrepareMeal-id-0001",
+          "name": "Chef prepares meal"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-PlaceMealHatch-id-0001",
+          "name": "Chef places meal in hatch"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-MealReadyNotification-id-0001",
+          "name": "Send: meal ready notification"
+        },
+        {
+          "$type": "bpmn:ServiceTask",
+          "id": "ServiceTask-TriggerBuzzer-id-0001",
+          "name": "Employee triggers buzzer"
+        },
+        {
+          "$type": "bpmn:BoundaryEvent",
+          "id": "BoundaryEvent-Timer5Min-TriggerBuzzer-id-0001",
+          "name": "5 Minute Timeout",
+          "attachedToRef": "ServiceTask-TriggerBuzzer-id-0001",
+          "cancelActivity": true,
+          "eventDefinitions": [
+            {
+              "$type": "bpmn:TimerEventDefinition",
+              "timeDuration": "PT5M"
+            }
+          ]
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-CallForGuest-id-0001",
+          "name": "Call for guest"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-CollectMeal-id-0001",
+          "name": "Guest collects meal"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-MealServed-id-0001",
+          "name": "Meal served"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StartToChooseDish-id-0001",
+          "sourceRef": "StartEvent-GuestEnters-id-0001",
+          "targetRef": "UserTask-ChooseDish-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ChooseDishToPlaceOrder-id-0002",
+          "sourceRef": "UserTask-ChooseDish-id-0001",
+          "targetRef": "UserTask-PlaceOrder-id-0002"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PlaceOrderToEnterPOS-id-0003",
+          "sourceRef": "UserTask-PlaceOrder-id-0002",
+          "targetRef": "ServiceTask-EnterOrderPOS-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-EnterPOSToCollectPayment-id-0004",
+          "sourceRef": "ServiceTask-EnterOrderPOS-id-0001",
+          "targetRef": "ServiceTask-CollectPayment-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CollectPaymentToSetupBuzzer-id-0005",
+          "sourceRef": "ServiceTask-CollectPayment-id-0001",
+          "targetRef": "ServiceTask-SetupBuzzer-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SetupBuzzerToOrderChef-id-0006",
+          "sourceRef": "ServiceTask-SetupBuzzer-id-0001",
+          "targetRef": "SendTask-OrderToChef-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-OrderChefToPrepareMeal-id-0007",
+          "sourceRef": "SendTask-OrderToChef-id-0001",
+          "targetRef": "ServiceTask-PrepareMeal-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PrepareMealToPlaceHatch-id-0008",
+          "sourceRef": "ServiceTask-PrepareMeal-id-0001",
+          "targetRef": "ServiceTask-PlaceMealHatch-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-PlaceHatchToMealReady-id-0009",
+          "sourceRef": "ServiceTask-PlaceMealHatch-id-0001",
+          "targetRef": "SendTask-MealReadyNotification-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-MealReadyToTriggerBuzzer-id-0010",
+          "sourceRef": "SendTask-MealReadyNotification-id-0001",
+          "targetRef": "ServiceTask-TriggerBuzzer-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-TriggerBuzzerToCollectMeal-id-0011",
+          "sourceRef": "ServiceTask-TriggerBuzzer-id-0001",
+          "targetRef": "UserTask-CollectMeal-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CollectMealToEnd-id-0012",
+          "sourceRef": "UserTask-CollectMeal-id-0001",
+          "targetRef": "EndEvent-MealServed-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-TimerBoundaryToCallGuest-id-0013",
+          "sourceRef": "BoundaryEvent-Timer5Min-TriggerBuzzer-id-0001",
+          "targetRef": "SendTask-CallForGuest-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-CallGuestToCollectMeal-id-0014",
+          "sourceRef": "SendTask-CallForGuest-id-0001",
+          "targetRef": "UserTask-CollectMeal-id-0001"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "$type": "bpmn:Definitions",
+  "id": "DismissalProcessDefinitions",
+  "targetNamespace": "http://bpmn.io/schema/bpmn",
+  "exporter": "BPMN Modeler",
+  "exporterVersion": "1.0",
+  "rootElements": [
+    {
+      "$type": "bpmn:Process",
+      "id": "DismissalProcess",
+      "isExecutable": true,
+      "flowElements": [
+        {
+          "$type": "bpmn:StartEvent",
+          "id": "StartEvent-DismissalProcessInitiated-id-0001",
+          "name": "Dismissal Process Initiated"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-SendDismissalToMSPO-id-0001",
+          "name": "Send: dismissal to MSPO"
+        },
+        {
+          "$type": "bpmn:UserTask",
+          "id": "UserTask-MSPOReviewsDismissal-id-0001",
+          "name": "MSPO reviews dismissal"
+        },
+        {
+          "$type": "bpmn:ExclusiveGateway",
+          "id": "ExclusiveGateway-DismissalDecision-id-0001",
+          "name": "Dismissal Decision",
+          "gatewayDirection": "Diverging"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-SendRejectionNotice-id-0001",
+          "name": "Send: rejection notice"
+        },
+        {
+          "$type": "bpmn:SendTask",
+          "id": "SendTask-SendConfirmationNotice-id-0001",
+          "name": "Send: confirmation notice"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-DismissalProcessComplete-id-0001",
+          "name": "Dismissal Process Complete"
+        },
+        {
+          "$type": "bpmn:EndEvent",
+          "id": "EndEvent-DismissalProcessComplete-id-0002",
+          "name": "Dismissal Process Complete"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-StartToSendDismissal-id-0001",
+          "sourceRef": "StartEvent-DismissalProcessInitiated-id-0001",
+          "targetRef": "SendTask-SendDismissalToMSPO-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-SendDismissalToReview-id-0002",
+          "sourceRef": "SendTask-SendDismissalToMSPO-id-0001",
+          "targetRef": "UserTask-MSPOReviewsDismissal-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ReviewToDecision-id-0003",
+          "sourceRef": "UserTask-MSPOReviewsDismissal-id-0001",
+          "targetRef": "ExclusiveGateway-DismissalDecision-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DecisionToRejection-id-0004",
+          "name": "dismissal_rejected",
+          "sourceRef": "ExclusiveGateway-DismissalDecision-id-0001",
+          "targetRef": "SendTask-SendRejectionNotice-id-0001",
+          "isDefault": false
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-DecisionToConfirmation-id-0005",
+          "name": "dismissal_confirmed",
+          "sourceRef": "ExclusiveGateway-DismissalDecision-id-0001",
+          "targetRef": "SendTask-SendConfirmationNotice-id-0001",
+          "isDefault": true
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-RejectionToEnd-id-0006",
+          "sourceRef": "SendTask-SendRejectionNotice-id-0001",
+          "targetRef": "EndEvent-DismissalProcessComplete-id-0001"
+        },
+        {
+          "$type": "bpmn:SequenceFlow",
+          "id": "SequenceFlow-ConfirmationToEnd-id-0007",
+          "sourceRef": "SendTask-SendConfirmationNotice-id-0001",
+          "targetRef": "EndEvent-DismissalProcessComplete-id-0002"
+        }
+      ]
+    }
+  ]
+}

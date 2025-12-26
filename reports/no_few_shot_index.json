@@ -1,0 +1,491 @@
+{
+  "root": "/workspaces/ablation_study/no_few_shot_no_constraints",
+  "files_count": 45,
+  "entries": [
+    {
+      "relpath": "no_few_shot_no_constraints/52/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/52/modeler.json",
+      "size_bytes": 5437,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the complete BPMN 2.0 JSON model based on the provided pseudocode:\\n\\n```json\\n{\\n  \\\"definitions\\\": {\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"exporter\\\": \\\"BPMN Modeler\\\",\\n    \\\"exporterVersion\\\": \\\"1.0\\\",\\n    \\\"process\\\": {\\n      \\\"id\\\": \\\"Process_0001\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"id\\\": \\\"StartE"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/52/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/52/parser.json",
+      "size_bytes": 2299,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Based on the provided description, I'll parse the workflow and convert it into BPMN pseudocode while ensuring strict compliance with BPMN 2.0 specifications and the given rules.\\n\\n### Summary of Elements\\n\\n1. **Tasks**:\\n   - `sendTask(\\\"Dismissal sent to MPOO\\\")` - MPOO receives dismissal from MPON\\n   - `userTask(\\\"Review dismissal\\\")` - MPOO reviews the dismissal\\n   - `exclusiveGateway(\\\"Decision\\\")` - Decision poi"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/52/52.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/52/52.json",
+      "size_bytes": 4115,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "definitions"
+      ],
+      "preview": "{\n  \"definitions\": {\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"exporter\": \"BPMN Modeler\",\n    \"exporterVersion\": \"1.0\",\n    \"process\": {\n      \"id\": \"Process_0001\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"id\": \"StartEvent_0001\",\n          \"name\": \"Dismissal Process Start\",\n          \"incoming\": [],\n          \"outgoing\": [\"SequenceFlow_0001\"],\n          \"$type\": \"bpmn:StartEvent\"\n        },\n        {\n          \"id\": \"S"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/16/16.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "size_bytes": 18005,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"AnnualAuditWorkflow-Definitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"bpmn-js (https://demo.bpmn.io)\",\n  \"exporterVersion\": \"18.0.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"AnnualAuditWorkflow-Process-id-0001\",\n      \"isExecutable\": false,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent-AnnualAuditProcessStart-id-0002\",\n          \"name\": \"Annu"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/16/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/modeler.json",
+      "size_bytes": 20615,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the BPMN 2.0 JSON model for the Annual Audit Process based on the provided pseudocode:\\n\\n```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"AnnualAuditWorkflow-Definitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"bpmn-js (https://demo.bpmn.io)\\\",\\n  \\\"exporterVersion\\\": \\\"18.0.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"Annu"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/16/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/parser.json",
+      "size_bytes": 3276,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"### Process Elements Summary:\\n**Tasks:**\\n- Send Audit Notification (sendTask)\\n- Prepare Financial Statements (userTask)\\n- Gather Documents (userTask)\\n- Check Regulatory Updates (serviceTask)\\n- Submit Documents (sendTask)\\n- Review Submission (userTask)\\n- Request Clarifications (sendTask)\\n- Provide Clarifications (userTask)\\n- Conduct Risk Assessment (scriptTask)\\n- Evaluate Financial Risks (scriptTask)\\n- Evaluat"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/32/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/32/modeler.json",
+      "size_bytes": 10179,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the complete BPMN 2.0 JSON model based on the provided pseudocode description:\\n\\n```json\\n{\\n  \\\"definitions\\\": {\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"exporter\\\": \\\"BPMN Modeler\\\",\\n    \\\"exporterVersion\\\": \\\"1.0\\\",\\n    \\\"process\\\": {\\n      \\\"id\\\": \\\"Process-0001\\\",\\n      \\\"isExecutable\\\": false,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"i"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/32/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/32/parser.json",
+      "size_bytes": 10179,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the complete BPMN 2.0 JSON model based on the provided pseudocode description:\\n\\n```json\\n{\\n  \\\"definitions\\\": {\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"exporter\\\": \\\"BPMN Modeler\\\",\\n    \\\"exporterVersion\\\": \\\"1.0\\\",\\n    \\\"process\\\": {\\n      \\\"id\\\": \\\"Process-0001\\\",\\n      \\\"isExecutable\\\": false,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"i"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/32/32.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/32/32.json",
+      "size_bytes": 8768,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "definitions"
+      ],
+      "preview": "{\n  \"definitions\": {\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"exporter\": \"BPMN Modeler\",\n    \"exporterVersion\": \"1.0\",\n    \"process\": {\n      \"id\": \"Process-0001\",\n      \"isExecutable\": false,\n      \"flowElements\": [\n        {\n          \"id\": \"StartEvent-0001\",\n          \"name\": \"Create Farming Bot\",\n          \"incoming\": [],\n          \"outgoing\": [\"SequenceFlow-0001\"]\n        },\n        {\n          \"id\": \"UserTask-0001\",\n          \"name\": \"Select R"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/55/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/55/modeler.json",
+      "size_bytes": 8394,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the BPMN 2.0 JSON model for the provided medical procedure pseudocode:\\n\\n```json\\n{\\n  \\\"definitions\\\": {\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"exporter\\\": \\\"BPMN Modeler\\\",\\n    \\\"exporterVersion\\\": \\\"1.0\\\",\\n    \\\"process\\\": {\\n      \\\"id\\\": \\\"Process-0001\\\",\\n      \\\"isExecutable\\\": false,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"id\\\": \\\"S"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/55/55.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/55/55.json",
+      "size_bytes": 6700,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "definitions"
+      ],
+      "preview": "{\n  \"definitions\": {\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"exporter\": \"BPMN Modeler\",\n    \"exporterVersion\": \"1.0\",\n    \"process\": {\n      \"id\": \"Process-0001\",\n      \"isExecutable\": false,\n      \"flowElements\": [\n        {\n          \"id\": \"StartEvent-0001\",\n          \"name\": \"Preparation for Medical Procedure\",\n          \"incoming\": [],\n          \"outgoing\": [\"SequenceFlow-0001\"]\n        },\n        {\n          \"id\": \"UserTask-0001\",\n          \"n"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/55/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/55/parser.json",
+      "size_bytes": 2750,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the structured BPMN pseudocode for the described medical procedure, adhering strictly to BPMN 2.0 specifications and the provided rules:\\n\\n---\\n\\n### Summary of Elements\\n- **Tasks**: 14 (mixed user/service tasks)\\n- **Gateways**: 2 (XOR for decision points)\\n- **Events**: 2 (start/end), 2 intermediate (timer boundary for SLA)\\n- **Boundary Events**: 0 (no explicit SLAs or errors)\\n- **Subprocesses**: 0 (not just"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/53/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/53/modeler.json",
+      "size_bytes": 3996,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the complete BPMN 2.0 JSON model for the described workflow:\\n\\n```json\\n{\\n  \\\"definitions\\\": {\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"exporter\\\": \\\"BPMN Modeler\\\",\\n    \\\"exporterVersion\\\": \\\"1.0\\\",\\n    \\\"process\\\": {\\n      \\\"id\\\": \\\"Process-0001\\\",\\n      \\\"isExecutable\\\": false,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"id\\\": \\\"StartEvent-"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/53/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/53/parser.json",
+      "size_bytes": 2258,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Based on the provided description, I'll analyze the workflow and generate compliant BPMN pseudocode. Here's the structured breakdown:\\n\\n### Summary of Elements\\n1. **Tasks**:\\n   - `sendTask(\\\"Dismissal: MSPN sends dismissal to MSPO\\\")` (one-way communication)\\n   - `userTask(\\\"Review: MSPO reviews dismissal\\\")` (human judgment)\\n   - `businessRuleTask(\\\"Decision: MSPO evaluates dismissal\\\")` (business rule evaluation)\\"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/53/53.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/53/53.json",
+      "size_bytes": 2845,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "definitions"
+      ],
+      "preview": "{\n  \"definitions\": {\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"exporter\": \"BPMN Modeler\",\n    \"exporterVersion\": \"1.0\",\n    \"process\": {\n      \"id\": \"Process-0001\",\n      \"isExecutable\": false,\n      \"flowElements\": [\n        {\n          \"id\": \"StartEvent-0001\",\n          \"name\": \"Process Start\",\n          \"incoming\": [],\n          \"outgoing\": [\"SequenceFlow-0001\"]\n        },\n        {\n          \"id\": \"SendTask-0001\",\n          \"name\": \"Dismissal: MS"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/01/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/modeler.json",
+      "size_bytes": 16751,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"definitions\\\": {\\n    \\\"$schema\\\": \\\"http://www.omg.org/spec/BPMN/20100524/MODEL-SCHEMA\\\",\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"type\\\": \\\"bpmn:Definitions\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"exporter\\\": \\\"bpmn-js (https://demo.bpmn.io)\\\",\\n    \\\"exporterVersion\\\": \\\"10.0.0\\\",\\n    \\\"rootElements\\\": [\\n      {\\n        \\\"id\\\": \\\"Process-0001\\\",\\n        \\\"type\\\": \\\"bpmn"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/01/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/parser.json",
+      "size_bytes": 4226,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"### Summary of Elements\\n\\n**Tasks:**\\n- **userTask(\\\"Approve Loan\\\")**: This task involves a human approving a loan application.\\n- **serviceTask(\\\"Send Approval Notification\\\")**: This automated task sends a notification of the loan approval.\\n- **scriptTask(\\\"Calculate Interest\\\")**: This task performs the calculation of the interest on the loan.\\n- **sendTask(\\\"Send Interest Details\\\")**: This task sends the calculat"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/01/01.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "size_bytes": 14778,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "definitions"
+      ],
+      "preview": "{\n  \"definitions\": {\n    \"$schema\": \"http://www.omg.org/spec/BPMN/20100524/MODEL-SCHEMA\",\n    \"id\": \"Definitions-0001\",\n    \"type\": \"bpmn:Definitions\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"exporter\": \"bpmn-js (https://demo.bpmn.io)\",\n    \"exporterVersion\": \"10.0.0\",\n    \"rootElements\": [\n      {\n        \"id\": \"Process-0001\",\n        \"type\": \"bpmn:Process\",\n        \"isExecutable\": true,\n        \"flowElements\": [\n          {\n            \"id\": \"StartEvent-0001\",\n            \"ty"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/03/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/modeler.json",
+      "size_bytes": 19324,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"bpmn:Definitions\\\": {\\n    \\\"xmlns:bpmn\\\": \\\"http://www.omg.org/spec/BPMN/20100524/MODEL\\\",\\n    \\\"xmlns:bpmndi\\\": \\\"http://www.omg.org/spec/BPMN/20100524/DI\\\",\\n    \\\"xmlns:dc\\\": \\\"http://www.omg.org/spec/DD/20100524/DC\\\",\\n    \\\"xmlns:di\\\": \\\"http://www.omg.org/spec/DD/20100524/DI\\\",\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"exporter\\\": \\\"bpmn-js"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/03/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/parser.json",
+      "size_bytes": 3282,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"## Summary of Elements\\n\\n### Tasks\\n1. **userTask(\\\"Review Application\\\")**: Human judgment task where an application is reviewed.\\n2. **serviceTask(\\\"Check Credit Score\\\")**: Automated task to check the credit score.\\n3. **serviceTask(\\\"Notify Applicant\\\")**: Automated task to notify the applicant of the decision.\\n4. **scriptTask(\\\"Calculate Loan Amount\\\")**: Calculation task to determine the loan amount.\\n5. **sendTa"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/03/03.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "size_bytes": 17369,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "bpmn:Definitions"
+      ],
+      "preview": "{\n  \"bpmn:Definitions\": {\n    \"xmlns:bpmn\": \"http://www.omg.org/spec/BPMN/20100524/MODEL\",\n    \"xmlns:bpmndi\": \"http://www.omg.org/spec/BPMN/20100524/DI\",\n    \"xmlns:dc\": \"http://www.omg.org/spec/DD/20100524/DC\",\n    \"xmlns:di\": \"http://www.omg.org/spec/DD/20100524/DI\",\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"exporter\": \"bpmn-js (https://demo.bpmn.io)\",\n    \"exporterVersion\": \"10.0.0\",\n    \"rootElements\": [\n      {\n        \"bpmn:Process\": {\n       "
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/29/29.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "size_bytes": 7911,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "definitions"
+      ],
+      "preview": "{\n  \"definitions\": {\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"exporter\": \"BPMN Modeler\",\n    \"exporterVersion\": \"1.0\",\n    \"name\": \"Austria Relocation Process\",\n    \"rootElements\": [\n      {\n        \"id\": \"Process-0001\",\n        \"isExecutable\": true,\n        \"flowElements\": [\n          {\n            \"id\": \"StartEvent-0001\",\n            \"name\": \"Initiate Austria relocation process\",\n            \"incoming\": [],\n            \"outgoing\": \"SequenceFlow-00"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/29/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/modeler.json",
+      "size_bytes": 7084,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the complete BPMN 2.0 JSON model for the work accident reporting process based on the provided pseudocode:\\n\\n```json\\n{\\n  \\\"definitions\\\": {\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"exporter\\\": \\\"BPMN Modeler\\\",\\n    \\\"exporterVersion\\\": \\\"1.0\\\",\\n    \\\"process\\\": {\\n      \\\"id\\\": \\\"Process-0001\\\",\\n      \\\"isExecutable\\\": false,\\n      \\\"flowElements\\\":"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/29/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/parser.json",
+      "size_bytes": 3415,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the structured BPMN pseudocode for the process of working and living in Austria, adhering strictly to BPMN 2.0 specifications and the provided compliance rules:\\n\\n---\\n\\n### Summary of Elements\\n1. **Tasks**:\\n   - `userTask(\\\"Gather required documents\\\")` (human judgment)\\n   - `serviceTask(\\\"Submit visa application\\\")` (system action)\\n   - `userTask(\\\"Negotiate accommodation\\\")` (human judgment)\\n   - `userTas"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/02/02.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "size_bytes": 4543,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "bpmn:Definitions"
+      ],
+      "preview": "{\n  \"bpmn:Definitions\": {\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"xmlns:bpmn\": \"http://www.omg.org/spec/BPMN/20100524/MODEL\",\n    \"xmlns:bpmndi\": \"http://www.omg.org/spec/BPMN/20100524/DI\",\n    \"xmlns:dc\": \"http://www.omg.org/spec/DD/20100524/DC\",\n    \"xmlns:di\": \"http://www.omg.org/spec/DD/20100524/DI\",\n    \"xmlns:xsi\": \"http://www.w3.org/2001/XMLSchema-instance\",\n    \"xsi:schemaLocation\": \"http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd\",\n"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/02/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/modeler.json",
+      "size_bytes": 5339,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"bpmn:Definitions\\\": {\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"xmlns:bpmn\\\": \\\"http://www.omg.org/spec/BPMN/20100524/MODEL\\\",\\n    \\\"xmlns:bpmndi\\\": \\\"http://www.omg.org/spec/BPMN/20100524/DI\\\",\\n    \\\"xmlns:dc\\\": \\\"http://www.omg.org/spec/DD/20100524/DC\\\",\\n    \\\"xmlns:di\\\": \\\"http://www.omg.org/spec/DD/20100524/DI\\\",\\n    \\\"xmlns:xsi\\\": \\\"http:/"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/02/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/parser.json",
+      "size_bytes": 3287,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"## Summary of Elements\\n\\n### Tasks\\n1. **userTask(\\\"Review Order\\\")** — Human judgment task to review the order.\\n2. **serviceTask(\\\"Check Inventory\\\")** — Automated task to check inventory levels.\\n3. **scriptTask(\\\"Calculate Total Price: including tax and discounts\\\")** — Calculation task to determine the total price.\\n4. **sendTask(\\\"Send Confirmation Email\\\")** — One-way outbound communication task to send a confirm"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/15/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/15/modeler.json",
+      "size_bytes": 7176,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"bpmn:Definitions\\\": {\\n    \\\"xmlns:bpmn\\\": \\\"http://www.omg.org/spec/BPMN/20100524/MODEL\\\",\\n    \\\"xmlns:bpmndi\\\": \\\"http://www.omg.org/spec/BPMN/20100524/DI\\\",\\n    \\\"xmlns:dc\\\": \\\"http://www.omg.org/spec/DD/20100524/DC\\\",\\n    \\\"xmlns:di\\\": \\\"http://www.omg.org/spec/DD/20100524/DI\\\",\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"rootElements\\\": [\\n  "
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/15/15.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/15/15.json",
+      "size_bytes": 6268,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "bpmn:Definitions"
+      ],
+      "preview": "{\n  \"bpmn:Definitions\": {\n    \"xmlns:bpmn\": \"http://www.omg.org/spec/BPMN/20100524/MODEL\",\n    \"xmlns:bpmndi\": \"http://www.omg.org/spec/BPMN/20100524/DI\",\n    \"xmlns:dc\": \"http://www.omg.org/spec/DD/20100524/DC\",\n    \"xmlns:di\": \"http://www.omg.org/spec/DD/20100524/DI\",\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"rootElements\": [\n      {\n        \"bpmn:Process\": {\n          \"id\": \"Process-0001\",\n          \"isExecutable\": true,\n          \"flowElements\": "
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/15/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/15/parser.json",
+      "size_bytes": 3804,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"**Process Description:**\\n\\nWe have a customer order processing workflow. The process starts when a new order is received. First, we need to validate the order details. If the order is valid, we check the inventory. If the inventory is sufficient, we proceed to pack the order. If the inventory is not sufficient, we need to place a purchase order for the required items. Once the purchase order is placed, we wait for 3 day"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/24/24.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/24/24.json",
+      "size_bytes": 9070,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "bpmn:Definitions"
+      ],
+      "preview": "{\n  \"bpmn:Definitions\": {\n    \"xmlns:bpmn\": \"http://www.omg.org/spec/BPMN/20100524/MODEL\",\n    \"xmlns:bpmndi\": \"http://www.omg.org/spec/BPMN/20100524/DI\",\n    \"xmlns:dc\": \"http://www.omg.org/spec/DD/20100524/DC\",\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"exporter\": \"BPMN Modeler\",\n    \"exporterVersion\": \"1.0\",\n    \"rootElements\": [\n      {\n        \"bpmn:Process\": {\n          \"id\": \"Process-0001\",\n          \"isExecutable\": true,\n          \"flowElement"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/24/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/24/modeler.json",
+      "size_bytes": 10803,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the complete BPMN 2.0 JSON model for the restaurant ordering process based on the provided pseudocode:\\n\\n```json\\n{\\n  \\\"bpmn:Definitions\\\": {\\n    \\\"xmlns:bpmn\\\": \\\"http://www.omg.org/spec/BPMN/20100524/MODEL\\\",\\n    \\\"xmlns:bpmndi\\\": \\\"http://www.omg.org/spec/BPMN/20100524/DI\\\",\\n    \\\"xmlns:dc\\\": \\\"http://www.omg.org/spec/DD/20100524/DC\\\",\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://b"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/24/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/24/parser.json",
+      "size_bytes": 2726,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the BPMN pseudocode for the restaurant ordering process, strictly adhering to BPMN 2.0 specifications and the provided guidelines:\\n\\n### Summary of Elements\\n- **Tasks**: 7 (userTask, serviceTask, sendTask)\\n- **Gateways**: 2 (XOR, END_XOR)\\n- **Events**: 3 (startEvent, intermediateEvent, endEvent)\\n- **Boundary Events**: 1 (timerBoundary with explicit SLA)\\n- **Subprocesses**: 1 (\\\"Meal Preparation\\\" with clear "
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/18/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/18/modeler.json",
+      "size_bytes": 14438,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the complete BPMN 2.0 JSON model for the university enrollment system based on the provided pseudocode:\\n\\n```json\\n{\\n  \\\"definitions\\\": {\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"exporter\\\": \\\"BPMN Modeler\\\",\\n    \\\"exporterVersion\\\": \\\"1.0\\\",\\n    \\\"process\\\": {\\n      \\\"id\\\": \\\"Process-0001\\\",\\n      \\\"isExecutable\\\": false,\\n      \\\"flowElements\\\": [\\"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/18/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/18/parser.json",
+      "size_bytes": 5359,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the structured BPMN pseudocode for the university enrollment system, adhering to all BPMN 2.0 specifications and compliance rules:\\n\\n---\\n\\n### Summary of Elements\\n**Tasks:**\\n1. `receiveTask(\\\"Receive: Application submission\\\")` - Prospective student submits application\\n2. `userTask(\\\"Review application and documents\\\")` - Admissions office review\\n3. `sendTask(\\\"Send: Missing documents notification\\\")` - Noti"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/18/18.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/18/18.json",
+      "size_bytes": 12549,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "definitions"
+      ],
+      "preview": "{\n  \"definitions\": {\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"exporter\": \"BPMN Modeler\",\n    \"exporterVersion\": \"1.0\",\n    \"process\": {\n      \"id\": \"Process-0001\",\n      \"isExecutable\": false,\n      \"flowElements\": [\n        {\n          \"id\": \"StartEvent-0001\",\n          \"name\": \"Application submission\",\n          \"incoming\": [],\n          \"outgoing\": [\"SequenceFlow-0001\"],\n          \"$type\": \"bpmn:StartEvent\"\n        },\n        {\n          \"id\": \"R"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/27/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/27/modeler.json",
+      "size_bytes": 7084,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the complete BPMN 2.0 JSON model for the work accident reporting process based on the provided pseudocode:\\n\\n```json\\n{\\n  \\\"definitions\\\": {\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"exporter\\\": \\\"BPMN Modeler\\\",\\n    \\\"exporterVersion\\\": \\\"1.0\\\",\\n    \\\"process\\\": {\\n      \\\"id\\\": \\\"Process-0001\\\",\\n      \\\"isExecutable\\\": false,\\n      \\\"flowElements\\\":"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/27/27.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/27/27.json",
+      "size_bytes": 5615,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "definitions"
+      ],
+      "preview": "{\n  \"definitions\": {\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"exporter\": \"BPMN Modeler\",\n    \"exporterVersion\": \"1.0\",\n    \"process\": {\n      \"id\": \"Process-0001\",\n      \"isExecutable\": false,\n      \"flowElements\": [\n        {\n          \"id\": \"StartEvent-0001\",\n          \"name\": \"Work Accident Report Initiation\",\n          \"incoming\": [],\n          \"outgoing\": [\"SequenceFlow-0001\"]\n        },\n        {\n          \"id\": \"UserTask-0001\",\n          \"nam"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/27/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/27/parser.json",
+      "size_bytes": 3689,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the structured BPMN pseudocode for the work accident reporting process, adhering strictly to BPMN 2.0 specifications and the provided compliance rules:\\n\\n---\\n\\n### Summary of Elements\\n\\n**Tasks:**\\n1. `userTask(\\\"Collect accident details\\\")` - Gather information about the accident location, time, and circumstances\\n2. `serviceTask(\\\"Validate accident criteria\\\")` - Check if the accident meets work accident defi"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/41/41.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/41/41.json",
+      "size_bytes": 2141,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "definitions"
+      ],
+      "preview": "{\n  \"definitions\": {\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"exporter\": \"BPMN Modeler\",\n    \"exporterVersion\": \"1.0\",\n    \"process\": {\n      \"id\": \"Process-0001\",\n      \"isExecutable\": false,\n      \"flowElements\": [\n        {\n          \"id\": \"StartEvent-0001\",\n          \"name\": \"Inspection Start\",\n          \"outgoing\": \"SequenceFlow-0001\"\n        },\n        {\n          \"id\": \"UserTask-0001\",\n          \"name\": \"Enter machine type\",\n          \"incomi"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/41/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/41/modeler.json",
+      "size_bytes": 3320,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Understood. Based on the provided pseudocode description, I'll generate a complete, structurally valid BPMN 2.0 JSON model. Here's the compliant output:\\n\\n```json\\n{\\n  \\\"definitions\\\": {\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"exporter\\\": \\\"BPMN Modeler\\\",\\n    \\\"exporterVersion\\\": \\\"1.0\\\",\\n    \\\"process\\\": {\\n      \\\"id\\\": \\\"Process-0001\\\",\\n      \\\"isExecut"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/41/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/41/parser.json",
+      "size_bytes": 2554,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Based on the provided description, I'll analyze the workflow and generate compliant BPMN pseudocode. Here's my structured approach:\\n\\n### Summary of Elements\\n\\n1. **Tasks**:\\n   - `userTask(\\\"Enter machine type\\\")` - Initial data collection\\n   - `userTask(\\\"Enter serial number\\\")` - Initial data collection\\n   - `serviceTask(\\\"Collect machine data\\\")` - Automated data gathering\\n   - `userTask(\\\"Answer inspection ques"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/54/modeler.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/54/modeler.json",
+      "size_bytes": 3920,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the BPMN 2.0 JSON model for the provided pseudocode:\\n\\n```json\\n{\\n  \\\"bpmn:Definitions\\\": {\\n    \\\"id\\\": \\\"Definitions-0001\\\",\\n    \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n    \\\"exporter\\\": \\\"BPMN Modeler\\\",\\n    \\\"exporterVersion\\\": \\\"1.0\\\",\\n    \\\"rootElements\\\": [\\n      {\\n        \\\"bpmn:Process\\\": {\\n          \\\"id\\\": \\\"Process-0001\\\",\\n          \\\"isExecutable\\\": true,\\n          \\\"flowElemen"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/54/parser.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/54/parser.json",
+      "size_bytes": 2397,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsageEstimate"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"Here's the BPMN pseudocode for the described process, with strict compliance to BPMN 2.0 specifications and the provided guidelines:\\n\\n### Summary of Elements\\n1. **Tasks**:\\n   - `serviceTask(\\\"Check transaction data request\\\")` - Automated validation of the INQ's request\\n   - `serviceTask(\\\"Transmit data\\\")` - System action to send requested data\\n   - `serviceTask(\\\"Reject request\\\")` - System action to deny the req"
+    },
+    {
+      "relpath": "no_few_shot_no_constraints/54/54.json",
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/54/54.json",
+      "size_bytes": 2854,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "bpmn:Definitions"
+      ],
+      "preview": "{\n  \"bpmn:Definitions\": {\n    \"id\": \"Definitions-0001\",\n    \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n    \"exporter\": \"BPMN Modeler\",\n    \"exporterVersion\": \"1.0\",\n    \"rootElements\": [\n      {\n        \"bpmn:Process\": {\n          \"id\": \"Process-0001\",\n          \"isExecutable\": true,\n          \"flowElements\": [\n            {\n              \"bpmn:StartEvent\": {\n                \"id\": \"StartEvent-0001\",\n                \"name\": \"INQ transmits transaction data request\"\n              }\n          "
+    }
+  ]
+}

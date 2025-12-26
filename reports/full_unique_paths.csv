@@ -1,0 +1,3 @@
+path,types,file,snippet
+$.rootElements[].flowElements[].description,string,/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json,
+$.rootElements[].flowElements[].eventDefinitions[].condition,string,/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json,

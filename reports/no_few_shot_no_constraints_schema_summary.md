@@ -1,0 +1,11 @@
+# Schema report for no_few_shot_no_constraints
+
+Files analyzed: 15
+
+- Total unique JSON paths: 193
+
+- Paths with type conflicts: 6 (examples: ['$.definitions.rootElements[].flowElements[]', '$.definitions.rootElements[].flowElements[].outgoing', '$.definitions.rootElements[].flowElements[].incoming', '$.definitions.process.flowElements[].incoming', '$.definitions.process.flowElements[].outgoing', '$.definitions.diagrams[].plane.flowElements[].outgoing'])
+
+- Paths missing in some files: 192 (examples: ['$.definitions', '$.definitions.$schema', '$.definitions.id', '$.definitions.type', '$.definitions.targetNamespace', '$.definitions.exporter', '$.definitions.exporterVersion', '$.definitions.rootElements', '$.definitions.rootElements[]', '$.definitions.rootElements[].id', '$.definitions.rootElements[].type', '$.definitions.rootElements[].isExecutable', '$.definitions.rootElements[].flowElements', '$.definitions.rootElements[].flowElements[]', '$.definitions.rootElements[].flowElements[].id', '$.definitions.rootElements[].flowElements[].type', '$.definitions.rootElements[].flowElements[].name', '$.definitions.rootElements[].flowElements[].outgoing', '$.definitions.rootElements[].flowElements[].outgoing[]', '$.definitions.rootElements[].flowElements[].incoming'])
+
+- Unique paths (present in only 1 file): 124 (examples: ['$.definitions.$schema', '$.definitions.type', '$.definitions.rootElements[].type', '$.definitions.rootElements[].flowElements[].type', '$.definitions.rootElements[].flowElements[].incoming[]', '$.definitions.rootElements[].flowElements[].gatewayDirection', '$.definitions.rootElements[].flowElements[].default', '$.definitions.bpmndi:BPMNDiagram', '$.definitions.bpmndi:BPMNDiagram.id', '$.definitions.bpmndi:BPMNDiagram.type', '$.definitions.bpmndi:BPMNDiagram.resolution', '$.definitions.bpmndi:BPMNDiagram.BPMNPlane', '$.definitions.bpmndi:BPMNDiagram.BPMNPlane.id', '$.definitions.bpmndi:BPMNDiagram.BPMNPlane.type', '$.definitions.bpmndi:BPMNDiagram.BPMNPlane.bpmnElement', '$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape', '$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape[]', '$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape[].id', '$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape[].type', '$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape[].bpmnElement'])

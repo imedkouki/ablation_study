@@ -1,0 +1,479 @@
+{
+  "folder": "single_agent",
+  "files_count": 15,
+  "files": [
+    "/workspaces/ablation_study/single_agent/json/01.json",
+    "/workspaces/ablation_study/single_agent/json/02.json",
+    "/workspaces/ablation_study/single_agent/json/03.json",
+    "/workspaces/ablation_study/single_agent/json/15.json",
+    "/workspaces/ablation_study/single_agent/json/16.json",
+    "/workspaces/ablation_study/single_agent/json/18.json",
+    "/workspaces/ablation_study/single_agent/json/24.json",
+    "/workspaces/ablation_study/single_agent/json/27.json",
+    "/workspaces/ablation_study/single_agent/json/29.json",
+    "/workspaces/ablation_study/single_agent/json/32.json",
+    "/workspaces/ablation_study/single_agent/json/41.json",
+    "/workspaces/ablation_study/single_agent/json/52.json",
+    "/workspaces/ablation_study/single_agent/json/53.json",
+    "/workspaces/ablation_study/single_agent/json/54.json",
+    "/workspaces/ablation_study/single_agent/json/55.json"
+  ],
+  "merged_schema": {
+    "$": {
+      "types": [
+        "object"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.$type": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.id": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.targetNamespace": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.exporter": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.exporterVersion": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements": {
+      "types": [
+        "array"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[]": {
+      "types": [
+        "object"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].$type": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].id": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].isExecutable": {
+      "types": [
+        "boolean"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].flowElements": {
+      "types": [
+        "array"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].flowElements[]": {
+      "types": [
+        "object"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].flowElements[].$type": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].flowElements[].id": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].flowElements[].name": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].flowElements[].gatewayDirection": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ],
+      "missing_in_files": [
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/41.json"
+      ]
+    },
+    "$.rootElements[].flowElements[].documentation": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/27.json"
+      ],
+      "missing_in_files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/32.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ]
+    },
+    "$.rootElements[].name": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/single_agent/json/32.json"
+      ],
+      "missing_in_files": [
+        "/workspaces/ablation_study/single_agent/json/01.json",
+        "/workspaces/ablation_study/single_agent/json/02.json",
+        "/workspaces/ablation_study/single_agent/json/03.json",
+        "/workspaces/ablation_study/single_agent/json/15.json",
+        "/workspaces/ablation_study/single_agent/json/16.json",
+        "/workspaces/ablation_study/single_agent/json/18.json",
+        "/workspaces/ablation_study/single_agent/json/24.json",
+        "/workspaces/ablation_study/single_agent/json/27.json",
+        "/workspaces/ablation_study/single_agent/json/29.json",
+        "/workspaces/ablation_study/single_agent/json/41.json",
+        "/workspaces/ablation_study/single_agent/json/52.json",
+        "/workspaces/ablation_study/single_agent/json/53.json",
+        "/workspaces/ablation_study/single_agent/json/54.json",
+        "/workspaces/ablation_study/single_agent/json/55.json"
+      ]
+    }
+  },
+  "summary": {
+    "total_paths": 19,
+    "paths_with_type_conflict_count": 0,
+    "paths_with_type_conflict": [],
+    "paths_missing_count": 3,
+    "paths_missing_examples": [
+      "$.rootElements[].flowElements[].gatewayDirection",
+      "$.rootElements[].flowElements[].documentation",
+      "$.rootElements[].name"
+    ],
+    "unique_paths_count": 2,
+    "unique_paths_examples": [
+      "$.rootElements[].flowElements[].documentation",
+      "$.rootElements[].name"
+    ]
+  }
+}

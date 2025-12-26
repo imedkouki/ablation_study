@@ -1,0 +1,21 @@
+{
+  "folder": "single_agent",
+  "unique_paths": [
+    {
+      "path": "$.rootElements[].flowElements[].documentation",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/single_agent/json/27.json",
+      "snippet": null
+    },
+    {
+      "path": "$.rootElements[].name",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/single_agent/json/32.json",
+      "snippet": null
+    }
+  ]
+}

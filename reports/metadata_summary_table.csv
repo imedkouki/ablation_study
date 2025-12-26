@@ -1,0 +1,4 @@
+folder,files_count,models,prompt_tokens_avg,completion_tokens_avg,total_tokens_avg,generation_count_total,max_metric_file,max_metric_value,min_metric_file,min_metric_value
+ttpm-mistral-medium,30,mistral-medium-latest:15;<unknown>:15,12046.7,3011.8,15058.5,0,/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/modeler_metadata.json,21532,/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/modeler_metadata.json,12170
+no_few_shot_no_constraints,30,<unknown>:30,1866.6,1394.7,3261.3,30,/workspaces/ablation_study/no_few_shot_no_constraints/16/modeler.json,9269,/workspaces/ablation_study/no_few_shot_no_constraints/52/parser.json,2024
+single_agent,15,<unknown>:15,3857.9,2242.3,6100.1,15,/workspaces/ablation_study/single_agent/full_response/18_full_response.json,8474,/workspaces/ablation_study/single_agent/full_response/52_full_response.json,4412

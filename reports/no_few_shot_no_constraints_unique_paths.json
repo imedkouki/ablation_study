@@ -1,0 +1,998 @@
+{
+  "folder": "no_few_shot_no_constraints",
+  "unique_paths": [
+    {
+      "path": "$.definitions.$schema",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.type",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.rootElements[].type",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.rootElements[].flowElements[].type",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.rootElements[].flowElements[].incoming[]",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.rootElements[].flowElements[].gatewayDirection",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.rootElements[].flowElements[].default",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.type",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.resolution",
+      "types": [
+        "number"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.type",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.bpmnElement",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape",
+      "types": [
+        "array"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape[]",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape[].id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape[].type",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape[].bpmnElement",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape[].bounds",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape[].bounds.x",
+      "types": [
+        "number"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape[].bounds.y",
+      "types": [
+        "number"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape[].bounds.width",
+      "types": [
+        "number"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNShape[].bounds.height",
+      "types": [
+        "number"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNEdge",
+      "types": [
+        "array"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNEdge[]",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNEdge[].id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNEdge[].type",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNEdge[].bpmnElement",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNEdge[].waypoint",
+      "types": [
+        "array"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNEdge[].waypoint[]",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNEdge[].waypoint[].x",
+      "types": [
+        "number"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.bpmndi:BPMNDiagram.BPMNPlane.BPMNEdge[].waypoint[].y",
+      "types": [
+        "number"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/01/01.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.xmlns:xsi",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.xsi:schemaLocation",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.isExecutable",
+      "types": [
+        "boolean"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements",
+      "types": [
+        "array"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[]",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:startEvent",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:startEvent.id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:startEvent.name",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:receiveTask",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:receiveTask.id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:receiveTask.name",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:boundaryEvent",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:boundaryEvent.id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:boundaryEvent.name",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:boundaryEvent.attachedToRef",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:boundaryEvent.cancelActivity",
+      "types": [
+        "boolean"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:boundaryEvent.eventDefinitions",
+      "types": [
+        "array"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:boundaryEvent.eventDefinitions[]",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:boundaryEvent.eventDefinitions[].bpmn:timerEventDefinition",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:boundaryEvent.eventDefinitions[].bpmn:timerEventDefinition.timeDuration",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:boundaryEvent.eventDefinitions[].bpmn:errorEventDefinition",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:boundaryEvent.eventDefinitions[].bpmn:errorEventDefinition.errorRef",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:userTask",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:userTask.id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmn:Process.flowElements[].bpmn:userTask.name",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/02/02.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane.id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane.bpmnElement",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane.di:DiagramElement",
+      "types": [
+        "array"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane.di:DiagramElement[]",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane.di:DiagramElement[].bpmndi:BPMNShape",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane.di:DiagramElement[].bpmndi:BPMNShape.id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane.di:DiagramElement[].bpmndi:BPMNShape.bpmnElement",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane.di:DiagramElement[].bpmndi:BPMNShape.bounds",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane.di:DiagramElement[].bpmndi:BPMNShape.bounds.dc:Bounds",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane.di:DiagramElement[].bpmndi:BPMNShape.bounds.dc:Bounds.x",
+      "types": [
+        "number"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane.di:DiagramElement[].bpmndi:BPMNShape.bounds.dc:Bounds.y",
+      "types": [
+        "number"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane.di:DiagramElement[].bpmndi:BPMNShape.bounds.dc:Bounds.width",
+      "types": [
+        "number"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.bpmndi:BPMNDiagram.BPMNPlane.di:DiagramElement[].bpmndi:BPMNShape.bounds.dc:Bounds.height",
+      "types": [
+        "number"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/03/03.json",
+      "snippet": null
+    },
+    {
+      "path": "$.$type",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.targetNamespace",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.exporter",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.exporterVersion",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.rootElements",
+      "types": [
+        "array"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.rootElements[]",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.rootElements[].$type",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.rootElements[].id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.rootElements[].isExecutable",
+      "types": [
+        "boolean"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.rootElements[].flowElements",
+      "types": [
+        "array"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.rootElements[].flowElements[]",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.rootElements[].flowElements[].$type",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.rootElements[].flowElements[].id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.rootElements[].flowElements[].name",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.rootElements[].flowElements[].gatewayDirection",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/16/16.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.name",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.rootElements[].flowElements[].attachedToRef",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.rootElements[].laneSets",
+      "types": [
+        "array"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams",
+      "types": [
+        "array"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[]",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].name",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.bpmnElement",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.flowElements",
+      "types": [
+        "array"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.flowElements[]",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.flowElements[].id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.flowElements[].bpmnElement",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.flowElements[].outgoing",
+      "types": [
+        "array",
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.flowElements[].incoming",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.flowElements[].outgoing[]",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.flowElements[].attachedToRef",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.sequenceFlows",
+      "types": [
+        "array"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.sequenceFlows[]",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.sequenceFlows[].id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.sequenceFlows[].bpmnElement",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.sequenceFlows[].sourceRef",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.sequenceFlows[].targetRef",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.diagrams[].plane.sequenceFlows[].conditionExpression",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/29/29.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.process.laneSets",
+      "types": [
+        "array"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/41/41.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.rootElements[].$type",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/52/52.json",
+      "snippet": null
+    },
+    {
+      "path": "$.definitions.$type",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/52/52.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.rootElements[].bpmn:Process.flowElements[].bpmn:EndEvent",
+      "types": [
+        "object"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/54/54.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.rootElements[].bpmn:Process.flowElements[].bpmn:EndEvent.id",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/54/54.json",
+      "snippet": null
+    },
+    {
+      "path": "$.bpmn:Definitions.rootElements[].bpmn:Process.flowElements[].bpmn:EndEvent.name",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/no_few_shot_no_constraints/54/54.json",
+      "snippet": null
+    }
+  ]
+}

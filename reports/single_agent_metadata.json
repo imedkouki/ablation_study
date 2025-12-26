@@ -1,0 +1,183 @@
+{
+  "files_count": 15,
+  "models": {
+    "<unknown>": 15
+  },
+  "prompt_tokens_total": 57868,
+  "completion_tokens_total": 33634,
+  "total_tokens_total": 91502,
+  "prompt_tokens_count": 15,
+  "completion_tokens_count": 15,
+  "total_tokens_count": 15,
+  "generation_count_total": 15,
+  "prompt_tokens_avg": 3857.866666666667,
+  "completion_tokens_avg": 2242.266666666667,
+  "total_tokens_avg": 6100.133333333333,
+  "files": [
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/01_full_response.json",
+      "folder": "single_agent",
+      "basename": "01_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 3726,
+      "completion_tokens": 1214,
+      "total_tokens": 4940,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/02_full_response.json",
+      "folder": "single_agent",
+      "basename": "02_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 3743,
+      "completion_tokens": 1804,
+      "total_tokens": 5547,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/03_full_response.json",
+      "folder": "single_agent",
+      "basename": "03_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 3737,
+      "completion_tokens": 1511,
+      "total_tokens": 5248,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/15_full_response.json",
+      "folder": "single_agent",
+      "basename": "15_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 3723,
+      "completion_tokens": 1733,
+      "total_tokens": 5456,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/16_full_response.json",
+      "folder": "single_agent",
+      "basename": "16_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 3891,
+      "completion_tokens": 3770,
+      "total_tokens": 7661,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/18_full_response.json",
+      "folder": "single_agent",
+      "basename": "18_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 3912,
+      "completion_tokens": 4562,
+      "total_tokens": 8474,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/24_full_response.json",
+      "folder": "single_agent",
+      "basename": "24_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 3849,
+      "completion_tokens": 1874,
+      "total_tokens": 5723,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/27_full_response.json",
+      "folder": "single_agent",
+      "basename": "27_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 4590,
+      "completion_tokens": 2722,
+      "total_tokens": 7312,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/29_full_response.json",
+      "folder": "single_agent",
+      "basename": "29_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 4293,
+      "completion_tokens": 2830,
+      "total_tokens": 7123,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/32_full_response.json",
+      "folder": "single_agent",
+      "basename": "32_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 3781,
+      "completion_tokens": 4075,
+      "total_tokens": 7856,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/41_full_response.json",
+      "folder": "single_agent",
+      "basename": "41_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 3718,
+      "completion_tokens": 1149,
+      "total_tokens": 4867,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/52_full_response.json",
+      "folder": "single_agent",
+      "basename": "52_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 3673,
+      "completion_tokens": 739,
+      "total_tokens": 4412,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/53_full_response.json",
+      "folder": "single_agent",
+      "basename": "53_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 3670,
+      "completion_tokens": 832,
+      "total_tokens": 4502,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/54_full_response.json",
+      "folder": "single_agent",
+      "basename": "54_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 3675,
+      "completion_tokens": 827,
+      "total_tokens": 4502,
+      "generation_count": 1
+    },
+    {
+      "file": "/workspaces/ablation_study/single_agent/full_response/55_full_response.json",
+      "folder": "single_agent",
+      "basename": "55_full_response.json",
+      "model": null,
+      "temperature": null,
+      "prompt_tokens": 3887,
+      "completion_tokens": 3992,
+      "total_tokens": 7879,
+      "generation_count": 1
+    }
+  ]
+}

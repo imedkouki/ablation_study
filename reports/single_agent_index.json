@@ -1,0 +1,396 @@
+{
+  "root": "/workspaces/ablation_study/single_agent",
+  "files_count": 30,
+  "entries": [
+    {
+      "relpath": "single_agent/json/29.json",
+      "file": "/workspaces/ablation_study/single_agent/json/29.json",
+      "size_bytes": 10342,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"AustriaWorkLiveDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"AustriaWorkLiveProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Process Initiated\"\n        },\n        {\n          \"$type\": \"bpmn:Paral"
+    },
+    {
+      "relpath": "single_agent/json/41.json",
+      "file": "/workspaces/ablation_study/single_agent/json/41.json",
+      "size_bytes": 3841,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"MachineInspectionDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"MachineInspectionProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Inspection Started\"\n        },\n        {\n          \"$type\": \"bpmn:"
+    },
+    {
+      "relpath": "single_agent/json/24.json",
+      "file": "/workspaces/ablation_study/single_agent/json/24.json",
+      "size_bytes": 6187,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"RestaurantOrderDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"RestaurantOrderProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Guest Enters Restaurant\"\n        },\n        {\n          \"$type\": \"bpmn"
+    },
+    {
+      "relpath": "single_agent/json/02.json",
+      "file": "/workspaces/ablation_study/single_agent/json/02.json",
+      "size_bytes": 5965,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"HiringProcessDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"HiringProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Hiring Need Identified\"\n        },\n        {\n          \"$type\": \"bpmn:UserTask\",\n"
+    },
+    {
+      "relpath": "single_agent/json/16.json",
+      "file": "/workspaces/ablation_study/single_agent/json/16.json",
+      "size_bytes": 13074,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"AnnualAuditDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"AnnualAuditProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Audit Process Initiated\"\n        },\n        {\n          \"$type\": \"bpmn:SendTas"
+    },
+    {
+      "relpath": "single_agent/json/15.json",
+      "file": "/workspaces/ablation_study/single_agent/json/15.json",
+      "size_bytes": 5758,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"ComplianceAuditDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"ComplianceAuditProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Audit Scheduled\"\n        },\n        {\n          \"$type\": \"bpmn:Paralle"
+    },
+    {
+      "relpath": "single_agent/json/27.json",
+      "file": "/workspaces/ablation_study/single_agent/json/27.json",
+      "size_bytes": 9880,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"WorkAccidentReportingDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"WorkAccidentReportingProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Accident Occurs\"\n        },\n        {\n          \"$type\": \""
+    },
+    {
+      "relpath": "single_agent/json/55.json",
+      "file": "/workspaces/ablation_study/single_agent/json/55.json",
+      "size_bytes": 13390,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"CentralVenousCatheterInsertionDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"CentralVenousCatheterInsertionProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Procedure Started\"\n        },\n        {\n"
+    },
+    {
+      "relpath": "single_agent/json/53.json",
+      "file": "/workspaces/ablation_study/single_agent/json/53.json",
+      "size_bytes": 2688,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"DismissalReviewDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"DismissalReviewProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Dismissal Sent\"\n        },\n        {\n          \"$type\": \"bpmn:SendTask"
+    },
+    {
+      "relpath": "single_agent/json/52.json",
+      "file": "/workspaces/ablation_study/single_agent/json/52.json",
+      "size_bytes": 2390,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"DismissalReviewDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"DismissalReviewProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Dismissal Sent by MPON\"\n        },\n        {\n          \"$type\": \"bpmn:"
+    },
+    {
+      "relpath": "single_agent/json/18.json",
+      "file": "/workspaces/ablation_study/single_agent/json/18.json",
+      "size_bytes": 16467,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"UniversityEnrollmentDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"UniversityEnrollmentProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Application Submitted\"\n        },\n        {\n          \"$type"
+    },
+    {
+      "relpath": "single_agent/json/54.json",
+      "file": "/workspaces/ablation_study/single_agent/json/54.json",
+      "size_bytes": 2726,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"TransactionDataRequestDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"TransactionDataRequestProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Transaction Data Request Initiated\"\n        },\n        {"
+    },
+    {
+      "relpath": "single_agent/json/32.json",
+      "file": "/workspaces/ablation_study/single_agent/json/32.json",
+      "size_bytes": 14162,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"FarmingBotDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"FarmingBotProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Farming Bot Initiated\"\n        },\n        {\n          \"$type\": \"bpmn:UserTask\",\n"
+    },
+    {
+      "relpath": "single_agent/json/03.json",
+      "file": "/workspaces/ablation_study/single_agent/json/03.json",
+      "size_bytes": 5158,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"InventoryReplenishmentDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"InventoryReplenishmentProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Inventory Monitoring Started\"\n        },\n        {\n     "
+    },
+    {
+      "relpath": "single_agent/json/01.json",
+      "file": "/workspaces/ablation_study/single_agent/json/01.json",
+      "size_bytes": 4095,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "$type",
+        "id",
+        "targetNamespace",
+        "exporter",
+        "exporterVersion",
+        "rootElements"
+      ],
+      "preview": "{\n  \"$type\": \"bpmn:Definitions\",\n  \"id\": \"SalesProcessDefinitions\",\n  \"targetNamespace\": \"http://bpmn.io/schema/bpmn\",\n  \"exporter\": \"BPMN Generator\",\n  \"exporterVersion\": \"1.0\",\n  \"rootElements\": [\n    {\n      \"$type\": \"bpmn:Process\",\n      \"id\": \"SalesProcess\",\n      \"isExecutable\": true,\n      \"flowElements\": [\n        {\n          \"$type\": \"bpmn:StartEvent\",\n          \"id\": \"StartEvent_001\",\n          \"name\": \"Customer Inquiry Received\"\n        },\n        {\n          \"$type\": \"bpmn:UserTask\","
+    },
+    {
+      "relpath": "single_agent/full_response/54_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/54_full_response.json",
+      "size_bytes": 3384,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"TransactionDataRequestDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"TransactionDataRequestProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$ty"
+    },
+    {
+      "relpath": "single_agent/full_response/18_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/18_full_response.json",
+      "size_bytes": 18759,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"UniversityEnrollmentDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"UniversityEnrollmentProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$type\\\""
+    },
+    {
+      "relpath": "single_agent/full_response/55_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/55_full_response.json",
+      "size_bytes": 15424,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"CentralVenousCatheterInsertionDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"CentralVenousCatheterInsertionProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\"
+    },
+    {
+      "relpath": "single_agent/full_response/29_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/29_full_response.json",
+      "size_bytes": 11846,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"AustriaWorkLiveDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"AustriaWorkLiveProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$type\\\": \\\"bpmn:S"
+    },
+    {
+      "relpath": "single_agent/full_response/01_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/01_full_response.json",
+      "size_bytes": 4928,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"SalesProcessDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"SalesProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$type\\\": \\\"bpmn:StartEvent\\\",\\"
+    },
+    {
+      "relpath": "single_agent/full_response/41_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/41_full_response.json",
+      "size_bytes": 4644,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"MachineInspectionDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"MachineInspectionProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$type\\\": \\\"bp"
+    },
+    {
+      "relpath": "single_agent/full_response/24_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/24_full_response.json",
+      "size_bytes": 7278,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"RestaurantOrderDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"RestaurantOrderProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$type\\\": \\\"bpmn:S"
+    },
+    {
+      "relpath": "single_agent/full_response/32_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/32_full_response.json",
+      "size_bytes": 16237,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"FarmingBotDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"FarmingBotProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$type\\\": \\\"bpmn:StartEvent\\"
+    },
+    {
+      "relpath": "single_agent/full_response/53_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/53_full_response.json",
+      "size_bytes": 3346,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"DismissalReviewDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"DismissalReviewProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$type\\\": \\\"bpmn:S"
+    },
+    {
+      "relpath": "single_agent/full_response/16_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/16_full_response.json",
+      "size_bytes": 15028,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"AnnualAuditDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"AnnualAuditProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$type\\\": \\\"bpmn:StartEven"
+    },
+    {
+      "relpath": "single_agent/full_response/15_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/15_full_response.json",
+      "size_bytes": 6820,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"ComplianceAuditDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"ComplianceAuditProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$type\\\": \\\"bpmn:S"
+    },
+    {
+      "relpath": "single_agent/full_response/52_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/52_full_response.json",
+      "size_bytes": 3009,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"DismissalReviewDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"DismissalReviewProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$type\\\": \\\"bpmn:S"
+    },
+    {
+      "relpath": "single_agent/full_response/27_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/27_full_response.json",
+      "size_bytes": 11288,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"WorkAccidentReportingDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"WorkAccidentReportingProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$type"
+    },
+    {
+      "relpath": "single_agent/full_response/03_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/03_full_response.json",
+      "size_bytes": 6110,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"InventoryReplenishmentDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"InventoryReplenishmentProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$ty"
+    },
+    {
+      "relpath": "single_agent/full_response/02_full_response.json",
+      "file": "/workspaces/ablation_study/single_agent/full_response/02_full_response.json",
+      "size_bytes": 7046,
+      "is_valid_json": true,
+      "top_level_keys": [
+        "response",
+        "tokenUsage"
+      ],
+      "preview": "{\n  \"response\": {\n    \"generations\": [\n      [\n        {\n          \"text\": \"```json\\n{\\n  \\\"$type\\\": \\\"bpmn:Definitions\\\",\\n  \\\"id\\\": \\\"HiringProcessDefinitions\\\",\\n  \\\"targetNamespace\\\": \\\"http://bpmn.io/schema/bpmn\\\",\\n  \\\"exporter\\\": \\\"BPMN Generator\\\",\\n  \\\"exporterVersion\\\": \\\"1.0\\\",\\n  \\\"rootElements\\\": [\\n    {\\n      \\\"$type\\\": \\\"bpmn:Process\\\",\\n      \\\"id\\\": \\\"HiringProcess\\\",\\n      \\\"isExecutable\\\": true,\\n      \\\"flowElements\\\": [\\n        {\\n          \\\"$type\\\": \\\"bpmn:StartEvent\\\""
+    }
+  ]
+}

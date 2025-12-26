@@ -1,0 +1,654 @@
+{
+  "folder": "full",
+  "files_count": 15,
+  "files": [
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+    "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+  ],
+  "merged_schema": {
+    "$": {
+      "types": [
+        "object"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.$type": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.id": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.targetNamespace": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.exporter": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.exporterVersion": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements": {
+      "types": [
+        "array"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[]": {
+      "types": [
+        "object"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].$type": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].id": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].isExecutable": {
+      "types": [
+        "boolean"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].flowElements": {
+      "types": [
+        "array"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].flowElements[]": {
+      "types": [
+        "object"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].flowElements[].$type": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].flowElements[].id": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].flowElements[].name": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ],
+      "missing_in_files": []
+    },
+    "$.rootElements[].flowElements[].gatewayDirection": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json"
+      ],
+      "missing_in_files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ]
+    },
+    "$.rootElements[].flowElements[].description": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json"
+      ],
+      "missing_in_files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ]
+    },
+    "$.rootElements[].flowElements[].eventDefinitions": {
+      "types": [
+        "array"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json"
+      ],
+      "missing_in_files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ]
+    },
+    "$.rootElements[].flowElements[].eventDefinitions[]": {
+      "types": [
+        "object"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json"
+      ],
+      "missing_in_files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ]
+    },
+    "$.rootElements[].flowElements[].eventDefinitions[].$type": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json"
+      ],
+      "missing_in_files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ]
+    },
+    "$.rootElements[].flowElements[].eventDefinitions[].condition": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json"
+      ],
+      "missing_in_files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ]
+    },
+    "$.rootElements[].flowElements[].attachedToRef": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json"
+      ],
+      "missing_in_files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ]
+    },
+    "$.rootElements[].flowElements[].cancelActivity": {
+      "types": [
+        "boolean"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json"
+      ],
+      "missing_in_files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ]
+    },
+    "$.rootElements[].flowElements[].eventDefinitions[].timeDuration": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json"
+      ],
+      "missing_in_files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ]
+    },
+    "$.rootElements[].flowElements[].eventDefinitions[].name": {
+      "types": [
+        "string"
+      ],
+      "files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_29/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_32/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_52/bpmn_model.json"
+      ],
+      "missing_in_files": [
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_01/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_15/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_16/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_18/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_24/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_27/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_41/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_53/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_54/bpmn_model.json",
+        "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_55/bpmn_model.json"
+      ]
+    }
+  },
+  "summary": {
+    "total_paths": 26,
+    "paths_with_type_conflict_count": 0,
+    "paths_with_type_conflict": [],
+    "paths_missing_count": 10,
+    "paths_missing_examples": [
+      "$.rootElements[].flowElements[].gatewayDirection",
+      "$.rootElements[].flowElements[].description",
+      "$.rootElements[].flowElements[].eventDefinitions",
+      "$.rootElements[].flowElements[].eventDefinitions[]",
+      "$.rootElements[].flowElements[].eventDefinitions[].$type",
+      "$.rootElements[].flowElements[].eventDefinitions[].condition",
+      "$.rootElements[].flowElements[].attachedToRef",
+      "$.rootElements[].flowElements[].cancelActivity",
+      "$.rootElements[].flowElements[].eventDefinitions[].timeDuration",
+      "$.rootElements[].flowElements[].eventDefinitions[].name"
+    ],
+    "unique_paths_count": 2,
+    "unique_paths_examples": [
+      "$.rootElements[].flowElements[].description",
+      "$.rootElements[].flowElements[].eventDefinitions[].condition"
+    ]
+  }
+}

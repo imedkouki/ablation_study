@@ -1,0 +1,21 @@
+{
+  "folder": "full",
+  "unique_paths": [
+    {
+      "path": "$.rootElements[].flowElements[].description",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_02/bpmn_model.json",
+      "snippet": null
+    },
+    {
+      "path": "$.rootElements[].flowElements[].eventDefinitions[].condition",
+      "types": [
+        "string"
+      ],
+      "file": "/workspaces/ablation_study/full/ttpm-mistral-medium/processes_03/bpmn_model.json",
+      "snippet": null
+    }
+  ]
+}
